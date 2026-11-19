@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="robots" content="noindex, nofollow" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="모녀 오사카" />
   <title>🌸 정희 여사님과 딸 소연이의 모녀 오사카 3박 4일 여행 가이드</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -21,7 +23,6 @@
       --primary-light: #FFDCE1;
       --secondary: #377D6A;
       --secondary-light: #DDF2EC;
-      --accent-gold: #E59A3C;
       --text-main: #2A2426;
       --text-sub: #5E5458;
       --text-muted: #8C8085;
@@ -32,17 +33,10 @@
       --radius-sm: 10px;
       --base-font: 15px;
     }
+    body.large-text { --base-font: 18.5px; }
 
-    body.large-text {
-      --base-font: 18px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      -webkit-tap-highlight-color: transparent;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    html, body { -webkit-text-size-adjust: 100%; }
 
     body {
       font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
@@ -50,927 +44,295 @@
       color: var(--text-main);
       font-size: var(--base-font);
       line-height: 1.65;
-      padding-bottom: 92px;
+      padding-bottom: calc(92px + env(safe-area-inset-bottom));
       background-image: radial-gradient(#FFE3E8 1px, transparent 1px);
       background-size: 22px 22px;
     }
+    body.sheet-open { overflow: hidden; }
+    body.is-sorting, body.is-sorting * { user-select: none !important; -webkit-user-select: none !important; }
 
-    .app-container {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 14px 14px 24px;
-    }
+    button { font-family: inherit; touch-action: manipulation; }
+    [data-action] { cursor: pointer; }
 
-    /* Top Sticky Bar */
+    .app-container { max-width: 680px; margin: 0 auto; padding: 14px 14px 24px; }
+
+    /* Top bar */
     .top-bar {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(255, 248, 245, 0.92);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      padding: 10px 14px;
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255, 248, 245, 0.94);
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      padding: 10px 14px; padding-top: calc(10px + env(safe-area-inset-top));
       border-bottom: 1px solid var(--border-soft);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
+      display: flex; align-items: center; justify-content: space-between; gap: 8px;
     }
-
     .top-title {
-      font-size: 0.92em;
-      font-weight: 700;
-      color: var(--primary-dark);
-      display: flex;
-      align-items: center;
-      gap: 6px;
+      font-size: 0.92em; font-weight: 700; color: var(--primary-dark);
+      min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
     }
-
-    .font-toggle-btn {
-      background: #FFFFFF;
-      border: 1.5px solid var(--primary);
-      color: var(--primary-dark);
-      font-family: inherit;
-      font-size: 0.82em;
-      font-weight: 700;
-      padding: 6px 12px;
-      border-radius: 999px;
-      cursor: pointer;
+    .font-seg {
+      display: inline-flex; flex-shrink: 0;
+      background: #FFFFFF; border: 1.5px solid var(--primary);
+      border-radius: 999px; padding: 2px;
       box-shadow: 0 2px 8px rgba(240, 101, 120, 0.12);
-      transition: all 0.2s ease;
-      white-space: nowrap;
     }
-
-    .font-toggle-btn:active {
-      transform: scale(0.96);
+    .font-seg button {
+      border: none; background: transparent; color: var(--primary-dark);
+      font-weight: 700; padding: 5px 11px; border-radius: 999px;
+      font-size: 13px; line-height: 1.3; white-space: nowrap;
     }
+    .font-seg button .big-ga { font-size: 1.2em; }
+    .font-seg button.active { background: var(--primary); color: #FFFFFF; }
 
-    body.large-text .font-toggle-btn {
-      background: var(--primary);
-      color: #FFFFFF;
-    }
-
-    /* Hero Banner */
+    /* Hero */
     .hero-card {
       background: linear-gradient(135deg, #FF8596 0%, #F06578 55%, #E87A90 100%);
-      color: #FFFFFF;
-      border-radius: var(--radius-lg);
-      padding: 22px 20px;
-      margin-bottom: 16px;
+      color: #FFFFFF; border-radius: var(--radius-lg);
+      padding: 22px 20px; margin-bottom: 16px;
       box-shadow: 0 10px 26px rgba(240, 101, 120, 0.25);
-      position: relative;
-      overflow: hidden;
+      position: relative; overflow: hidden;
     }
-
     .hero-card::after {
-      content: "🌸";
-      position: absolute;
-      right: 14px;
-      bottom: -8px;
-      font-size: 4.5rem;
-      opacity: 0.18;
-      pointer-events: none;
+      content: "🌸"; position: absolute; right: 14px; bottom: -8px;
+      font-size: 4.5rem; opacity: 0.18; pointer-events: none;
     }
+    .hero-card > * { position: relative; z-index: 1; }
+    .hero-badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+    .hero-pill { background: rgba(255,255,255,0.24); padding: 4px 11px; border-radius: 999px; font-size: 0.78em; font-weight: 600; }
+    .hero-title { font-size: 1.38em; font-weight: 700; line-height: 1.35; margin-bottom: 6px; letter-spacing: -0.4px; }
+    .hero-subtitle { font-size: 0.88em; opacity: 0.95; line-height: 1.5; }
 
-    .hero-badge-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 10px;
-    }
+    /* Quick grid */
+    .quick-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 18px; }
+    .quick-item { background: var(--bg-card); border: 1px solid var(--border-soft); border-radius: var(--radius-md); padding: 12px 13px; box-shadow: var(--shadow-card); }
+    .quick-label { font-size: 0.76em; font-weight: 700; color: var(--primary-dark); margin-bottom: 4px; }
+    .quick-val { font-size: 0.84em; font-weight: 600; line-height: 1.45; }
+    .quick-sub { font-size: 0.76em; color: var(--text-sub); margin-top: 2px; }
 
-    .hero-pill {
-      background: rgba(255, 255, 255, 0.24);
-      padding: 4px 11px;
-      border-radius: 999px;
-      font-size: 0.78em;
-      font-weight: 600;
-      letter-spacing: -0.2px;
-    }
-
-    .hero-title {
-      font-size: 1.38em;
-      font-weight: 700;
-      line-height: 1.35;
-      margin-bottom: 6px;
-      letter-spacing: -0.4px;
-    }
-
-    .hero-subtitle {
-      font-size: 0.88em;
-      opacity: 0.95;
-      line-height: 1.5;
-    }
-
-    /* Quick Summary Grid */
-    .quick-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-      margin-bottom: 18px;
-    }
-
-    .quick-item {
-      background: var(--bg-card);
-      border: 1px solid var(--border-soft);
-      border-radius: var(--radius-md);
-      padding: 12px 13px;
-      box-shadow: var(--shadow-card);
-    }
-
-    .quick-label {
-      font-size: 0.76em;
-      font-weight: 700;
-      color: var(--primary-dark);
-      margin-bottom: 4px;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .quick-val {
-      font-size: 0.84em;
-      font-weight: 600;
-      color: var(--text-main);
-      line-height: 1.45;
-    }
-
-    .quick-sub {
-      font-size: 0.76em;
-      color: var(--text-sub);
-      margin-top: 2px;
-    }
-
-    /* Filter Pills */
-    .filter-scroll {
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      padding-bottom: 8px;
-      margin-bottom: 14px;
-      scrollbar-width: none;
-    }
-
-    .filter-scroll::-webkit-scrollbar {
-      display: none;
-    }
-
+    /* Filter pills */
+    .filter-scroll { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 6px; scrollbar-width: none; }
+    .filter-scroll::-webkit-scrollbar { display: none; }
     .filter-pill {
-      background: #FFFFFF;
-      border: 1.5px solid var(--border-soft);
-      color: var(--text-sub);
-      font-family: inherit;
-      font-size: 0.85em;
-      font-weight: 600;
-      padding: 8px 14px;
-      border-radius: 999px;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: all 0.18s ease;
+      background: #FFFFFF; border: 1.5px solid var(--border-soft); color: var(--text-sub);
+      font-size: 0.85em; font-weight: 600; padding: 8px 14px; border-radius: 999px; white-space: nowrap;
+    }
+    .filter-pill.active { background: var(--primary); border-color: var(--primary); color: #FFFFFF; box-shadow: 0 4px 12px rgba(240,101,120,0.25); }
+
+    .edit-hint { font-size: 0.76em; color: var(--text-muted); margin: 0 2px 12px; }
+
+    .tab-section { display: none; }
+    .tab-section.active { display: block; }
+
+    /* Shared edit / add buttons */
+    .edit-btn {
+      border: none; background: transparent; color: var(--text-muted);
+      font-size: 1em; line-height: 1; width: 32px; height: 30px; border-radius: 8px;
+      flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center;
+    }
+    .edit-btn:active { background: var(--bg-soft-pink); color: var(--primary-dark); }
+    .add-inline {
+      display: block; width: 100%; margin: 4px 0 14px;
+      border: 1.5px dashed var(--primary-light); background: #FFFBFB; color: var(--primary-dark);
+      font-weight: 700; font-size: 0.85em; padding: 9px; border-radius: var(--radius-sm);
+    }
+    .add-inline.small {
+      display: inline-block; width: auto; margin: 6px 0 0; padding: 4px 12px;
+      font-size: 0.78em; border-radius: 999px; background: rgba(255,255,255,0.7);
+    }
+    .reset-link {
+      display: block; margin: 6px auto 0; border: none; background: transparent;
+      color: var(--text-muted); font-size: 0.78em; text-decoration: underline;
     }
 
-    .filter-pill.active {
-      background: var(--primary);
-      border-color: var(--primary);
-      color: #FFFFFF;
-      box-shadow: 0 4px 12px rgba(240, 101, 120, 0.25);
+    /* Sortable */
+    .sort-item { -webkit-touch-callout: none; user-select: none; -webkit-user-select: none; }
+    .sort-item.dragging {
+      background: #FFFFFF !important;
+      box-shadow: 0 10px 26px rgba(240, 101, 120, 0.3) !important;
+      outline: 2px dashed var(--primary);
+      outline-offset: 2px;
+      border-radius: 10px;
+      transform: scale(1.02);
+      position: relative; z-index: 50;
+      transition: transform 0.12s ease;
     }
 
-    /* Section Views - Immediate paint for iOS Safari / WKWebView */
-    .tab-section {
-      display: none;
-      opacity: 1;
-      transform: none;
-    }
+    /* Day cards */
+    .day-card { background: var(--bg-card); border: 1px solid var(--border-soft); border-radius: var(--radius-lg); padding: 18px 16px; margin-bottom: 18px; box-shadow: var(--shadow-card); }
+    .day-header { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding-bottom: 12px; margin-bottom: 14px; border-bottom: 2px dashed var(--border-soft); }
+    .day-head-right { display: flex; align-items: center; gap: 2px; flex-shrink: 0; }
+    .day-tag { display: inline-block; background: var(--bg-soft-pink); color: var(--primary-dark); font-size: 0.78em; font-weight: 700; padding: 4px 10px; border-radius: 999px; margin-bottom: 4px; }
+    .day-title { font-size: 1.15em; font-weight: 700; }
+    .day-emoji { font-size: 2rem; background: var(--bg-cream); width: 50px; height: 50px; border-radius: 16px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border-soft); }
 
-    .tab-section.active {
-      display: block !important;
-      opacity: 1 !important;
-      transform: none !important;
-    }
-
-    /* Day Cards */
-    .day-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-soft);
-      border-radius: var(--radius-lg);
-      padding: 18px 16px;
-      margin-bottom: 18px;
-      box-shadow: var(--shadow-card);
-    }
-
-    .day-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      padding-bottom: 12px;
-      margin-bottom: 14px;
-      border-bottom: 2px dashed var(--border-soft);
-    }
-
-    .day-tag {
-      display: inline-block;
-      background: var(--bg-soft-pink);
-      color: var(--primary-dark);
-      font-size: 0.78em;
-      font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 999px;
-      margin-bottom: 4px;
-    }
-
-    .day-title {
-      font-size: 1.15em;
-      font-weight: 700;
-      color: var(--text-main);
-    }
-
-    .day-emoji {
-      font-size: 2rem;
-      background: var(--bg-cream);
-      width: 50px;
-      height: 50px;
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      border: 1px solid var(--border-soft);
-    }
-
-    /* Timeline List */
-    .timeline {
-      list-style: none;
-      margin-bottom: 16px;
-      position: relative;
-      padding-left: 16px;
-      border-left: 2.5px solid var(--primary-light);
-    }
-
-    .timeline-item {
-      position: relative;
-      margin-bottom: 11px;
-      padding-left: 6px;
-    }
-
-    .timeline-item:last-child {
-      margin-bottom: 0;
-    }
-
+    .timeline { list-style: none; margin-bottom: 6px; padding-left: 16px; border-left: 2.5px solid var(--primary-light); min-height: 8px; }
+    .timeline-item { position: relative; margin-bottom: 6px; padding: 3px 0 3px 6px; display: flex; align-items: flex-start; gap: 4px; }
     .timeline-item::before {
-      content: "";
-      position: absolute;
-      left: -22px;
-      top: 7px;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--primary);
-      border: 2px solid #FFFFFF;
-      box-shadow: 0 0 0 2px var(--primary-light);
+      content: ""; position: absolute; left: -22px; top: 10px; width: 10px; height: 10px; border-radius: 50%;
+      background: var(--primary); border: 2px solid #FFFFFF; box-shadow: 0 0 0 2px var(--primary-light);
     }
+    .item-main { flex: 1; min-width: 0; }
+    .time-badge { display: inline-block; font-size: 0.78em; font-weight: 700; color: var(--primary-dark); background: var(--bg-soft-pink); padding: 1px 8px; border-radius: 6px; margin-right: 6px; }
+    .time-desc { font-size: 0.92em; font-weight: 500; }
 
-    .time-badge {
-      display: inline-block;
-      font-size: 0.78em;
-      font-weight: 700;
-      color: var(--primary-dark);
-      background: var(--bg-soft-pink);
-      padding: 1px 8px;
-      border-radius: 6px;
-      margin-right: 6px;
-    }
-
-    .time-desc {
-      font-size: 0.92em;
-      color: var(--text-main);
-      font-weight: 500;
-    }
-
-    /* Info Sub-boxes inside Day Card */
-    .info-box {
-      border-radius: var(--radius-md);
-      padding: 13px 14px;
-      margin-bottom: 10px;
-      font-size: 0.89em;
-    }
-
-    .info-box:last-child {
-      margin-bottom: 0;
-    }
-
-    .info-box.food {
-      background: var(--bg-soft-amber);
-      border: 1px solid #F7E3BE;
-    }
-
-    .info-box.shop {
-      background: var(--bg-soft-lavender);
-      border: 1px solid #E3DCFA;
-    }
-
-    .info-box.tip {
-      background: var(--bg-soft-mint);
-      border: 1px solid #CBE8DF;
-    }
-
-    .info-box-title {
-      font-weight: 700;
-      font-size: 0.94em;
-      margin-bottom: 6px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
+    .info-box { border-radius: var(--radius-md); padding: 13px 12px 10px 14px; margin-bottom: 10px; font-size: 0.89em; }
+    .info-box.food { background: var(--bg-soft-amber); border: 1px solid #F7E3BE; }
+    .info-box.shop { background: var(--bg-soft-lavender); border: 1px solid #E3DCFA; }
+    .info-box.tip { background: var(--bg-soft-mint); border: 1px solid #CBE8DF; }
+    .info-box-title { font-weight: 700; font-size: 0.94em; margin-bottom: 6px; }
     .info-box.food .info-box-title { color: #A86414; }
     .info-box.shop .info-box-title { color: #543D99; }
     .info-box.tip .info-box-title { color: #246352; }
+    .info-list { list-style: none; }
+    .info-list > li { display: flex; align-items: flex-start; gap: 4px; padding: 2px 0; margin-bottom: 2px; }
+    .info-list > li .item-main { position: relative; padding-left: 13px; }
+    .info-list > li .item-main::before { content: "•"; position: absolute; left: 1px; top: 0; font-weight: 700; }
+    .info-list .edit-btn { height: 24px; width: 28px; }
 
-    .info-list {
-      padding-left: 16px;
-      color: var(--text-main);
-    }
-
-    .info-list li {
-      margin-bottom: 4px;
-    }
-
-    .info-list li:last-child {
-      margin-bottom: 0;
-    }
-
-    .link-btn-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 12px;
-    }
-
+    .link-btn-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .link-chip { display: inline-flex; align-items: stretch; border-radius: 999px; box-shadow: 0 2px 6px rgba(0,0,0,0.04); }
     .mini-link-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      background: #FFFFFF;
-      border: 1px solid var(--border-soft);
-      color: var(--text-main);
-      text-decoration: none;
-      font-size: 0.8em;
-      font-weight: 600;
-      padding: 7px 12px;
-      border-radius: 999px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+      display: inline-flex; align-items: center; gap: 5px; background: #FFFFFF;
+      border: 1px solid var(--border-soft); color: var(--text-main); text-decoration: none;
+      font-size: 0.8em; font-weight: 600; padding: 7px 12px; border-radius: 999px;
     }
+    .link-chip .mini-link-btn { border-radius: 999px 0 0 999px; }
+    .link-chip .edit-btn { height: auto; width: 30px; background: #FFFFFF; border: 1px solid var(--border-soft); border-left: none; border-radius: 0 999px 999px 0; font-size: 0.85em; }
+    .mini-link-btn.primary-link { background: var(--secondary); border-color: var(--secondary); color: #FFFFFF; }
 
-    .mini-link-btn.primary-link {
-      background: var(--secondary);
-      border-color: var(--secondary);
-      color: #FFFFFF;
-    }
+    /* Budget */
+    .budget-summary-card { background: linear-gradient(135deg, #377D6A 0%, #2B6656 100%); color: #FFFFFF; border-radius: var(--radius-lg); padding: 18px; margin-bottom: 16px; box-shadow: 0 8px 22px rgba(55,125,106,0.22); }
+    .budget-top-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .person-toggle { display: inline-flex; background: rgba(255,255,255,0.18); border-radius: 999px; padding: 3px; }
+    .person-btn { border: none; background: transparent; color: #FFFFFF; font-size: 0.78em; font-weight: 700; padding: 5px 11px; border-radius: 999px; }
+    .person-btn.active { background: #FFFFFF; color: var(--secondary); }
+    .budget-amounts { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
+    .budget-jpy { font-size: 1.55em; font-weight: 700; }
+    .budget-krw { font-size: 0.95em; background: rgba(255,255,255,0.16); padding: 3px 10px; border-radius: 999px; }
+    .rate-row { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; font-size: 0.8em; margin-bottom: 12px; }
+    .rate-input { width: 70px; padding: 3px 6px; border-radius: 6px; border: none; font-weight: 700; text-align: center; color: var(--text-main); font-size: 16px; }
+    .bar-track { height: 10px; background: rgba(255,255,255,0.22); border-radius: 999px; overflow: hidden; display: flex; margin-bottom: 8px; }
+    .bar-track > div { height: 100%; transition: width 0.3s; }
+    .bar-seg-food { background: #FFD166; }
+    .bar-seg-cafe { background: #FF9EAA; }
+    .bar-seg-play { background: #C9B8FF; }
+    .bar-seg-shop { background: #A0E7E5; }
+    .bar-legend { display: flex; justify-content: space-between; font-size: 0.76em; flex-wrap: wrap; gap: 6px; }
 
-    /* Budget & Spots Tab */
-    .budget-summary-card {
-      background: linear-gradient(135deg, #377D6A 0%, #2B6656 100%);
-      color: #FFFFFF;
-      border-radius: var(--radius-lg);
-      padding: 18px;
-      margin-bottom: 16px;
-      box-shadow: 0 8px 22px rgba(55, 125, 106, 0.22);
-    }
-
-    .budget-top-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 12px;
-    }
-
-    .person-toggle {
-      display: inline-flex;
-      background: rgba(255, 255, 255, 0.18);
-      border-radius: 999px;
-      padding: 3px;
-    }
-
-    .person-btn {
-      border: none;
-      background: transparent;
-      color: #FFFFFF;
-      font-family: inherit;
-      font-size: 0.78em;
-      font-weight: 700;
-      padding: 5px 11px;
-      border-radius: 999px;
-      cursor: pointer;
-    }
-
-    .person-btn.active {
-      background: #FFFFFF;
-      color: var(--secondary);
-    }
-
-    .budget-amounts {
-      display: flex;
-      align-items: baseline;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 10px;
-    }
-
-    .budget-jpy {
-      font-size: 1.55em;
-      font-weight: 700;
-    }
-
-    .budget-krw {
-      font-size: 0.95em;
-      opacity: 0.92;
-      background: rgba(255,255,255,0.16);
-      padding: 3px 10px;
-      border-radius: 999px;
-    }
-
-    .rate-row {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.8em;
-      opacity: 0.95;
-      margin-bottom: 12px;
-    }
-
-    .rate-input {
-      width: 64px;
-      padding: 3px 6px;
-      border-radius: 6px;
-      border: none;
-      font-weight: 700;
-      text-align: center;
-      color: var(--text-main);
-    }
-
-    .bar-track {
-      height: 10px;
-      background: rgba(255, 255, 255, 0.22);
-      border-radius: 999px;
-      overflow: hidden;
-      display: flex;
-      margin-bottom: 8px;
-    }
-
-    .bar-seg-food { background: #FFD166; height: 100%; transition: width 0.3s; }
-    .bar-seg-cafe { background: #FF9EAA; height: 100%; transition: width 0.3s; }
-    .bar-seg-shop { background: #A0E7E5; height: 100%; transition: width 0.3s; }
-
-    .bar-legend {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.76em;
-      opacity: 0.95;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .spot-card {
-      background: #FFFFFF;
-      border: 1px solid var(--border-soft);
-      border-radius: var(--radius-md);
-      padding: 14px;
-      margin-bottom: 11px;
-      box-shadow: var(--shadow-card);
-    }
-
-    .spot-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 8px;
-      margin-bottom: 6px;
-    }
-
-    .spot-cat-badge {
-      font-size: 0.74em;
-      font-weight: 700;
-      padding: 3px 9px;
-      border-radius: 999px;
-      display: inline-block;
-      margin-bottom: 4px;
-    }
-
+    .spot-card { background: #FFFFFF; border: 1px solid var(--border-soft); border-radius: var(--radius-md); padding: 14px; margin-bottom: 11px; box-shadow: var(--shadow-card); }
+    .spot-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 6px; }
+    .spot-actions { display: flex; align-items: center; gap: 2px; flex-shrink: 0; }
+    .spot-cat-badge { font-size: 0.74em; font-weight: 700; padding: 3px 9px; border-radius: 999px; display: inline-block; margin-bottom: 4px; }
     .cat-food { background: #FFF0D6; color: #A86414; }
     .cat-cafe { background: #FFE6EA; color: #C93B50; }
-    .cat-shop { background: #EBE4FF; color: #543D99; }
+    .cat-play { background: #EEE8FF; color: #5B47A8; }
+    .cat-shop { background: #E2F6F5; color: #23706C; }
+    .spot-name { font-size: 1.02em; font-weight: 700; }
+    .spot-loc { font-size: 0.8em; color: var(--text-sub); }
+    .spot-menu { font-size: 0.88em; font-weight: 600; margin: 6px 0 4px; }
+    .spot-reason { font-size: 0.83em; color: var(--text-sub); margin-bottom: 10px; }
+    .spot-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 8px; border-top: 1px solid #F4ECEE; gap: 8px; }
+    .spot-price { font-weight: 700; font-size: 0.92em; color: var(--secondary); }
+    .spot-price small { font-size: 0.82em; color: #666; font-weight: 500; }
+    .qty-control { display: inline-flex; align-items: center; gap: 8px; background: var(--bg-cream); padding: 4px 10px; border-radius: 999px; border: 1px solid var(--border-soft); flex-shrink: 0; }
+    .qty-btn { width: 26px; height: 26px; border-radius: 50%; border: none; background: #FFFFFF; color: var(--primary-dark); font-weight: 700; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+    .qty-num { font-size: 0.88em; font-weight: 700; min-width: 18px; text-align: center; }
 
-    .spot-name {
-      font-size: 1.02em;
-      font-weight: 700;
-      color: var(--text-main);
-    }
-
-    .spot-loc {
-      font-size: 0.8em;
-      color: var(--text-sub);
-    }
-
-    .spot-menu {
-      font-size: 0.88em;
-      font-weight: 600;
-      color: var(--text-main);
-      margin: 6px 0 4px;
-    }
-
-    .spot-reason {
-      font-size: 0.83em;
-      color: var(--text-sub);
-      margin-bottom: 10px;
-    }
-
-    .spot-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: 8px;
-      border-top: 1px solid #F4ECEE;
-      gap: 8px;
-    }
-
-    .spot-price {
-      font-weight: 700;
-      font-size: 0.92em;
-      color: var(--secondary);
-    }
-
-    .qty-control {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--bg-cream);
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--border-soft);
-    }
-
-    .qty-btn {
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      border: none;
-      background: #FFFFFF;
-      color: var(--primary-dark);
-      font-weight: 700;
-      cursor: pointer;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-    }
-
-    .qty-num {
-      font-size: 0.88em;
-      font-weight: 700;
-      min-width: 18px;
-      text-align: center;
-    }
-
-    /* Checklist Tab */
-    .progress-card {
-      background: #FFFFFF;
-      border: 1px solid var(--border-soft);
-      border-radius: var(--radius-lg);
-      padding: 16px;
-      margin-bottom: 14px;
-      box-shadow: var(--shadow-card);
-    }
-
-    .progress-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 8px;
-    }
-
-    .progress-pct {
-      font-size: 1.3em;
-      font-weight: 700;
-      color: var(--primary-dark);
-    }
-
-    .progress-track {
-      height: 12px;
-      background: var(--bg-soft-pink);
-      border-radius: 999px;
-      overflow: hidden;
-      margin-bottom: 8px;
-    }
-
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, #FF8FA0, #F06578);
-      border-radius: 999px;
-      transition: width 0.3s ease;
-    }
-
-    .check-item {
-      background: #FFFFFF;
-      border: 1px solid var(--border-soft);
-      border-radius: var(--radius-md);
-      padding: 13px 14px;
-      margin-bottom: 9px;
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      cursor: pointer;
-      transition: all 0.15s ease;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.03);
-    }
-
-    .check-item.checked {
-      background: #FAF9FA;
-      opacity: 0.72;
-    }
-
-    .check-box {
-      width: 24px;
-      height: 24px;
-      border-radius: 8px;
-      border: 2px solid var(--primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      margin-top: 2px;
-      color: #FFFFFF;
-      font-weight: 700;
-      font-size: 0.85em;
-      background: #FFFFFF;
-    }
-
-    .check-item.checked .check-box {
-      background: var(--secondary);
-      border-color: var(--secondary);
-    }
-
-    .check-content {
-      flex: 1;
-    }
-
-    .check-meta {
-      display: flex;
-      gap: 6px;
-      align-items: center;
-      margin-bottom: 3px;
-    }
-
-    .owner-tag {
-      font-size: 0.72em;
-      font-weight: 700;
-      padding: 2px 8px;
-      border-radius: 999px;
-    }
-
+    /* Checklist */
+    .progress-card { background: #FFFFFF; border: 1px solid var(--border-soft); border-radius: var(--radius-lg); padding: 16px; margin-bottom: 14px; box-shadow: var(--shadow-card); }
+    .progress-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; gap: 8px; }
+    .progress-pct { font-size: 1.3em; font-weight: 700; color: var(--primary-dark); }
+    .progress-track { height: 12px; background: var(--bg-soft-pink); border-radius: 999px; overflow: hidden; margin-bottom: 8px; }
+    .progress-fill { height: 100%; background: linear-gradient(90deg, #FF8FA0, #F06578); border-radius: 999px; transition: width 0.3s ease; }
+    .check-item { background: #FFFFFF; border: 1px solid var(--border-soft); border-radius: var(--radius-md); padding: 13px 8px 13px 14px; margin-bottom: 9px; display: flex; align-items: flex-start; gap: 12px; box-shadow: 0 3px 10px rgba(0,0,0,0.03); }
+    .check-item.checked { background: #FAF9FA; }
+    .check-item.checked .check-content { opacity: 0.6; }
+    .check-box { width: 24px; height: 24px; border-radius: 8px; border: 2px solid var(--primary); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; color: #FFFFFF; font-weight: 700; font-size: 0.85em; background: #FFFFFF; }
+    .check-item.checked .check-box { background: var(--secondary); border-color: var(--secondary); }
+    .check-content { flex: 1; min-width: 0; }
+    .owner-tag { display: inline-block; font-size: 0.72em; font-weight: 700; padding: 2px 8px; border-radius: 999px; margin-bottom: 3px; }
     .owner-all { background: #EBF3FA; color: #2B5B84; }
     .owner-mom { background: #FFE6EA; color: #C93B50; }
     .owner-dau { background: #E6F5F0; color: #246352; }
+    .check-title { font-weight: 700; font-size: 0.95em; }
+    .check-item.checked .check-title { text-decoration: line-through; color: var(--text-muted); }
+    .check-desc { font-size: 0.82em; color: var(--text-sub); margin-top: 2px; }
 
-    .check-title {
-      font-weight: 700;
-      font-size: 0.95em;
-      color: var(--text-main);
-    }
+    /* Memo */
+    .memo-card { background: #FFFFFF; border: 1px solid var(--border-soft); border-radius: var(--radius-lg); padding: 16px; margin-bottom: 14px; box-shadow: var(--shadow-card); }
+    .memo-title { font-size: 1.02em; font-weight: 700; color: var(--primary-dark); margin-bottom: 10px; }
+    .address-box { background: var(--bg-cream); border: 1px solid var(--border-soft); border-radius: var(--radius-sm); padding: 12px 8px 12px 12px; font-size: 0.88em; margin-bottom: 10px; display: flex; gap: 4px; align-items: flex-start; }
+    .addr-name { font-weight: 700; }
+    .addr-ja { color: var(--text-sub); margin: 4px 0; }
+    .addr-en { color: var(--text-sub); margin-bottom: 8px; }
+    .copy-btn { background: var(--secondary); color: #FFFFFF; border: none; border-radius: 999px; padding: 7px 14px; font-size: 0.92em; font-weight: 700; }
+    .phrase-item { padding: 11px 8px 11px 12px; border-radius: var(--radius-sm); background: var(--bg-cream); margin-bottom: 8px; border: 1px solid #F3E5E8; display: flex; gap: 4px; align-items: flex-start; }
+    .phrase-ko { font-size: 0.84em; font-weight: 700; color: var(--primary-dark); }
+    .phrase-jp { font-size: 1.05em; font-weight: 700; margin: 2px 0; }
+    .phrase-pron { font-size: 0.84em; color: var(--secondary); font-weight: 600; }
+    .contact-list { list-style: none; font-size: 0.88em; }
+    .contact-list > li { display: flex; gap: 4px; align-items: flex-start; padding: 6px 0; border-bottom: 1px dashed #F3E5E8; }
+    .contact-list > li:last-child { border-bottom: none; }
 
-    .check-item.checked .check-title {
-      text-decoration: line-through;
-      color: var(--text-muted);
-    }
-
-    .check-desc {
-      font-size: 0.82em;
-      color: var(--text-sub);
-      margin-top: 2px;
-    }
-
-    /* Add Form Box */
-    .add-box {
-      background: #FFFFFF;
-      border: 1.5px dashed var(--primary-light);
-      border-radius: var(--radius-md);
-      padding: 14px;
-      margin-top: 14px;
-    }
-
-    .add-row {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-top: 8px;
-    }
-
-    .text-input, .select-input {
-      flex: 1;
-      min-width: 120px;
-      padding: 9px 12px;
-      border: 1px solid var(--border-soft);
-      border-radius: var(--radius-sm);
-      font-family: inherit;
-      font-size: 0.88em;
-      background: var(--bg-cream);
-      color: var(--text-main);
-    }
-
-    .action-btn {
-      background: var(--primary);
-      color: #FFFFFF;
-      border: none;
-      border-radius: var(--radius-sm);
-      padding: 9px 16px;
-      font-family: inherit;
-      font-size: 0.88em;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    /* Local Memo & Phrases Tab */
-    .memo-card {
-      background: #FFFFFF;
-      border: 1px solid var(--border-soft);
-      border-radius: var(--radius-lg);
-      padding: 16px;
-      margin-bottom: 14px;
-      box-shadow: var(--shadow-card);
-    }
-
-    .memo-title {
-      font-size: 1.02em;
-      font-weight: 700;
-      color: var(--primary-dark);
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .address-box {
-      background: var(--bg-cream);
-      border: 1px solid var(--border-soft);
-      border-radius: var(--radius-sm);
-      padding: 12px;
-      font-size: 0.88em;
-      margin-bottom: 10px;
-    }
-
-    .copy-btn {
-      background: var(--secondary);
-      color: #FFFFFF;
-      border: none;
-      border-radius: 999px;
-      padding: 7px 14px;
-      font-family: inherit;
-      font-size: 0.82em;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .phrase-item {
-      padding: 11px 12px;
-      border-radius: var(--radius-sm);
-      background: var(--bg-cream);
-      margin-bottom: 8px;
-      border: 1px solid #F3E5E8;
-    }
-
-    .phrase-ko {
-      font-size: 0.84em;
-      font-weight: 700;
-      color: var(--primary-dark);
-    }
-
-    .phrase-jp {
-      font-size: 1.05em;
-      font-weight: 700;
-      color: var(--text-main);
-      margin: 2px 0;
-    }
-
-    .phrase-pron {
-      font-size: 0.84em;
-      color: var(--secondary);
-      font-weight: 600;
-    }
-
-    /* Bottom Navigation */
+    /* Bottom nav */
     .bottom-nav {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      background: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-top: 1px solid var(--border-soft);
-      display: flex;
-      justify-content: space-around;
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,255,255,0.96); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      border-top: 1px solid var(--border-soft); display: flex; justify-content: space-around;
       padding: 8px 6px calc(8px + env(safe-area-inset-bottom));
-      box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 -4px 18px rgba(0,0,0,0.05);
     }
+    .nav-btn { flex: 1; border: none; background: transparent; display: flex; flex-direction: column; align-items: center; gap: 3px; color: var(--text-muted); font-size: 0.76em; font-weight: 600; padding: 4px 2px; border-radius: 12px; }
+    .nav-btn .nav-icon { font-size: 1.35rem; line-height: 1; }
+    .nav-btn.active { color: var(--primary-dark); background: var(--bg-soft-pink); font-weight: 700; }
 
-    .nav-btn {
-      flex: 1;
-      border: none;
-      background: transparent;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 3px;
-      color: var(--text-muted);
-      font-family: inherit;
-      font-size: 0.76em;
-      font-weight: 600;
-      cursor: pointer;
-      padding: 4px 2px;
-      border-radius: 12px;
-      transition: all 0.15s ease;
-    }
-
-    .nav-btn .nav-icon {
-      font-size: 1.35rem;
-      line-height: 1;
-    }
-
-    .nav-btn.active {
-      color: var(--primary-dark);
-      background: var(--bg-soft-pink);
-      font-weight: 700;
-    }
-
+    /* Toast */
     .toast {
-      position: fixed;
-      bottom: 84px;
-      left: 50%;
+      position: fixed; bottom: calc(84px + env(safe-area-inset-bottom)); left: 50%;
       transform: translateX(-50%) translateY(20px);
-      background: rgba(42, 36, 38, 0.92);
-      color: #FFFFFF;
-      padding: 9px 18px;
-      border-radius: 999px;
-      font-size: 0.85em;
-      font-weight: 600;
-      opacity: 0;
-      pointer-events: none;
-      transition: all 0.25s ease;
-      z-index: 200;
-      white-space: nowrap;
+      background: rgba(42,36,38,0.92); color: #FFFFFF; padding: 9px 18px; border-radius: 999px;
+      font-size: 0.85em; font-weight: 600; opacity: 0; pointer-events: none; transition: all 0.25s ease; z-index: 400; white-space: nowrap;
     }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-    .toast.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
+    /* Edit sheet */
+    .sheet-backdrop { position: fixed; inset: 0; background: rgba(42,36,38,0.4); z-index: 300; opacity: 0; pointer-events: none; transition: opacity 0.2s ease; }
+    .sheet {
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 310;
+      max-width: 680px; margin: 0 auto; max-height: 88vh; overflow-y: auto;
+      background: #FFFFFF; border-radius: 22px 22px 0 0;
+      padding: 10px 18px calc(18px + env(safe-area-inset-bottom));
+      transform: translateY(105%); visibility: hidden; transition: transform 0.25s ease, visibility 0s linear 0.25s;
+      box-shadow: 0 -8px 30px rgba(0,0,0,0.12);
     }
-  
-    button, a, .filter-pill, .check-item, .nav-btn, .font-toggle-btn, .copy-btn, .action-btn, .qty-btn {
-      touch-action: manipulation;
-      pointer-events: auto;
-      position: relative;
-      z-index: 2;
+    body.sheet-open .sheet-backdrop { opacity: 1; pointer-events: auto; }
+    body.sheet-open .sheet { transform: translateY(0); visibility: visible; transition: transform 0.25s ease, visibility 0s; }
+    .sheet-handle { width: 44px; height: 5px; border-radius: 999px; background: #E9DADE; margin: 0 auto 12px; }
+    .sheet-title { font-weight: 700; font-size: 1.05em; color: var(--primary-dark); margin-bottom: 12px; }
+    .sheet-field { display: block; margin-bottom: 12px; }
+    .sheet-field > span { display: block; font-size: 0.8em; font-weight: 700; color: var(--text-sub); margin-bottom: 4px; }
+    .sheet-field input, .sheet-field textarea, .sheet-field select {
+      width: 100%; padding: 10px 12px; border: 1px solid var(--border-soft); border-radius: var(--radius-sm);
+      background: var(--bg-cream); color: var(--text-main); font-family: inherit; font-size: 16px; line-height: 1.5;
     }
-    .hero-card::after {
-      pointer-events: none;
-      z-index: 0;
-    }
-    .hero-card > * {
-      position: relative;
-      z-index: 1;
-    }
-
-  
-    /* iOS Safari Touch & Click Reliability Fixes */
-    html, body {
-      -webkit-text-size-adjust: 100%;
-      cursor: pointer;
-    }
-    .top-bar, .bottom-nav, .app-container, section, article, .day-card, .spot-card, .check-item, .memo-card, .add-box {
-      pointer-events: auto;
-    }
-    button, .filter-pill, .check-item, .nav-btn, .font-toggle-btn, .copy-btn, .action-btn, .qty-btn {
-      cursor: pointer;
-      -webkit-tap-highlight-color: rgba(240, 101, 120, 0.2);
-      touch-action: manipulation;
-    }
-    .check-item {
-      user-select: none;
-      -webkit-user-select: none;
-    }
-
+    .sheet-field textarea { resize: vertical; min-height: 70px; }
+    .sheet-note { font-size: 0.76em; color: var(--text-muted); margin: -4px 0 12px; }
+    .sheet-actions { display: flex; gap: 8px; margin-top: 6px; }
+    .sheet-actions button { border: none; border-radius: var(--radius-sm); padding: 11px 14px; font-size: 0.92em; font-weight: 700; }
+    .sheet-del { background: #FFF0F0; color: #C93B50; }
+    .sheet-cancel { background: #F4EFF0; color: var(--text-sub); margin-left: auto; }
+    .sheet-save { background: var(--primary); color: #FFFFFF; min-width: 84px; }
   </style>
 </head>
 <body>
-  <!-- Sticky Top Bar -->
   <header class="top-bar">
     <div class="top-title">🌸 정희 여사님과 딸 소연이의 모녀 여행</div>
-    <button id="fontToggleBtn" class="font-toggle-btn" onclick="toggleFontSize()">🔍 글자 크게 보기</button>
+    <div class="font-seg" role="group" aria-label="글자 크기">
+      <button type="button" id="fontNormal" class="active" data-action="font" data-size="normal">가 기본</button>
+      <button type="button" id="fontLarge" data-action="font" data-size="large"><span class="big-ga">가</span> 크게</button>
+    </div>
   </header>
 
   <main class="app-container">
-    <!-- Hero Banner -->
     <section class="hero-card">
       <div class="hero-badge-row">
         <span class="hero-pill">2026.12.03(목) ~ 12.06(일) · 3박 4일</span>
@@ -980,7 +342,6 @@
       <p class="hero-subtitle">무리한 일정 없이 맛있는 음식, 예쁜 카페 휴식, 백화점 쇼핑과 노천탕으로 채운 우리 둘만의 추억 가이드</p>
     </section>
 
-    <!-- Quick Info Grid -->
     <section class="quick-grid">
       <div class="quick-item">
         <div class="quick-label">✈️ 항공 스케줄</div>
@@ -994,7 +355,7 @@
       </div>
       <div class="quick-item">
         <div class="quick-label">🚌 공항 리무진</div>
-        <div class="quick-val">간사이 1T ↔ 도톤플라자</div>
+        <div class="quick-val">간사이(T1) ↔ 도톤플라자</div>
         <div class="quick-sub">호텔 도보 3~4분 (현장발권)</div>
       </div>
       <div class="quick-item">
@@ -1004,903 +365,896 @@
       </div>
     </section>
 
-    <!-- =========================================================
-         TAB 1: 3박 4일 일정표
-    ========================================================= -->
+    <!-- TAB 1: 일정 -->
     <section id="tab-schedule" class="tab-section active">
       <div class="filter-scroll" id="dayFilterBar">
-        <button class="filter-pill active" onclick="filterDay('all', this)">전체 일정 (4일)</button>
-        <button class="filter-pill" onclick="filterDay('day1', this)">1일차 · 12/03(목)</button>
-        <button class="filter-pill" onclick="filterDay('day2', this)">2일차 · 12/04(금)</button>
-        <button class="filter-pill" onclick="filterDay('day3', this)">3일차 · 12/05(토)</button>
-        <button class="filter-pill" onclick="filterDay('day4', this)">4일차 · 12/06(일)</button>
+        <button type="button" class="filter-pill active" data-action="day-filter" data-key="all">전체 일정 (4일)</button>
+        <button type="button" class="filter-pill" data-action="day-filter" data-key="day1">1일차 · 12/03(목)</button>
+        <button type="button" class="filter-pill" data-action="day-filter" data-key="day2">2일차 · 12/04(금)</button>
+        <button type="button" class="filter-pill" data-action="day-filter" data-key="day3">3일차 · 12/05(토)</button>
+        <button type="button" class="filter-pill" data-action="day-filter" data-key="day4">4일차 · 12/06(일)</button>
       </div>
-
-      <!-- DAY 1 -->
-      <article class="day-card" data-day="day1">
-        <div class="day-header">
-          <div>
-            <span class="day-tag">1일차 · 2026년 12월 3일 (목)</span>
-            <h2 class="day-title">오사카 도착 · 난바 &amp; 도톤보리 야경</h2>
-          </div>
-          <div class="day-emoji">🦀</div>
-        </div>
-
-        <ul class="timeline">
-          <li class="timeline-item"><span class="time-badge">09:05 - 11:00</span><span class="time-desc">인천공항(2T) 출발 → 간사이공항(1T) 도착</span></li>
-          <li class="timeline-item"><span class="time-badge">11:40 - 12:40</span><span class="time-desc">공항 리무진 탑승 → 도톤플라자 하차 (도보 3분 호텔)</span></li>
-          <li class="timeline-item"><span class="time-badge">12:45 - 15:00</span><span class="time-desc">칸데오 호텔 짐 보관 후 늦은 점심 &amp; 카페 휴식</span></li>
-          <li class="timeline-item"><span class="time-badge">15:00 - 15:40</span><span class="time-desc">호텔 체크인 &amp; 객실에서 30분 숨 고르기</span></li>
-          <li class="timeline-item"><span class="time-badge">15:40 - 18:00</span><span class="time-desc">구로몬시장 구경 &amp; 신사이바시 아케이드 산책</span></li>
-          <li class="timeline-item"><span class="time-badge">18:30 - 20:30</span><span class="time-desc">도톤보리 저녁 식사 &amp; 글리코상 야경 인증샷</span></li>
-          <li class="timeline-item"><span class="time-badge">21:00 이후</span><span class="time-desc">호텔 17층 스카이스파(노천탕) &amp; 편의점 야식</span></li>
-        </ul>
-
-        <div class="info-box food">
-          <div class="info-box-title">🍽️ 식사 · 카페 휴식 포인트</div>
-          <ul class="info-list">
-            <li><strong>점심 (장어덮밥):</strong> 장어의 나카쇼 신사이바시점 (히츠마부시 정식)</li>
-            <li><strong>카페 (클래식 다방):</strong> 마루후쿠 커피 본점 (핸드드립 커피 &amp; 핫케이크)</li>
-            <li><strong>저녁 (오코노미야키):</strong> 아지노야 난바 본점 (좌석식 철판 요리)</li>
-            <li><strong>야식:</strong> 로손 모찌롤, 계란 샌드위치(타마고산도), 유자 사와</li>
-          </ul>
-        </div>
-
-        <div class="info-box shop">
-          <div class="info-box-title">🛍️ 쇼핑 포인트</div>
-          <ul class="info-list">
-            <li><strong>구로몬시장:</strong> 갓 구운 가리비·와규 꼬치 간식, 제철 딸기·샤인머스캣 소량 구매</li>
-            <li><strong>숙소 앞 편의점:</strong> 내일 아침 교토 투어용 샌드위치·오니기리 미리 준비</li>
-          </ul>
-        </div>
-
-        <div class="info-box tip">
-          <div class="info-box-title">💡 정희 여사님과 딸 소연이를 위한 맞춤 팁</div>
-          <ul class="info-list">
-            <li>구로몬시장은 17시경부터 상점이 문을 닫으니 오후 4시 전후 방문이 좋아요.</li>
-            <li>글리코상 사진은 다리 위보다 강변 산책로(톤보리 리버워크) 아래쪽이 한적해요.</li>
-            <li>17층 스카이스파는 투숙객 무료이며 객실 실내복·슬리퍼 차림으로 이동 가능합니다.</li>
-          </ul>
-        </div>
-
-        <div class="link-btn-row">
-          <a class="mini-link-btn" href="https://www.google.com/maps/search/?api=1&query=Candeo+Hotels+Osaka+Namba" target="_blank">📍 칸데오 호텔 지도</a>
-          <a class="mini-link-btn" href="https://www.google.com/maps/search/?api=1&query=Dotonbori+Osaka" target="_blank">📍 도톤보리 지도</a>
-          <a class="mini-link-btn" href="https://www.google.com/maps/search/?api=1&query=Kuromon+Market+Osaka" target="_blank">📍 구로몬시장 지도</a>
-        </div>
-      </article>
-
-      <!-- DAY 2 -->
-      <article class="day-card" data-day="day2">
-        <div class="day-header">
-          <div>
-            <span class="day-tag">2일차 · 2026년 12월 4일 (금)</span>
-            <h2 class="day-title">교토 일일 버스투어 · 전통 사찰 &amp; 열차</h2>
-          </div>
-          <div class="day-emoji">⛩️</div>
-        </div>
-
-        <ul class="timeline">
-          <li class="timeline-item"><span class="time-badge">07:15 - 07:30</span><span class="time-desc">호텔 출발 → 니혼바시 집결지 도착 (도보 2분 거리!)</span></li>
-          <li class="timeline-item"><span class="time-badge">오전 코스</span><span class="time-desc">후시미 이나리신사 (붉은 천본 도리이 산책)</span></li>
-          <li class="timeline-item"><span class="time-badge">점심 / 오후</span><span class="time-desc">레트로 란덴열차 탑승 → 아라시야마 대나무숲·도월교</span></li>
-          <li class="timeline-item"><span class="time-badge">오후 코스</span><span class="time-desc">금각사 (로쿠온지) → 청수사 (기요미즈데라)</span></li>
-          <li class="timeline-item"><span class="time-badge">18:00 - 18:30</span><span class="time-desc">오사카 니혼바시 복귀 (하루하루투어 종료)</span></li>
-          <li class="timeline-item"><span class="time-badge">19:00 이후</span><span class="time-desc">숙소 인근 따뜻한 국물 저녁 &amp; 17층 노천탕 피로 회복</span></li>
-        </ul>
-
-        <div class="info-box food">
-          <div class="info-box-title">🍵 식사 · 간식 휴식 포인트</div>
-          <ul class="info-list">
-            <li><strong>아침:</strong> 전날 사둔 편의점 샌드위치·오니기리 &amp; 따뜻한 병음료</li>
-            <li><strong>투어 간식:</strong> 아라시야마 두부 아이스크림, 청수사 산넨자카 말차 라떼</li>
-            <li><strong>저녁:</strong> 투어 후 체력 보충용 따뜻한 국물 (츠루동탄 우동 또는 돈카츠 정식)</li>
-          </ul>
-        </div>
-
-        <div class="info-box shop">
-          <div class="info-box-title">🎁 교토 감성 쇼핑 포인트</div>
-          <ul class="info-list">
-            <li><strong>아라시야마:</strong> 교토 한정 말차 과자, 일본 전통 손수건</li>
-            <li><strong>청수사 산넨자카:</strong> 교토 도자기 찻잔, 요지야 기름종이·핸드크림, 시치미</li>
-          </ul>
-        </div>
-
-        <div class="info-box tip">
-          <div class="info-box-title">💡 정희 여사님과 딸 소연이를 위한 맞춤 팁</div>
-          <ul class="info-list">
-            <li>집결지는 <strong>니혼바시 츠루동탄 소에몬초점 앞</strong>(07:30 정시 출발)입니다.</li>
-            <li>후시미 이나리신사는 정상까지 오르지 말고 초입 천본 도리이 구간만 왕복 30분 산책하세요.</li>
-            <li>란덴열차는 진행 방향 창가 자리에 나란히 앉아 모녀 인증샷을 남겨보세요.</li>
-            <li>교토는 오사카보다 2~3℃ 더 쌀쌀하므로 쿠션 좋은 운동화와 핫팩을 챙기세요!</li>
-          </ul>
-        </div>
-
-        <div class="link-btn-row">
-          <a class="mini-link-btn primary-link" href="https://www.haruharutour.com/fit/31131" target="_blank">🚌 하루하루투어 상세보기</a>
-          <a class="mini-link-btn" href="https://www.google.com/maps/search/?api=1&query=Tsurutontan+Soemoncho+Osaka" target="_blank">📍 투어 집결지 지도</a>
-        </div>
-      </article>
-
-      <!-- DAY 3 -->
-      <article class="day-card" data-day="day3">
-        <div class="day-header">
-          <div>
-            <span class="day-tag">3일차 · 2026년 12월 5일 (토)</span>
-            <h2 class="day-title">한큐·파르코·다이마루 백화점 &amp; 찻집 힐링</h2>
-          </div>
-          <div class="day-emoji">🛍️</div>
-        </div>
-
-        <ul class="timeline">
-          <li class="timeline-item"><span class="time-badge">09:30 - 10:40</span><span class="time-desc">여유로운 기상 후 호텔 인근 모닝 브런치 카페</span></li>
-          <li class="timeline-item"><span class="time-badge">10:40 - 13:30</span><span class="time-desc">우메다 한큐백화점 본점 쇼핑 &amp; 백화점 식당가 점심</span></li>
-          <li class="timeline-item"><span class="time-badge">14:00 - 16:00</span><span class="time-desc">신사이바시 파르코 &amp; 다이마루 백화점 쇼핑</span></li>
-          <li class="timeline-item"><span class="time-badge">16:00 - 16:30</span><span class="time-desc">호텔에 쇼핑백 보관 &amp; 30분 휴식 (가벼운 몸으로!)</span></li>
-          <li class="timeline-item"><span class="time-badge">16:30 - 18:30</span><span class="time-desc">호젠지 요코초 돌길 산책 &amp; 일본 전통 찻집 티타임</span></li>
-          <li class="timeline-item"><span class="time-badge">19:00 - 21:00</span><span class="time-desc">난바 저녁 식사 &amp; 돈키호테 마지막 쇼핑</span></li>
-        </ul>
-
-        <div class="info-box food">
-          <div class="info-box-title">🍰 식사 · 카페 휴식 포인트</div>
-          <ul class="info-list">
-            <li><strong>아침:</strong> 수플레 팬케이크 (미카사데코 앤 카페) 또는 일본식 모닝세트</li>
-            <li><strong>점심:</strong> 한큐백화점 식당가 깔끔한 일식 정식 (덴푸라·소바 또는 스시)</li>
-            <li><strong>카페 휴식:</strong> 우지엔 신사이바시 본점 2층 찻집 (말차·호지차 파르페 &amp; 화과자)</li>
-          </ul>
-        </div>
-
-        <div class="info-box shop">
-          <div class="info-box-title">🛍️ 핵심 쇼핑 리스트 (백화점 집중 코스)</div>
-          <ul class="info-list">
-            <li><strong>한큐백화점 우메다 본점:</strong> 명품·패션관, B1 디저트관 (바통도르·에쉬레 등 선물용)</li>
-            <li><strong>신사이바시 파르코:</strong> 2F <strong>아미(AMI PARIS)</strong> 가디건 / 3F <strong>코치(COACH)</strong> 가방</li>
-            <li><strong>다이마루 신사이바시점:</strong> B1~B2 식품관 <strong>시오콘부(염장 다시마)</strong>, 고급 전병</li>
-            <li><strong>돈키호테 도톤보리점:</strong> 동전파스, 휴족시간, 곤약젤리</li>
-          </ul>
-        </div>
-
-        <div class="info-box tip">
-          <div class="info-box-title">💡 백화점 할인 &amp; 동선 꿀팁</div>
-          <ul class="info-list">
-            <li><strong>한큐백화점 5% 할인:</strong> 1층 안내데스크에서 여권 제시 시 외국인 게스트 쿠폰 발급 가능!</li>
-            <li>파르코와 다이마루 백화점은 실내 통로로 바로 연결되어 이동이 아주 편합니다.</li>
-            <li>면세(Tax-Free) 수속을 위해 <strong>여권 원본</strong>을 반드시 소지하고, 소모품 밀봉 봉투는 출국 전 개봉하지 마세요.</li>
-          </ul>
-        </div>
-
-        <div class="link-btn-row">
-          <a class="mini-link-btn" href="https://www.google.com/maps/search/?api=1&query=Hankyu+Umeda+Main+Store" target="_blank">📍 한큐백화점 지도</a>
-          <a class="mini-link-btn" href="https://www.google.com/maps/search/?api=1&query=Shinsaibashi+PARCO" target="_blank">📍 신사이바시 파르코 지도</a>
-          <a class="mini-link-btn" href="https://www.google.com/maps/search/?api=1&query=Hozenji+Yokocho+Osaka" target="_blank">📍 호젠지 요코초 지도</a>
-        </div>
-      </article>
-
-      <!-- DAY 4 -->
-      <article class="day-card" data-day="day4">
-        <div class="day-header">
-          <div>
-            <span class="day-tag">4일차 · 2026년 12월 6일 (일)</span>
-            <h2 class="day-title">여유로운 오전 마무리 &amp; 행복한 귀국</h2>
-          </div>
-          <div class="day-emoji">✈️</div>
-        </div>
-
-        <ul class="timeline">
-          <li class="timeline-item"><span class="time-badge">09:00 - 10:50</span><span class="time-desc">여유로운 조식 및 캐리어 무게 체크 · 패킹 마무리</span></li>
-          <li class="timeline-item"><span class="time-badge">11:00</span><span class="time-desc">호텔 체크아웃 → 도톤플라자 리무진 정류장 이동</span></li>
-          <li class="timeline-item"><span class="time-badge">11:10 - 12:15</span><span class="time-desc">도톤플라자 리무진 승차권 먼저 발권 &amp; 이른 점심</span></li>
-          <li class="timeline-item"><span class="time-badge">12:25 / 13:00</span><span class="time-desc">공항 리무진 탑승 (도톤플라자 → 간사이 1T, 약 60분)</span></li>
-          <li class="timeline-item"><span class="time-badge">13:30 - 15:10</span><span class="time-desc">간사이공항(1T) 수하물 위탁 &amp; 출국장 면세점 쇼핑</span></li>
-          <li class="timeline-item"><span class="time-badge">15:40 - 18:05</span><span class="time-desc">간사이(1T) 출발 → 인천공항(1T) 도착</span></li>
-        </ul>
-
-        <div class="info-box food">
-          <div class="info-box-title">🍜 마지막 날 식사 · 간식</div>
-          <ul class="info-list">
-            <li><strong>이른 점심:</strong> 출국 전 속이 편안한 한 끼 (카레우동, 규동 또는 맑은 국물 우동)</li>
-            <li><strong>공항 간식:</strong> 출국장 내 말차 소프트아이스크림, 가벼운 샌드위치</li>
-          </ul>
-        </div>
-
-        <div class="info-box shop">
-          <div class="info-box-title">🧀 귀국 선물 마무리</div>
-          <ul class="info-list">
-            <li><strong>리쿠로 오지상 치즈케이크 (난바 본점):</strong> 오전 10~11시경 구매 후 기내 반입 가능</li>
-            <li><strong>간사이공항 1터미널 면세점:</strong> 로이스 생초콜릿(보냉백 추가), 시로이 코이비토</li>
-          </ul>
-        </div>
-
-        <div class="info-box tip">
-          <div class="info-box-title">💡 귀국일 공항 이동 주의사항</div>
-          <ul class="info-list">
-            <li>도톤플라자 출발 공항 리무진은 <strong>온라인 예매 불가(현장 선착순 발권)</strong>입니다. 체크아웃 직후 1층 발권기에서 승차권을 먼저 확보한 뒤 식사하세요!</li>
-            <li>곤약젤리·푸딩·생초콜릿 등은 액체류 규정에 따라 위탁 수하물(캐리어)에 넣거나 보안검색 후 면세구역에서 구매하세요.</li>
-          </ul>
-        </div>
-
-        <div class="link-btn-row">
-          <a class="mini-link-btn" href="https://www.google.com/maps/search/?api=1&query=DOTON+PLAZA+Osaka" target="_blank">📍 도톤플라자 정류장 지도</a>
-          <a class="mini-link-btn" href="https://www.google.com/maps/search/?api=1&query=Kansai+International+Airport+Terminal+1" target="_blank">📍 간사이공항 1T 지도</a>
-        </div>
-      </article>
+      <p class="edit-hint">✎ 버튼으로 수정·삭제 · 항목을 <b>길게 눌러</b> 위아래로 움직이면 순서가 바뀌어요</p>
+      <div id="scheduleContainer"></div>
+      <button type="button" class="reset-link" data-action="reset" data-section="days">일정을 처음 상태로 초기화</button>
     </section>
 
-    <!-- =========================================================
-         TAB 2: 맛집 · 쇼핑 & 예산 계산기
-    ========================================================= -->
+    <!-- TAB 2: 맛집·쇼핑 예산 -->
     <section id="tab-budget" class="tab-section">
       <div class="budget-summary-card">
         <div class="budget-top-row">
           <span style="font-weight: 700; font-size: 0.95em;">💴 여행 예상 경비 계산기</span>
           <div class="person-toggle">
-            <button id="btnTwoPerson" class="person-btn active" onclick="setPersonMode(2)">모녀 2인 기준</button>
-            <button id="btnOnePerson" class="person-btn" onclick="setPersonMode(1)">1인 기준</button>
+            <button type="button" id="btnTwoPerson" class="person-btn active" data-action="person" data-mode="2">모녀 2인 기준</button>
+            <button type="button" id="btnOnePerson" class="person-btn" data-action="person" data-mode="1">1인 기준</button>
           </div>
         </div>
-
         <div class="budget-amounts">
           <span class="budget-jpy" id="totalJpy">¥0</span>
           <span class="budget-krw" id="totalKrw">약 0원</span>
         </div>
-
         <div class="rate-row">
           <span>적용 환율: 100엔 =</span>
-          <input type="number" id="exchangeRate" class="rate-input" value="920" oninput="renderSpots()" />
-          <span>원 (식사·카페는 2인 모드 시 자동 ×2 계산)</span>
+          <input type="number" inputmode="numeric" id="exchangeRate" class="rate-input" value="920" />
+          <span>원 (식사·카페·체험은 2인 모드 시 자동 ×2)</span>
         </div>
-
         <div class="bar-track">
-          <div id="barFood" class="bar-seg-food" style="width: 20%;"></div>
-          <div id="barCafe" class="bar-seg-cafe" style="width: 10%;"></div>
-          <div id="barShop" class="bar-seg-shop" style="width: 70%;"></div>
+          <div id="barFood" class="bar-seg-food"></div>
+          <div id="barCafe" class="bar-seg-cafe"></div>
+          <div id="barPlay" class="bar-seg-play"></div>
+          <div id="barShop" class="bar-seg-shop"></div>
         </div>
         <div class="bar-legend">
-          <span id="legendFood">🟡 식사: ¥0</span>
-          <span id="legendCafe">🩷 카페: ¥0</span>
-          <span id="legendShop">🩵 쇼핑: ¥0</span>
+          <span id="legendFood">🟡 식사 ¥0</span>
+          <span id="legendCafe">🩷 카페 ¥0</span>
+          <span id="legendPlay">🟣 체험 ¥0</span>
+          <span id="legendShop">🩵 쇼핑 ¥0</span>
         </div>
       </div>
 
       <div class="filter-scroll" id="spotFilterBar">
-        <button class="filter-pill active" onclick="filterSpots('all', this)">전체 보기</button>
-        <button class="filter-pill" onclick="filterSpots('food', this)">🍽️ 식사</button>
-        <button class="filter-pill" onclick="filterSpots('cafe', this)">☕ 카페 · 찻집</button>
-        <button class="filter-pill" onclick="filterSpots('shop', this)">🛍️ 백화점 · 쇼핑</button>
+        <button type="button" class="filter-pill active" data-action="spot-filter" data-key="all">전체 보기</button>
+        <button type="button" class="filter-pill" data-action="spot-filter" data-key="food">🍽️ 식사</button>
+        <button type="button" class="filter-pill" data-action="spot-filter" data-key="cafe">☕ 카페 · 찻집</button>
+        <button type="button" class="filter-pill" data-action="spot-filter" data-key="play">🚢 체험 · 관광</button>
+        <button type="button" class="filter-pill" data-action="spot-filter" data-key="shop">🛍️ 백화점 · 쇼핑</button>
       </div>
-
-      <div id="spotsContainer"></div>
-
-      <div class="add-box">
-        <div style="font-weight: 700; font-size: 0.92em; color: var(--primary-dark);">➕ 가고 싶은 식당·쇼핑 품목 직접 추가</div>
-        <div class="add-row">
-          <select id="newSpotCat" class="select-input" style="max-width: 115px;">
-            <option value="food">식사</option>
-            <option value="cafe">카페·찻집</option>
-            <option value="shop">쇼핑</option>
-          </select>
-          <input type="text" id="newSpotName" class="text-input" placeholder="장소/품목명 (예: 스시로 초밥)" />
-        </div>
-        <div class="add-row">
-          <input type="text" id="newSpotMenu" class="text-input" placeholder="메뉴 또는 메모" />
-          <input type="number" id="newSpotPrice" class="text-input" style="max-width: 120px;" placeholder="예산(엔)" />
-          <button class="action-btn" onclick="addNewSpot()">추가</button>
-        </div>
-      </div>
+      <p class="edit-hint">✎ 버튼으로 수정·삭제 · 카드를 <b>길게 눌러</b> 순서 이동</p>
+      <div id="spotsContainer" class="sortable" data-list="spots"></div>
+      <button type="button" class="add-inline" data-action="add" data-list="spots">＋ 식당 · 쇼핑 · 체험 추가</button>
+      <button type="button" class="reset-link" data-action="reset" data-section="spots">맛집·예산 목록 초기화</button>
     </section>
 
-    <!-- =========================================================
-         TAB 3: 출국 전 체크리스트
-    ========================================================= -->
+    <!-- TAB 3: 체크리스트 -->
     <section id="tab-checklist" class="tab-section">
       <div class="progress-card">
         <div class="progress-header">
           <div>
-            <div style="font-weight: 700; font-size: 1.02em;">🧳 정희 여사님과 딸 소연이의 모녀 여행 준비 현황</div>
+            <div style="font-weight: 700; font-size: 1.02em;">🧳 모녀 여행 준비 현황</div>
             <div id="progressMsg" style="font-size: 0.82em; color: var(--text-sub); margin-top: 2px;">하나씩 터치해서 체크해보세요!</div>
           </div>
           <div class="progress-pct" id="progressPct">0%</div>
         </div>
-        <div class="progress-track">
-          <div class="progress-fill" id="progressFill" style="width: 0%;"></div>
-        </div>
-        <div style="display: flex; justify-content: space-between; font-size: 0.78em; color: var(--text-muted);">
-          <span id="progressCount">0 / 12 완료</span>
-          <span style="cursor: pointer; text-decoration: underline;" onclick="resetChecklist()">기본값으로 초기화</span>
-        </div>
+        <div class="progress-track"><div class="progress-fill" id="progressFill" style="width: 0%;"></div></div>
+        <div style="font-size: 0.78em; color: var(--text-muted);" id="progressCount">0 / 0 완료</div>
       </div>
 
-      <div class="filter-scroll">
-        <button class="filter-pill active" onclick="filterChecklist('all', this)">전체 준비물</button>
-        <button class="filter-pill" onclick="filterChecklist('all_owner', this)">공통</button>
-        <button class="filter-pill" onclick="filterChecklist('mom', this)">👩 정희 여사님</button>
-        <button class="filter-pill" onclick="filterChecklist('dau', this)">👧 딸 소연</button>
+      <div class="filter-scroll" id="checkFilterBar">
+        <button type="button" class="filter-pill active" data-action="check-filter" data-key="all">전체 준비물</button>
+        <button type="button" class="filter-pill" data-action="check-filter" data-key="all_owner">🌸 공통</button>
+        <button type="button" class="filter-pill" data-action="check-filter" data-key="mom">👩 정희 여사님</button>
+        <button type="button" class="filter-pill" data-action="check-filter" data-key="dau">👧 딸 소연</button>
       </div>
-
-      <div id="checklistContainer"></div>
-
-      <div class="add-box">
-        <div style="font-weight: 700; font-size: 0.92em; color: var(--primary-dark);">➕ 챙길 준비물 추가하기</div>
-        <div class="add-row">
-          <select id="newCheckOwner" class="select-input" style="max-width: 115px;">
-            <option value="all_owner">공통</option>
-            <option value="mom">정희 여사님</option>
-            <option value="dau">딸 소연</option>
-          </select>
-          <input type="text" id="newCheckTitle" class="text-input" placeholder="준비물 이름 (예: 선글라스)" />
-        </div>
-        <div class="add-row">
-          <input type="text" id="newCheckDesc" class="text-input" placeholder="간단 메모 (선택)" />
-          <button class="action-btn" onclick="addCheckItem()">추가</button>
-        </div>
-      </div>
+      <p class="edit-hint">터치하면 체크 · ✎ 버튼으로 수정·삭제 · <b>길게 눌러</b> 순서 이동</p>
+      <div id="checklistContainer" class="sortable" data-list="checklist"></div>
+      <button type="button" class="add-inline" data-action="add" data-list="checklist">＋ 준비물 추가</button>
+      <button type="button" class="reset-link" data-action="reset" data-section="checklist">체크리스트 초기화</button>
     </section>
 
-    <!-- =========================================================
-         TAB 4: 현지 필수 메모 & 일본어 회화
-    ========================================================= -->
+    <!-- TAB 4: 현지 메모 -->
     <section id="tab-memo" class="tab-section">
+      <p class="edit-hint">✎ 버튼으로 수정·삭제 · 항목을 <b>길게 눌러</b> 순서 이동</p>
       <div class="memo-card">
-        <div class="memo-title">🏨 숙소 &amp; 투어 집결지 주소 (택시·길찾기용)</div>
-        <div class="address-box">
-          <div style="font-weight: 700; color: var(--text-main);">칸데오 호텔 오사카 난바 (Candeo Hotels Osaka Namba)</div>
-          <div style="color: var(--text-sub); margin: 4px 0;">일본어: 〒542-0083 大阪府大阪市中央区東心斎橋2-2-5</div>
-          <div style="color: var(--text-sub); margin-bottom: 8px;">영문: 2-2-5 Higashi-shinsaibashi, Chuo-ku, Osaka</div>
-          <button class="copy-btn" onclick="copyText('〒542-0083 大阪府大阪市中央区東心斎橋2-2-5')">📋 일본어 주소 복사하기</button>
-        </div>
-
-        <div class="address-box" style="margin-bottom: 0;">
-          <div style="font-weight: 700; color: var(--text-main);">2일차 교토 투어 집결지 (12/04 금 07:30 정시)</div>
-          <div style="color: var(--text-sub); margin: 4px 0;">니혼바시 츠루동탄 소에몬초점 앞 (호텔에서 도보 2분)</div>
-          <div style="color: var(--text-sub); margin-bottom: 8px;">つるとんたん 宗右衛門町店 (3-17 Soemoncho, Chuo-ku)</div>
-          <button class="copy-btn" onclick="copyText('つるとんたん 宗右衛門町店')">📋 집결지 가게명 복사</button>
-        </div>
+        <div class="memo-title">🏨 숙소 · 주요 장소 주소 (택시·길찾기용)</div>
+        <div id="addressList" class="sortable" data-list="memo.addresses"></div>
+        <button type="button" class="add-inline small" data-action="add" data-list="memo.addresses">＋ 주소 추가</button>
       </div>
-
       <div class="memo-card">
         <div class="memo-title">🗣️ 손가락으로 짚어 보여주는 여행 일본어</div>
-        <div class="phrase-item">
-          <div class="phrase-ko">1. 성인 2명 자리 있나요? (식당 입장 시)</div>
-          <div class="phrase-jp">大人2人です。席はありますか？</div>
-          <div class="phrase-pron">오토나 후타리데스. 세키와 아리마스카?</div>
-        </div>
-        <div class="phrase-item">
-          <div class="phrase-ko">2. 따뜻한 물 / 따뜻한 녹차 주실 수 있나요?</div>
-          <div class="phrase-jp">温かいお水（お茶）をいただけますか？</div>
-          <div class="phrase-pron">아타타카이 오미즈(오차)오 이타다케마스카?</div>
-        </div>
-        <div class="phrase-item">
-          <div class="phrase-ko">3. 한국어 메뉴판 있나요?</div>
-          <div class="phrase-jp">韓国語のメニューはありますか？</div>
-          <div class="phrase-pron">칸코쿠고노 메뉴-와 아리마스카?</div>
-        </div>
-        <div class="phrase-item">
-          <div class="phrase-ko">4. 면세(Tax-Free) 가능한가요? (백화점·쇼핑 시)</div>
-          <div class="phrase-jp">免税（タックスフリー）できますか？</div>
-          <div class="phrase-pron">멘제이 (탁쿠스후리-) 데키마스카?</div>
-        </div>
-        <div class="phrase-item" style="margin-bottom: 0;">
-          <div class="phrase-ko">5. 계산 부탁드립니다.</div>
-          <div class="phrase-jp">お会計をお願いします。</div>
-          <div class="phrase-pron">오카이케이오 오네가이시마스.</div>
-        </div>
+        <div id="phraseList" class="sortable" data-list="memo.phrases"></div>
+        <button type="button" class="add-inline small" data-action="add" data-list="memo.phrases">＋ 회화 추가</button>
       </div>
-
       <div class="memo-card">
         <div class="memo-title">📞 비상 연락처 &amp; 유용한 메모</div>
-        <ul class="info-list" style="font-size: 0.88em;">
-          <li><strong>주오사카 대한민국 총영사관:</strong> +81-6-4256-2345</li>
-          <li><strong>긴급 신고 (일본):</strong> 경찰 110 / 구급차·화재 119</li>
-          <li><strong>영사콜센터 (24시간 한국어):</strong> +82-2-3210-0404</li>
-          <li><strong>동전 지갑 분리 팁:</strong> 일본은 100엔·500엔 동전 사용이 많으니 지퍼 파우치를 하나 챙기면 계산할 때 아주 편합니다.</li>
-        </ul>
+        <ul id="contactList" class="contact-list sortable" data-list="memo.contacts"></ul>
+        <button type="button" class="add-inline small" data-action="add" data-list="memo.contacts">＋ 메모 추가</button>
       </div>
+      <button type="button" class="reset-link" data-action="reset" data-section="memo">현지 메모 초기화</button>
     </section>
   </main>
 
-  <!-- Bottom Tab Navigation -->
   <nav class="bottom-nav">
-    <button class="nav-btn active" data-tab="tab-schedule">
-      <span class="nav-icon">📅</span>
-      <span>3박 4일 일정</span>
-    </button>
-    <button class="nav-btn" data-tab="tab-budget">
-      <span class="nav-icon">🍽️</span>
-      <span>맛집·쇼핑예산</span>
-    </button>
-    <button class="nav-btn" data-tab="tab-checklist">
-      <span class="nav-icon">✅</span>
-      <span>출국 체크</span>
-    </button>
-    <button class="nav-btn" data-tab="tab-memo">
-      <span class="nav-icon">🗣️</span>
-      <span>현지 메모</span>
-    </button>
+    <button type="button" class="nav-btn active" data-action="tab" data-tab="tab-schedule"><span class="nav-icon">📅</span><span>3박 4일 일정</span></button>
+    <button type="button" class="nav-btn" data-action="tab" data-tab="tab-budget"><span class="nav-icon">🍽️</span><span>맛집·쇼핑예산</span></button>
+    <button type="button" class="nav-btn" data-action="tab" data-tab="tab-checklist"><span class="nav-icon">✅</span><span>출국 체크</span></button>
+    <button type="button" class="nav-btn" data-action="tab" data-tab="tab-memo"><span class="nav-icon">🗣️</span><span>현지 메모</span></button>
   </nav>
 
-  <div id="toast" class="toast">복사되었습니다!</div>
+  <div class="sheet-backdrop" data-action="sheet-close"></div>
+  <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+    <div class="sheet-handle"></div>
+    <div class="sheet-title" id="sheetTitle"></div>
+    <form id="sheetForm" autocomplete="off"></form>
+    <div class="sheet-actions">
+      <button type="button" class="sheet-del" id="sheetDel" data-action="sheet-delete">🗑 삭제</button>
+      <button type="button" class="sheet-cancel" data-action="sheet-close">취소</button>
+      <button type="button" class="sheet-save" data-action="sheet-save">저장</button>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
 
   <script>
-    // Safe storage wrapper (handles mobile in-app browsers / file preview sandboxes)
+    /* ---------- Storage ---------- */
     const SafeStorage = {
       _mem: {},
-      getItem(key) {
-        try {
-          if (window.localStorage) return window.localStorage.getItem(key);
-        } catch (e) {}
-        return Object.prototype.hasOwnProperty.call(this._mem, key) ? this._mem[key] : null;
-      },
-      setItem(key, val) {
-        try {
-          if (window.localStorage) {
-            window.localStorage.setItem(key, val);
-            return;
+      getItem(k) { try { if (window.localStorage) return window.localStorage.getItem(k); } catch (e) {} return Object.prototype.hasOwnProperty.call(this._mem, k) ? this._mem[k] : null; },
+      setItem(k, v) { try { if (window.localStorage) { window.localStorage.setItem(k, v); return; } } catch (e) {} this._mem[k] = String(v); }
+    };
+    const STORE_KEY = 'osaka_trip_v2';
+
+    let _seq = 0;
+    function uid() { _seq++; return 'i' + Date.now().toString(36) + _seq.toString(36) + Math.random().toString(36).slice(2, 5); }
+    function withIds(arr) { return arr.map(x => Object.assign({ id: uid() }, x)); }
+
+    /* ---------- Default data ---------- */
+    function buildDefaults() {
+      return {
+        days: [
+          {
+            id: 'day1', tag: '1일차 · 2026년 12월 3일 (목)', title: '오사카 도착 · 난바 & 도톤보리 야경', emoji: '🦀',
+            timeline: withIds([
+              { time: '09:05 - 11:00', desc: '인천공항(T2) 출발 → 간사이공항(T1) 도착' },
+              { time: '11:40 - 12:40', desc: '공항 리무진 탑승 → 도톤플라자 하차 (도보 3분 호텔)' },
+              { time: '12:45 - 15:00', desc: '칸데오 호텔 짐 보관 후 늦은 점심 & 카페 휴식' },
+              { time: '15:00 - 15:40', desc: '호텔 체크인 & 객실에서 30분 숨 고르기' },
+              { time: '15:40 - 18:00', desc: '구로몬시장 구경 & 신사이바시 아케이드 산책' },
+              { time: '18:15 - 19:40', desc: '도톤보리 저녁 식사 (아지노야 오코노미야키)' },
+              { time: '20:00 - 20:20', desc: '🚢 톤보리 리버크루즈 탑승 (20:00 출항 · 약 20분 · 1인 ¥2,000)' },
+              { time: '20:20 - 20:50', desc: '글리코상 야경 인증샷 & 톤보리 리버워크 산책' },
+              { time: '21:00 이후', desc: '호텔 17층 스카이스파(노천탕) & 편의점 야식' }
+            ]),
+            food: { title: '🍽️ 식사 · 카페 휴식 포인트', items: withIds([
+              { label: '점심 (장어덮밥)', text: '장어의 나카쇼 신사이바시점 (히츠마부시 정식)' },
+              { label: '카페 (클래식 다방)', text: '마루후쿠 커피 본점 (핸드드립 커피 & 핫케이크)' },
+              { label: '저녁 (오코노미야키)', text: '아지노야 난바 본점 (좌석식 철판 요리)' },
+              { label: '야식', text: '로손 모찌롤, 계란 샌드위치(타마고산도), 유자 사와' }
+            ]) },
+            shop: { title: '🛍️ 쇼핑 포인트', items: withIds([
+              { label: '구로몬시장', text: '갓 구운 가리비·와규 꼬치 간식, 제철 딸기·샤인머스캣 소량 구매' },
+              { label: '숙소 앞 편의점', text: '내일 아침 교토 투어용 샌드위치·오니기리 미리 준비' }
+            ]) },
+            tip: { title: '💡 정희 여사님과 딸 소연이를 위한 맞춤 팁', items: withIds([
+              { label: '리버크루즈 요금', text: '성인 **¥2,000** (모녀 2인 ¥4,000) · 약 20분 · 11:00~21:00 매시 정각/30분 출항 (2026년 11월 기준)' },
+              { label: '리버크루즈 승선', text: '**돈키호테 도톤보리점 1층** 승선권 매장에서 접수 → 바로 앞 타자에몬바시 선착장에서 탑승. 현장 당일권은 출항 1시간 전부터 시간 지정 판매, 웹 예약은 출항 10분 전까지 가능 (전화 예약 불가)' },
+              { label: '', text: '저녁 먹으러 가기 전 승선권 매장에서 20:00편 표를 먼저 사두면 마음 편해요. 오사카 주유패스(e-Pass)가 있으면 무료 탑승입니다.' },
+              { label: '', text: '구로몬시장은 17시경부터 상점이 문을 닫으니 오후 4시 전후 방문이 좋아요.' },
+              { label: '', text: '글리코상 사진은 다리 위보다 강변 산책로(톤보리 리버워크) 아래쪽이 한적해요.' },
+              { label: '', text: '17층 스카이스파는 투숙객 무료이며 객실 실내복·슬리퍼 차림으로 이동 가능합니다.' }
+            ]) },
+            links: withIds([
+              { label: '📍 칸데오 호텔 지도', url: 'Candeo Hotels Osaka Namba' },
+              { label: '📍 도톤보리 지도', url: 'Dotonbori Osaka' },
+              { label: '📍 구로몬시장 지도', url: 'Kuromon Market Osaka' },
+              { label: '🚢 리버크루즈 선착장 지도', url: 'Tombori River Cruise Osaka' },
+              { label: '🚢 리버크루즈 안내 (공식관광)', url: 'https://osaka-info.jp/ko/spot/tombori-river-cruise/' }
+            ])
+          },
+          {
+            id: 'day2', tag: '2일차 · 2026년 12월 4일 (금)', title: '교토 일일 버스투어 · 전통 사찰 & 열차', emoji: '⛩️',
+            timeline: withIds([
+              { time: '07:15 - 07:30', desc: '호텔 출발 → 니혼바시 집결지 도착 (도보 2분 거리!)' },
+              { time: '오전 코스', desc: '후시미 이나리신사 (붉은 천본 도리이 산책)' },
+              { time: '점심 / 오후', desc: '레트로 란덴열차 탑승 → 아라시야마 대나무숲·도월교' },
+              { time: '오후 코스', desc: '금각사 (로쿠온지) → 청수사 (기요미즈데라)' },
+              { time: '18:00 - 18:30', desc: '오사카 니혼바시 복귀 (하루하루투어 종료)' },
+              { time: '19:00 이후', desc: '숙소 인근 따뜻한 국물 저녁 & 17층 노천탕 피로 회복' }
+            ]),
+            food: { title: '🍵 식사 · 간식 휴식 포인트', items: withIds([
+              { label: '아침', text: '전날 사둔 편의점 샌드위치·오니기리 & 따뜻한 병음료' },
+              { label: '투어 간식', text: '아라시야마 두부 아이스크림, 청수사 산넨자카 말차 라떼' },
+              { label: '저녁', text: '투어 후 체력 보충용 따뜻한 국물 (츠루동탄 우동 또는 돈카츠 정식)' }
+            ]) },
+            shop: { title: '🎁 교토 감성 쇼핑 포인트', items: withIds([
+              { label: '아라시야마', text: '교토 한정 말차 과자, 일본 전통 손수건' },
+              { label: '청수사 산넨자카', text: '교토 도자기 찻잔, 요지야 기름종이·핸드크림, 시치미' }
+            ]) },
+            tip: { title: '💡 정희 여사님과 딸 소연이를 위한 맞춤 팁', items: withIds([
+              { label: '', text: '집결지는 **니혼바시 츠루동탄 소에몬초점 앞**(07:30 정시 출발)입니다.' },
+              { label: '', text: '후시미 이나리신사는 정상까지 오르지 말고 초입 천본 도리이 구간만 왕복 30분 산책하세요.' },
+              { label: '', text: '란덴열차는 진행 방향 창가 자리에 나란히 앉아 모녀 인증샷을 남겨보세요.' },
+              { label: '', text: '교토는 오사카보다 2~3℃ 더 쌀쌀하므로 쿠션 좋은 운동화와 핫팩을 챙기세요!' }
+            ]) },
+            links: withIds([
+              { label: '🚌 하루하루투어 상세보기', url: 'https://www.haruharutour.com/fit/31131', primary: true },
+              { label: '📍 투어 집결지 지도', url: 'Tsurutontan Soemoncho Osaka' }
+            ])
+          },
+          {
+            id: 'day3', tag: '3일차 · 2026년 12월 5일 (토)', title: '한큐·파르코·다이마루 백화점 & 찻집 힐링', emoji: '🛍️',
+            timeline: withIds([
+              { time: '09:30 - 10:40', desc: '여유로운 기상 후 호텔 인근 모닝 브런치 카페' },
+              { time: '10:40 - 13:30', desc: '우메다 한큐백화점 본점 쇼핑 & 백화점 식당가 점심' },
+              { time: '14:00 - 16:00', desc: '신사이바시 파르코 & 다이마루 백화점 쇼핑' },
+              { time: '16:00 - 16:30', desc: '호텔에 쇼핑백 보관 & 30분 휴식 (가벼운 몸으로!)' },
+              { time: '16:30 - 18:30', desc: '호젠지 요코초 돌길 산책 & 일본 전통 찻집 티타임' },
+              { time: '19:00 - 21:00', desc: '난바 저녁 식사 & 돈키호테 마지막 쇼핑' }
+            ]),
+            food: { title: '🍰 식사 · 카페 휴식 포인트', items: withIds([
+              { label: '아침', text: '수플레 팬케이크 (미카사데코 앤 카페) 또는 일본식 모닝세트' },
+              { label: '점심', text: '한큐백화점 식당가 깔끔한 일식 정식 (덴푸라·소바 또는 스시)' },
+              { label: '카페 휴식', text: '우지엔 신사이바시 본점 2층 찻집 (말차·호지차 파르페 & 화과자)' }
+            ]) },
+            shop: { title: '🛍️ 핵심 쇼핑 리스트 (백화점 집중 코스)', items: withIds([
+              { label: '한큐백화점 우메다 본점', text: '명품·패션관, B1 디저트관 (바통도르·에쉬레 등 선물용)' },
+              { label: '신사이바시 파르코', text: '2F **아미(AMI PARIS)** 가디건 / 3F **코치(COACH)** 가방' },
+              { label: '다이마루 신사이바시점', text: 'B1~B2 식품관 **시오콘부(염장 다시마)**, 고급 전병' },
+              { label: '돈키호테 도톤보리점', text: '동전파스, 휴족시간, 곤약젤리' }
+            ]) },
+            tip: { title: '💡 백화점 할인 & 동선 꿀팁', items: withIds([
+              { label: '한큐백화점 5% 할인', text: '1층 안내데스크에서 여권 제시 시 외국인 게스트 쿠폰 발급 가능!' },
+              { label: '', text: '파르코와 다이마루 백화점은 실내 통로로 바로 연결되어 이동이 아주 편합니다.' },
+              { label: '', text: '면세(Tax-Free) 수속을 위해 **여권 원본**을 반드시 소지하고, 소모품 밀봉 봉투는 출국 전 개봉하지 마세요.' }
+            ]) },
+            links: withIds([
+              { label: '📍 한큐백화점 지도', url: 'Hankyu Umeda Main Store' },
+              { label: '📍 신사이바시 파르코 지도', url: 'Shinsaibashi PARCO' },
+              { label: '📍 호젠지 요코초 지도', url: 'Hozenji Yokocho Osaka' }
+            ])
+          },
+          {
+            id: 'day4', tag: '4일차 · 2026년 12월 6일 (일)', title: '여유로운 오전 마무리 & 행복한 귀국', emoji: '✈️',
+            timeline: withIds([
+              { time: '09:00 - 10:50', desc: '여유로운 조식 및 캐리어 무게 체크 · 패킹 마무리' },
+              { time: '11:00', desc: '호텔 체크아웃 → 도톤플라자 리무진 정류장 이동' },
+              { time: '11:10 - 12:15', desc: '도톤플라자 리무진 승차권 먼저 발권 & 이른 점심' },
+              { time: '12:25 / 13:00', desc: '공항 리무진 탑승 (도톤플라자 → 간사이(T1), 약 60분)' },
+              { time: '13:30 - 15:10', desc: '간사이공항(T1) 수하물 위탁 & 출국장 면세점 쇼핑' },
+              { time: '15:40 - 18:05', desc: '간사이(T1) 출발 → 인천공항(T1) 도착' }
+            ]),
+            food: { title: '🍜 마지막 날 식사 · 간식', items: withIds([
+              { label: '이른 점심', text: '출국 전 속이 편안한 한 끼 (카레우동, 규동 또는 맑은 국물 우동)' },
+              { label: '공항 간식', text: '출국장 내 말차 소프트아이스크림, 가벼운 샌드위치' }
+            ]) },
+            shop: { title: '🧀 귀국 선물 마무리', items: withIds([
+              { label: '리쿠로 오지상 치즈케이크 (난바 본점)', text: '오전 10~11시경 구매 후 기내 반입 가능' },
+              { label: '간사이공항(T1) 면세점', text: '로이스 생초콜릿(보냉백 추가), 시로이 코이비토' }
+            ]) },
+            tip: { title: '💡 귀국일 공항 이동 주의사항', items: withIds([
+              { label: '', text: '도톤플라자 출발 공항 리무진은 **온라인 예매 불가(현장 선착순 발권)**입니다. 체크아웃 직후 1층 발권기에서 승차권을 먼저 확보한 뒤 식사하세요!' },
+              { label: '', text: '곤약젤리·푸딩·생초콜릿 등은 액체류 규정에 따라 위탁 수하물(캐리어)에 넣거나 보안검색 후 면세구역에서 구매하세요.' }
+            ]) },
+            links: withIds([
+              { label: '📍 도톤플라자 정류장 지도', url: 'DOTON PLAZA Osaka' },
+              { label: '📍 간사이공항(T1) 지도', url: 'Kansai International Airport Terminal 1' }
+            ])
           }
-        } catch (e) {}
-        this._mem[key] = String(val);
-      }
+        ],
+        spots: withIds([
+          { cat: 'food', name: '장어의 나카쇼 신사이바시점', loc: '신사이바시역 도보 3분', menu: '히츠마부시(장어덮밥) 정식', price: 4500, qty: 1, reason: '기력 보충 최고! 3가지 방식으로 즐기는 담백한 장어덮밥', map: 'Unagi no Nakasho Shinsaibashi' },
+          { cat: 'food', name: '아지노야 난바 본점', loc: '난바 도톤보리 인근', menu: '믹스 오코노미야키 · 야키소바', price: 1800, qty: 1, reason: '직원이 철판에서 직접 구워주어 편하게 앉아 식사 가능', map: 'Ajinoya Namba Osaka' },
+          { cat: 'food', name: '츠루동탄 소에몬초점', loc: '호텔 도보 2분 (투어 집결지)', menu: '명란 크림우동 · 유부/나베우동', price: 1800, qty: 1, reason: '교토 투어 복귀 직후 따뜻한 국물로 피로를 풀기 좋은 곳', map: 'Tsurutontan Soemoncho Osaka' },
+          { cat: 'food', name: '한큐·다이마루 백화점 식당가', loc: '우메다 / 신사이바시 본관', menu: '덴푸라·소바 정식 또는 스시 정식', price: 2500, qty: 1, reason: '백화점 내 쾌적한 좌석과 정갈한 상차림으로 어른 입맛에 딱', map: 'Hankyu Umeda Main Store' },
+          { cat: 'cafe', name: '마루후쿠 커피 센니치마에 본점', loc: '난바역 인근 (도보 6분)', menu: '핸드드립 커피 & 클래식 핫케이크', price: 1200, qty: 1, reason: '1934년 창업 정통 킷사텐 다방, 폭신한 소파에서 다리 쉬기 최고', map: 'Marufuku Coffee Sennichimae' },
+          { cat: 'cafe', name: '우지엔 신사이바시 본점 2층', loc: '신사이바시 상점가 내', menu: '말차·호지차 파르페 & 화과자 세트', price: 1500, qty: 1, reason: '달지 않고 깊은 일본 전통차로 쇼핑 피로를 달래는 찻집', map: 'Ujien Shinsaibashi Osaka' },
+          { cat: 'cafe', name: '미카사데코 앤 카페', loc: '난바역 인근', menu: '리코타 치즈 수플레 팬케이크', price: 1600, qty: 1, reason: '입에서 살살 녹는 폭신한 식감으로 모녀 티타임 인기 스팟', map: 'Micasadeco Cafe Osaka' },
+          { cat: 'play', name: '톤보리 리버크루즈', loc: '돈키호테 도톤보리점 앞 타자에몬바시 선착장', menu: '도톤보리강 야경 미니 크루즈 (약 20분)', price: 2000, qty: 1, reason: '1일차 20:00편 · 글리코 간판을 강 위에서 올려다보는 코스 (주유패스 소지 시 무료)', map: 'Tombori River Cruise Osaka' },
+          { cat: 'shop', name: '한큐백화점 우메다 본점', loc: '우메다역 직결 (난바서 10분)', menu: '패션·잡화 & B1 디저트관 (바통도르·에쉬레)', price: 30000, qty: 1, reason: '1F 안내데스크 여권 제시 시 외국인 5% 게스트 쿠폰 발급!', map: 'Hankyu Umeda Main Store' },
+          { cat: 'shop', name: '신사이바시 파르코 (AMI)', loc: '파르코 2층', menu: '아미(AMI PARIS) 하트 로고 가디건', price: 55000, qty: 1, reason: '일본 최대 규모 아미 매장, 여권 지참 시 면세 혜택 적용', map: 'Shinsaibashi PARCO' },
+          { cat: 'shop', name: '신사이바시 파르코 (COACH)', loc: '파르코 3층', menu: '코치(COACH) 숄더백 · 지갑', price: 45000, qty: 1, reason: '정희 여사님 선물용 가방 라인업 다양, 다이마루와 실내 연결', map: 'Shinsaibashi PARCO' },
+          { cat: 'shop', name: '다이마루 신사이바시 지하식품관', loc: '다이마루 본관 B1~B2층', menu: '시오콘부(염장 다시마) & 고급 전병', price: 3000, qty: 1, reason: '집밥 반찬 및 지인 선물용으로 어머님들 만족도가 매우 높음', map: 'Daimaru Shinsaibashi' },
+          { cat: 'shop', name: '리쿠로 오지상 & 편의점·돈키호테', loc: '난바 본점 / 호텔 인근', menu: '치즈케이크, 모찌롤, 휴족시간, 로이스', price: 8000, qty: 1, reason: '귀국 선물과 밤 노천탕 후 즐길 편의점 야식 꾸러미', map: 'Rikuro Ojisan Namba' }
+        ]),
+        checklist: withIds([
+          { owner: 'all_owner', title: '여권 원본 (정희 여사님과 딸 소연이 2인)', desc: '백화점(한큐·파르코·다이마루) 면세 및 5% 게스트 쿠폰 발급 시 필수 지참', done: false },
+          { owner: 'all_owner', title: '비짓재팬웹 (Visit Japan Web) 등록', desc: '출국 2주 전 입국·세관 신고 등록 후 QR코드 캡처 저장 (어머니 동반 등록)', done: false },
+          { owner: 'dau', title: '항공권 & 칸데오 호텔 바우처 저장', desc: '인천(T2)↔간사이(T1) E-티켓, 칸데오 호텔 오사카 난바 예약확인서', done: true },
+          { owner: 'dau', title: '교토 하루하루투어 바우처 확인', desc: '12/4(금) 07:30 니혼바시 츠루동탄 소에몬초점 앞 집결 (도보 2분)', done: true },
+          { owner: 'dau', title: '도톤보리 리버크루즈 예약 (선택)', desc: '1일차 20:00편 · 1인 ¥2,000 · 웹 예약은 출항 10분 전까지, 현장은 돈키호테 도톤보리점 1층', done: false },
+          { owner: 'all_owner', title: '트래블카드 + 엔화 현금 (지폐 혼합)', desc: '백화점·식당은 카드 결제, 구로몬시장·노점·입장료용 엔화 현금 지참', done: false },
+          { owner: 'mom', title: '정희 여사님 휴대폰 로밍 / 이심(eSIM) 설정', desc: '현지에서 카카오톡 사진 전송 및 연락이 끊기지 않도록 데이터 로밍 권장', done: false },
+          { owner: 'mom', title: '정희 여사님 따뜻한 겨울 외투 · 머플러 · 핫팩', desc: '오사카 낮 13℃ / 교토 아침 4℃ 일교차 대비 경량패딩·니트 레이어드', done: false },
+          { owner: 'all_owner', title: '발 편한 쿠션 운동화 & 휴족시간', desc: '교토 청수사·아라시야마 및 백화점 도보 이동 대비 무릎·발 피로 보호', done: false },
+          { owner: 'mom', title: '상비약 파우치 (소화제·진통제·감기약·밴드)', desc: '평소 복용하시는 약과 함께 기내 휴대 파우치에 준비', done: false },
+          { owner: 'dau', title: '110V 돼지코 어댑터 2개 & 보조배터리', desc: '보조배터리는 반드시 기내 수하물(가방)에 휴대 (위탁수하물 금지)', done: false },
+          { owner: 'dau', title: '접이식 장바구니 & 폴딩 보조가방', desc: '한큐·파르코·다이마루 쇼핑 후 귀국 시 캐리어 공간 분리용', done: false },
+          { owner: 'dau', title: '공항 리무진 승차권 현장 발권 메모', desc: '도톤플라자 ↔ 간사이(T1) (귀국일 11시 체크아웃 직후 1층 발권기 이용)', done: false }
+        ]),
+        memo: {
+          addresses: withIds([
+            { name: '칸데오 호텔 오사카 난바 (Candeo Hotels Osaka Namba)', ja: '〒542-0083 大阪府大阪市中央区東心斎橋2-2-5', en: '영문: 2-2-5 Higashi-shinsaibashi, Chuo-ku, Osaka' },
+            { name: '2일차 교토 투어 집결지 (12/04 금 07:30 정시)', ja: 'つるとんたん 宗右衛門町店', en: '니혼바시 츠루동탄 소에몬초점 앞 (호텔에서 도보 2분) · 3-17 Soemoncho, Chuo-ku' },
+            { name: '톤보리 리버크루즈 승선권 매장', ja: 'とんぼりリバークルーズ（ドン・キホーテ道頓堀店 1階）', en: '돈키호테 도톤보리점 1층 · 바로 앞 타자에몬바시(太左衛門橋) 선착장에서 승선' }
+          ]),
+          phrases: withIds([
+            { ko: '성인 2명 자리 있나요? (식당 입장 시)', jp: '大人2人です。席はありますか？', pron: '오토나 후타리데스. 세키와 아리마스카?' },
+            { ko: '따뜻한 물 / 따뜻한 녹차 주실 수 있나요?', jp: '温かいお水（お茶）をいただけますか？', pron: '아타타카이 오미즈(오차)오 이타다케마스카?' },
+            { ko: '한국어 메뉴판 있나요?', jp: '韓国語のメニューはありますか？', pron: '칸코쿠고노 메뉴-와 아리마스카?' },
+            { ko: '면세(Tax-Free) 가능한가요? (백화점·쇼핑 시)', jp: '免税（タックスフリー）できますか？', pron: '멘제이 (탁쿠스후리-) 데키마스카?' },
+            { ko: '20시 리버크루즈 표 2장 주세요.', jp: '20時のリバークルーズ、大人2枚お願いします。', pron: '니쥬-지노 리바-쿠루-즈, 오토나 니마이 오네가이시마스.' },
+            { ko: '계산 부탁드립니다.', jp: 'お会計をお願いします。', pron: '오카이케이오 오네가이시마스.' }
+          ]),
+          contacts: withIds([
+            { label: '주오사카 대한민국 총영사관', text: '+81-6-4256-2345' },
+            { label: '긴급 신고 (일본)', text: '경찰 110 / 구급차·화재 119' },
+            { label: '영사콜센터 (24시간 한국어)', text: '+82-2-3210-0404' },
+            { label: '동전 지갑 분리 팁', text: '일본은 100엔·500엔 동전 사용이 많으니 지퍼 파우치를 하나 챙기면 계산할 때 아주 편합니다.' }
+          ])
+        }
+      };
+    }
+
+    function loadData() {
+      try {
+        const raw = SafeStorage.getItem(STORE_KEY);
+        if (raw) {
+          const p = JSON.parse(raw);
+          if (p && Array.isArray(p.days) && Array.isArray(p.spots) && Array.isArray(p.checklist) && p.memo) return p;
+        }
+      } catch (e) {}
+      return buildDefaults();
+    }
+    let data = loadData();
+    function save() { SafeStorage.setItem(STORE_KEY, JSON.stringify(data)); }
+
+    /* ---------- Helpers ---------- */
+    function esc(s) {
+      return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    }
+    function fmt(s) { return esc(s).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>'); }
+    function mapUrl(q) { return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(q); }
+    function linkUrl(u) { u = String(u || '').trim(); return /^https?:\/\//i.test(u) ? u : mapUrl(u); }
+    function editBtn(listKey, id) { return `<button type="button" class="edit-btn" data-action="edit" data-list="${listKey}" data-id="${id}" aria-label="수정">✎</button>`; }
+    function addBtn(listKey, label, small) { return `<button type="button" class="add-inline${small ? ' small' : ''}" data-action="add" data-list="${listKey}">＋ ${label}</button>`; }
+
+    const CAT = {
+      food: { label: '🍽️ 식사', cls: 'cat-food', perPerson: true },
+      cafe: { label: '☕ 카페·찻집', cls: 'cat-cafe', perPerson: true },
+      play: { label: '🚢 체험·관광', cls: 'cat-play', perPerson: true },
+      shop: { label: '🛍️ 쇼핑', cls: 'cat-shop', perPerson: false }
+    };
+    const OWNER = {
+      all_owner: { label: '🌸 공통', cls: 'owner-all' },
+      mom: { label: '👩 정희 여사님', cls: 'owner-mom' },
+      dau: { label: '👧 딸 소연', cls: 'owner-dau' }
     };
 
-    // 1. Font Size Toggle
-    function toggleFontSize() {
-      const isLarge = document.body.classList.toggle('large-text');
-      const btn = document.getElementById('fontToggleBtn');
-      if (btn) {
-        btn.textContent = isLarge ? '🔎 기본 글자 크기' : '🔍 글자 크게 보기';
+    /* ---------- List registry ---------- */
+    function resolveList(key) {
+      const p = key.split('.');
+      if (p[0] === 'day') {
+        const d = data.days.find(x => x.id === p[1]);
+        if (!d) return null;
+        const v = d[p[2]];
+        return Array.isArray(v) ? v : (v ? v.items : null);
       }
-      SafeStorage.setItem('osaka_large_text', isLarge ? '1' : '0');
-      showToast(isLarge ? '글자 크기를 키웠어요!' : '기본 글자 크기로 돌아왔어요!');
+      if (p[0] === 'spots') return data.spots;
+      if (p[0] === 'checklist') return data.checklist;
+      if (p[0] === 'memo') return data.memo[p[1]];
+      return null;
     }
+    function listType(key) {
+      const p = key.split('.');
+      if (p[0] === 'day') return p[2] === 'timeline' ? 'timeline' : (p[2] === 'links' ? 'link' : 'info');
+      if (p[0] === 'spots') return 'spot';
+      if (p[0] === 'checklist') return 'check';
+      return { addresses: 'address', phrases: 'phrase', contacts: 'contact' }[p[1]];
+    }
+    const TYPE_NAME = { timeline: '일정', info: '메모 항목', link: '링크 버튼', spot: '맛집·쇼핑·체험', check: '준비물', address: '주소', phrase: '일본어 회화', contact: '연락처·메모' };
+    const FIELDS = {
+      timeline: [
+        { k: 'time', label: '시간', ph: '예: 18:30 - 20:00' },
+        { k: 'desc', label: '내용', type: 'textarea', req: true, ph: '예: 도톤보리 리버크루즈 탑승' }
+      ],
+      info: [
+        { k: 'label', label: '소제목 (선택)', ph: '예: 저녁' },
+        { k: 'text', label: '내용', type: 'textarea', req: true }
+      ],
+      link: [
+        { k: 'label', label: '버튼 이름', req: true, ph: '예: 📍 리버크루즈 지도' },
+        { k: 'url', label: '링크 주소 또는 구글지도 검색어', req: true, ph: 'https://… 또는 장소 이름(영문 추천)' }
+      ],
+      spot: [
+        { k: 'cat', label: '분류', type: 'select', options: Object.keys(CAT).map(v => ({ v, t: CAT[v].label })) },
+        { k: 'name', label: '장소 / 품목명', req: true },
+        { k: 'loc', label: '위치' },
+        { k: 'menu', label: '메뉴 · 품목' },
+        { k: 'price', label: '예산 (엔) — 식사·카페·체험은 1인 기준', type: 'number', ph: '예: 2000' },
+        { k: 'reason', label: '메모', type: 'textarea' },
+        { k: 'map', label: '구글지도 검색어 (선택, 비우면 장소명으로 검색)' }
+      ],
+      check: [
+        { k: 'owner', label: '담당', type: 'select', options: Object.keys(OWNER).map(v => ({ v, t: OWNER[v].label })) },
+        { k: 'title', label: '준비물', req: true },
+        { k: 'desc', label: '메모', type: 'textarea' }
+      ],
+      address: [
+        { k: 'name', label: '장소 이름', req: true },
+        { k: 'ja', label: '일본어 주소 · 가게명 (복사 버튼으로 복사됨)' },
+        { k: 'en', label: '보조 설명 (영문 주소 등)' }
+      ],
+      phrase: [
+        { k: 'ko', label: '한국어 뜻' },
+        { k: 'jp', label: '일본어', req: true },
+        { k: 'pron', label: '발음' }
+      ],
+      contact: [
+        { k: 'label', label: '항목', ph: '예: 호텔 프런트' },
+        { k: 'text', label: '내용', type: 'textarea', req: true }
+      ]
+    };
 
-    // 2. Tab Switching (supports both button element and tabId + iOS Safari forced reflow)
-    let _lastTabSwitchTs = 0;
-    function switchTab(tabId, btnEl) {
-      const now = Date.now();
-      if (now - _lastTabSwitchTs < 80) return;
-      _lastTabSwitchTs = now;
-
-      const expectedTabs = ['tab-schedule', 'tab-budget', 'tab-checklist', 'tab-memo'];
-      const sections = document.querySelectorAll('.tab-section');
-      sections.forEach(sec => {
-        sec.classList.remove('active');
-        sec.style.display = 'none';
+    /* ---------- Render: schedule ---------- */
+    let currentDay = 'all';
+    function renderSchedule() {
+      const c = document.getElementById('scheduleContainer');
+      c.innerHTML = data.days.map(d => {
+        const tl = `day.${d.id}.timeline`;
+        const lk = `day.${d.id}.links`;
+        const boxes = ['food', 'shop', 'tip'].map(k => {
+          const box = d[k]; if (!box) return '';
+          const key = `day.${d.id}.${k}`;
+          return `<div class="info-box ${k}">
+              <div class="info-box-title">${esc(box.title)}</div>
+              <ul class="info-list sortable" data-list="${key}">
+                ${box.items.map(it => `<li class="sort-item" data-id="${it.id}"><div class="item-main">${it.label ? `<strong>${esc(it.label)}:</strong> ` : ''}${fmt(it.text)}</div>${editBtn(key, it.id)}</li>`).join('')}
+              </ul>
+              ${addBtn(key, '추가', true)}
+            </div>`;
+        }).join('');
+        return `<article class="day-card" data-day="${d.id}">
+            <div class="day-header">
+              <div>
+                <span class="day-tag">${esc(d.tag)}</span>
+                <h2 class="day-title">${esc(d.title)}</h2>
+              </div>
+              <div class="day-head-right">
+                <div class="day-emoji">${esc(d.emoji)}</div>
+                <button type="button" class="edit-btn" data-action="edit-day" data-day="${d.id}" aria-label="일차 제목 수정">✎</button>
+              </div>
+            </div>
+            <ul class="timeline sortable" data-list="${tl}">
+              ${d.timeline.map(t => `<li class="timeline-item sort-item" data-id="${t.id}"><div class="item-main">${t.time ? `<span class="time-badge">${esc(t.time)}</span>` : ''}<span class="time-desc">${fmt(t.desc)}</span></div>${editBtn(tl, t.id)}</li>`).join('')}
+            </ul>
+            ${addBtn(tl, '일정 추가')}
+            ${boxes}
+            <div class="link-btn-row sortable sort-h" data-list="${lk}">
+              ${d.links.map(l => `<span class="link-chip sort-item" data-id="${l.id}"><a class="mini-link-btn${l.primary ? ' primary-link' : ''}" href="${esc(linkUrl(l.url))}" target="_blank" rel="noopener noreferrer">${esc(l.label)}</a>${editBtn(lk, l.id)}</span>`).join('')}
+            </div>
+            ${addBtn(lk, '지도·링크 추가', true)}
+          </article>`;
+      }).join('');
+      applyDayFilter();
+    }
+    function applyDayFilter() {
+      document.querySelectorAll('#scheduleContainer .day-card').forEach(card => {
+        card.style.display = (currentDay === 'all' || card.dataset.day === currentDay) ? '' : 'none';
       });
-
-      const targetSec = document.getElementById(tabId);
-      if (targetSec) {
-        targetSec.classList.add('active');
-        targetSec.style.display = 'block';
-        // Force iOS WebKit layout/paint recalculation
-        void targetSec.offsetHeight;
-      }
-
-      const navButtons = document.querySelectorAll('.bottom-nav .nav-btn');
-      navButtons.forEach((b, idx) => {
-        const isTarget = btnEl ? (b === btnEl) : (expectedTabs[idx] === tabId);
-        b.classList.toggle('active', isTarget);
-      });
-
-      if (tabId === 'tab-budget') renderSpots();
-      if (tabId === 'tab-checklist') renderChecklist();
-
-      try {
-        window.scrollTo(0, 0);
-        document.documentElement.scrollTop = 0;
-        document.body.scrollTop = 0;
-      } catch (e) {}
+      document.querySelectorAll('#dayFilterBar .filter-pill').forEach(p => p.classList.toggle('active', p.dataset.key === currentDay));
     }
 
-    // 3. Day Filter
-    function filterDay(dayKey, btnEl) {
-      const pills = document.querySelectorAll('#dayFilterBar .filter-pill');
-      pills.forEach(p => p.classList.remove('active'));
-      if (btnEl) btnEl.classList.add('active');
-
-      document.querySelectorAll('.day-card').forEach(card => {
-        if (dayKey === 'all' || card.dataset.day === dayKey) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    }
-
-    // 4. Spots & Budget Data
-    const defaultSpots = [
-      { id: 1, cat: 'food', name: '장어의 나카쇼 신사이바시점', loc: '신사이바시역 도보 3분', menu: '히츠마부시(장어덮밥) 정식', price: 4500, qty: 1, reason: '기력 보충 최고! 3가지 방식으로 즐기는 담백한 장어덮밥', map: 'Unagi+no+Nakasho+Shinsaibashi' },
-      { id: 2, cat: 'food', name: '아지노야 난바 본점', loc: '난바 도톤보리 인근', menu: '믹스 오코노미야키 · 야키소바', price: 1800, qty: 1, reason: '직원이 철판에서 직접 구워주어 편하게 앉아 식사 가능', map: 'Ajinoya+Namba+Osaka' },
-      { id: 3, cat: 'food', name: '츠루동탄 소에몬초점', loc: '호텔 도보 2분 (투어 집결지)', menu: '명란 크림우동 · 유부/나베우동', price: 1800, qty: 1, reason: '교토 투어 복귀 직후 따뜻한 국물로 피로를 풀기 좋은 곳', map: 'Tsurutontan+Soemoncho+Osaka' },
-      { id: 4, cat: 'food', name: '한큐·다이마루 백화점 식당가', loc: '우메다 / 신사이바시 본관', menu: '덴푸라·소바 정식 또는 스시 정식', price: 2500, qty: 1, reason: '백화점 내 쾌적한 좌석과 정갈한 상차림으로 어른 입맛에 딱', map: 'Hankyu+Umeda+Main+Store' },
-      { id: 5, cat: 'cafe', name: '마루후쿠 커피 센니치마에 본점', loc: '난바역 인근 (도보 6분)', menu: '핸드드립 커피 & 클래식 핫케이크', price: 1200, qty: 1, reason: '1934년 창업 정통 킷사텐 다방, 폭신한 소파에서 다리 쉬기 최고', map: 'Marufuku+Coffee+Sennichimae' },
-      { id: 6, cat: 'cafe', name: '우지엔 신사이바시 본점 2층', loc: '신사이바시 상점가 내', menu: '말차·호지차 파르페 & 화과자 세트', price: 1500, qty: 1, reason: '달지 않고 깊은 일본 전통차로 쇼핑 피로를 달래는 찻집', map: 'Ujien+Shinsaibashi+Osaka' },
-      { id: 7, cat: 'cafe', name: '미카사데코 앤 카페', loc: '난바역 인근', menu: '리코타 치즈 수플레 팬케이크', price: 1600, qty: 1, reason: '입에서 살살 녹는 폭신한 식감으로 모녀 티타임 인기 스팟', map: 'Micasadeco+Cafe+Osaka' },
-      { id: 8, cat: 'shop', name: '한큐백화점 우메다 본점', loc: '우메다역 직결 (난바서 10분)', menu: '패션·잡화 & B1 디저트관 (바통도르·에쉬레)', price: 30000, qty: 1, reason: '1F 안내데스크 여권 제시 시 외국인 5% 게스트 쿠폰 발급!', map: 'Hankyu+Umeda+Main+Store' },
-      { id: 9, cat: 'shop', name: '신사이바시 파르코 (AMI)', loc: '파르코 2층', menu: '아미(AMI PARIS) 하트 로고 가디건', price: 55000, qty: 1, reason: '일본 최대 규모 아미 매장, 여권 지참 시 면세 혜택 적용', map: 'Shinsaibashi+PARCO' },
-      { id: 10, cat: 'shop', name: '신사이바시 파르코 (COACH)', loc: '파르코 3층', menu: '코치(COACH) 숄더백 · 지갑', price: 45000, qty: 1, reason: '정희 여사님 선물용 가방 라인업 다양, 다이마루와 실내 연결', map: 'Shinsaibashi+PARCO' },
-      { id: 11, cat: 'shop', name: '다이마루 신사이바시 지하식품관', loc: '다이마루 본관 B1~B2층', menu: '시오콘부(염장 다시마) & 고급 전병', price: 3000, qty: 1, reason: '집밥 반찬 및 지인 선물용으로 어머님들 만족도가 매우 높음', map: 'Daimaru+Shinsaibashi' },
-      { id: 12, cat: 'shop', name: '리쿠로 오지상 & 편의점·돈키호테', loc: '난바 본점 / 호텔 인근', menu: '치즈케이크, 모찌롤, 휴족시간, 로이스', price: 8000, qty: 1, reason: '귀국 선물과 밤 노천탕 후 즐길 편의점 야식 꾸러미', map: 'Rikuro+Ojisan+Namba' }
-    ];
-
-    function loadSpots() {
-      try {
-        const raw = SafeStorage.getItem('osaka_spots_v1');
-        if (raw) {
-          const parsed = JSON.parse(raw);
-          if (Array.isArray(parsed) && parsed.length > 0) return parsed;
-        }
-      } catch (e) {}
-      return JSON.parse(JSON.stringify(defaultSpots));
-    }
-
-    let spots = loadSpots();
+    /* ---------- Render: spots & budget ---------- */
     let personMode = 2;
     let currentSpotFilter = 'all';
-
-    function saveSpots() {
-      SafeStorage.setItem('osaka_spots_v1', JSON.stringify(spots));
+    function getRate() {
+      const el = document.getElementById('exchangeRate');
+      return el ? (parseFloat(el.value) || 920) : 920;
     }
-
-    function setPersonMode(mode) {
-      personMode = mode;
-      document.getElementById('btnTwoPerson').classList.toggle('active', mode === 2);
-      document.getElementById('btnOnePerson').classList.toggle('active', mode === 1);
-      renderSpots();
-    }
-
-    function filterSpots(cat, btnEl) {
-      currentSpotFilter = cat;
-      document.querySelectorAll('#spotFilterBar .filter-pill').forEach(p => p.classList.remove('active'));
-      if (btnEl) btnEl.classList.add('active');
-      renderSpots();
-    }
-
-    function updateQty(id, delta) {
-      const target = spots.find(s => s.id === id);
-      if (target) {
-        target.qty = Math.max(0, target.qty + delta);
-        saveSpots();
-        renderSpots();
-      }
-    }
-
-    function addNewSpot() {
-      const cat = document.getElementById('newSpotCat').value;
-      const name = document.getElementById('newSpotName').value.trim();
-      const menu = document.getElementById('newSpotMenu').value.trim() || '추천 메뉴/품목';
-      const price = parseInt(document.getElementById('newSpotPrice').value, 10) || 2000;
-      if (!name) {
-        showToast('장소나 품목 이름을 입력해 주세요!');
-        return;
-      }
-      spots.push({
-        id: Date.now(),
-        cat,
-        name,
-        loc: '오사카 난바 · 우메다',
-        menu,
-        price,
-        qty: 1,
-        reason: '직접 추가한 모녀 여행 위시리스트 ✨',
-        map: encodeURIComponent(name + ' Osaka')
-      });
-      saveSpots();
-      document.getElementById('newSpotName').value = '';
-      document.getElementById('newSpotMenu').value = '';
-      document.getElementById('newSpotPrice').value = '';
-      renderSpots();
-      showToast('위시리스트에 추가되었습니다!');
-    }
-
+    function multOf(s) { return (personMode === 2 && CAT[s.cat] && CAT[s.cat].perPerson) ? 2 : 1; }
     function renderSpots() {
-      const container = document.getElementById('spotsContainer');
-      if (!container) return;
-      const rateInput = document.getElementById('exchangeRate');
-      const rate = rateInput ? (parseFloat(rateInput.value) || 920) : 920;
-
-      let sumFood = 0, sumCafe = 0, sumShop = 0;
-
-      spots.forEach(s => {
-        const multiplier = (personMode === 2 && (s.cat === 'food' || s.cat === 'cafe')) ? 2 : 1;
-        const subtotal = s.price * s.qty * multiplier;
-        if (s.cat === 'food') sumFood += subtotal;
-        else if (s.cat === 'cafe') sumCafe += subtotal;
-        else sumShop += subtotal;
+      const rate = getRate();
+      const sums = { food: 0, cafe: 0, play: 0, shop: 0 };
+      data.spots.forEach(s => {
+        const sub = (Number(s.price) || 0) * (Number(s.qty) || 0) * multOf(s);
+        sums[CAT[s.cat] ? s.cat : 'shop'] += sub;
       });
+      const total = sums.food + sums.cafe + sums.play + sums.shop;
+      document.getElementById('totalJpy').textContent = '¥' + total.toLocaleString();
+      document.getElementById('totalKrw').textContent = '약 ' + Math.round(total / 100 * rate).toLocaleString() + '원';
+      const pct = v => total ? (v / total * 100) : 0;
+      document.getElementById('barFood').style.width = pct(sums.food) + '%';
+      document.getElementById('barCafe').style.width = pct(sums.cafe) + '%';
+      document.getElementById('barPlay').style.width = pct(sums.play) + '%';
+      document.getElementById('barShop').style.width = pct(sums.shop) + '%';
+      document.getElementById('legendFood').textContent = `🟡 식사 ¥${sums.food.toLocaleString()}`;
+      document.getElementById('legendCafe').textContent = `🩷 카페 ¥${sums.cafe.toLocaleString()}`;
+      document.getElementById('legendPlay').textContent = `🟣 체험 ¥${sums.play.toLocaleString()}`;
+      document.getElementById('legendShop').textContent = `🩵 쇼핑 ¥${sums.shop.toLocaleString()}`;
 
-      const totalJpy = sumFood + sumCafe + sumShop;
-      const totalKrw = Math.round((totalJpy / 100) * rate);
-
-      document.getElementById('totalJpy').textContent = '¥' + totalJpy.toLocaleString();
-      document.getElementById('totalKrw').textContent = '약 ' + totalKrw.toLocaleString() + '원';
-
-      const pFood = totalJpy ? Math.round((sumFood / totalJpy) * 100) : 0;
-      const pCafe = totalJpy ? Math.round((sumCafe / totalJpy) * 100) : 0;
-      const pShop = totalJpy ? Math.max(0, 100 - pFood - pCafe) : 0;
-
-      document.getElementById('barFood').style.width = pFood + '%';
-      document.getElementById('barCafe').style.width = pCafe + '%';
-      document.getElementById('barShop').style.width = pShop + '%';
-
-      document.getElementById('legendFood').textContent = `🟡 식사: ¥${sumFood.toLocaleString()}`;
-      document.getElementById('legendCafe').textContent = `🩷 카페: ¥${sumCafe.toLocaleString()}`;
-      document.getElementById('legendShop').textContent = `🩵 쇼핑: ¥${sumShop.toLocaleString()}`;
-
-      const filtered = spots.filter(s => currentSpotFilter === 'all' || s.cat === currentSpotFilter);
-      container.innerHTML = filtered.map(s => {
-        const badgeClass = s.cat === 'food' ? 'cat-food' : (s.cat === 'cafe' ? 'cat-cafe' : 'cat-shop');
-        const badgeLabel = s.cat === 'food' ? '🍽️ 식사' : (s.cat === 'cafe' ? '☕ 카페·찻집' : '🛍️ 쇼핑');
-        const unitNote = (personMode === 2 && (s.cat === 'food' || s.cat === 'cafe')) ? ' (2인 기준)' : '';
-        const mult = (personMode === 2 && (s.cat === 'food' || s.cat === 'cafe')) ? 2 : 1;
-        const itemJpy = s.price * s.qty * mult;
-        const itemKrw = Math.round((itemJpy / 100) * rate);
-
-        return `
-          <div class="spot-card">
+      const list = data.spots.filter(s => currentSpotFilter === 'all' || s.cat === currentSpotFilter);
+      const c = document.getElementById('spotsContainer');
+      c.innerHTML = list.length ? list.map(s => {
+        const cat = CAT[s.cat] || CAT.shop;
+        const m = multOf(s);
+        const jpy = (Number(s.price) || 0) * (Number(s.qty) || 0) * m;
+        const krw = Math.round(jpy / 100 * rate);
+        return `<div class="spot-card sort-item" data-id="${s.id}">
             <div class="spot-header">
-              <div>
-                <span class="spot-cat-badge ${badgeClass}">${badgeLabel}</span>
-                <div class="spot-name">${s.name}</div>
-                <div class="spot-loc">📍 ${s.loc}</div>
+              <div style="min-width:0">
+                <span class="spot-cat-badge ${cat.cls}">${cat.label}</span>
+                <div class="spot-name">${esc(s.name)}</div>
+                ${s.loc ? `<div class="spot-loc">📍 ${esc(s.loc)}</div>` : ''}
               </div>
-              <a class="mini-link-btn" href="https://www.google.com/maps/search/?api=1&query=${s.map}" target="_blank" rel="noopener noreferrer">지도</a>
+              <div class="spot-actions">
+                <a class="mini-link-btn" href="${esc(mapUrl(s.map || (s.name + ' Osaka')))}" target="_blank" rel="noopener noreferrer">지도</a>
+                ${editBtn('spots', s.id)}
+              </div>
             </div>
-            <div class="spot-menu">✨ ${s.menu}</div>
-            <div class="spot-reason">${s.reason}</div>
+            ${s.menu ? `<div class="spot-menu">✨ ${fmt(s.menu)}</div>` : ''}
+            ${s.reason ? `<div class="spot-reason">${fmt(s.reason)}</div>` : ''}
             <div class="spot-footer">
-              <div class="spot-price">¥${itemJpy.toLocaleString()} <span style="font-size:0.82em; color:#666; font-weight:500;">(약 ${itemKrw.toLocaleString()}원${unitNote})</span></div>
+              <div class="spot-price">¥${jpy.toLocaleString()} <small>(약 ${krw.toLocaleString()}원${m === 2 ? ' · 2인' : ''})</small></div>
               <div class="qty-control">
-                <button type="button" class="qty-btn" onclick="updateQty(${s.id}, -1)">-</button>
-                <span class="qty-num">${s.qty}</span>
-                <button type="button" class="qty-btn" onclick="updateQty(${s.id}, 1)">+</button>
+                <button type="button" class="qty-btn" data-action="qty" data-id="${s.id}" data-delta="-1" aria-label="수량 줄이기">-</button>
+                <span class="qty-num">${Number(s.qty) || 0}</span>
+                <button type="button" class="qty-btn" data-action="qty" data-id="${s.id}" data-delta="1" aria-label="수량 늘리기">+</button>
               </div>
             </div>
-          </div>
-        `;
-      }).join('');
+          </div>`;
+      }).join('') : '<p class="edit-hint" style="text-align:center;padding:18px 0;">이 분류에 등록된 항목이 없어요.</p>';
+      document.querySelectorAll('#spotFilterBar .filter-pill').forEach(p => p.classList.toggle('active', p.dataset.key === currentSpotFilter));
+      document.getElementById('btnTwoPerson').classList.toggle('active', personMode === 2);
+      document.getElementById('btnOnePerson').classList.toggle('active', personMode === 1);
     }
 
-    // 5. Checklist Data
-    const defaultChecklist = [
-      { id: 1, owner: 'all_owner', title: '여권 원본 (정희 여사님과 딸 소연이 2인)', desc: '백화점(한큐·파르코·다이마루) 면세 및 5% 게스트 쿠폰 발급 시 필수 지참', done: false },
-      { id: 2, owner: 'all_owner', title: '비짓재팬웹 (Visit Japan Web) 등록', desc: '출국 2주 전 입국·세관 신고 등록 후 QR코드 캡처 저장 (어머니 동반 등록)', done: false },
-      { id: 3, owner: 'dau', title: '항공권 & 칸데오 호텔 바우처 저장', desc: '인천(2T)↔간사이(1T) E-티켓, 칸데오 호텔 오사카 난바 예약확인서', done: true },
-      { id: 4, owner: 'dau', title: '교토 하루하루투어 바우처 확인', desc: '12/4(금) 07:30 니혼바시 츠루동탄 소에몬초점 앞 집결 (도보 2분)', done: true },
-      { id: 5, owner: 'all_owner', title: '트래블카드 + 엔화 현금 (지폐 혼합)', desc: '백화점·식당은 카드 결제, 구로몬시장·노점·입장료용 엔화 현금 지참', done: false },
-      { id: 6, owner: 'mom', title: '정희 여사님 휴대폰 로밍 / 이심(eSIM) 설정', desc: '현지에서 카카오톡 사진 전송 및 연락이 끊기지 않도록 데이터 로밍 권장', done: false },
-      { id: 7, owner: 'mom', title: '정희 여사님 따뜻한 겨울 외투 · 머플러 · 핫팩', desc: '오사카 낮 13℃ / 교토 아침 4℃ 일교차 대비 경량패딩·니트 레이어드', done: false },
-      { id: 8, owner: 'all_owner', title: '발 편한 쿠션 운동화 & 휴족시간', desc: '교토 청수사·아라시야마 및 백화점 도보 이동 대비 무릎·발 피로 보호', done: false },
-      { id: 9, owner: 'mom', title: '상비약 파우치 (소화제·진통제·감기약·밴드)', desc: '평소 복용하시는 약과 함께 기내 휴대 파우치에 준비', done: false },
-      { id: 10, owner: 'dau', title: '110V 돼지코 어댑터 2개 & 보조배터리', desc: '보조배터리는 반드시 기내 수하물(가방)에 휴대 (위탁수하물 금지)', done: false },
-      { id: 11, owner: 'dau', title: '접이식 장바구니 & 폴딩 보조가방', desc: '한큐·파르코·다이마루 쇼핑 후 귀국 시 캐리어 공간 분리용', done: false },
-      { id: 12, owner: 'dau', title: '공항 리무진 승차권 현장 발권 메모', desc: '도톤플라자 ↔ 간사이 1T (귀국일 11시 체크아웃 직후 1층 발권기 이용)', done: false }
-    ];
-
-    function loadChecklist() {
-      try {
-        const raw = SafeStorage.getItem('osaka_checklist_v1');
-        if (raw) {
-          const parsed = JSON.parse(raw);
-          if (Array.isArray(parsed) && parsed.length > 0) return parsed;
-        }
-      } catch (e) {}
-      return JSON.parse(JSON.stringify(defaultChecklist));
-    }
-
-    let checklist = loadChecklist();
+    /* ---------- Render: checklist ---------- */
     let currentCheckFilter = 'all';
-
-    function saveChecklist() {
-      SafeStorage.setItem('osaka_checklist_v1', JSON.stringify(checklist));
-    }
-
-    function filterChecklist(ownerKey, btnEl) {
-      currentCheckFilter = ownerKey;
-      document.querySelectorAll('#tab-checklist .filter-pill').forEach(p => p.classList.remove('active'));
-      if (btnEl) btnEl.classList.add('active');
-      renderChecklist();
-    }
-
-    function toggleCheck(id) {
-      const item = checklist.find(c => c.id === id);
-      if (item) {
-        item.done = !item.done;
-        saveChecklist();
-        renderChecklist();
-      }
-    }
-
-    function addCheckItem() {
-      const owner = document.getElementById('newCheckOwner').value;
-      const title = document.getElementById('newCheckTitle').value.trim();
-      const desc = document.getElementById('newCheckDesc').value.trim() || '출국 전 꼭 챙기기!';
-      if (!title) {
-        showToast('준비물 이름을 입력해 주세요!');
-        return;
-      }
-      checklist.push({ id: Date.now(), owner, title, desc, done: false });
-      saveChecklist();
-      document.getElementById('newCheckTitle').value = '';
-      document.getElementById('newCheckDesc').value = '';
-      renderChecklist();
-      showToast('체크리스트에 추가되었습니다!');
-    }
-
-    function resetChecklist() {
-      checklist = JSON.parse(JSON.stringify(defaultChecklist));
-      saveChecklist();
-      renderChecklist();
-      showToast('기본 체크리스트로 초기화되었습니다.');
-    }
-
     function renderChecklist() {
-      const container = document.getElementById('checklistContainer');
-      if (!container) return;
-
-      const total = checklist.length;
-      const doneCount = checklist.filter(c => c.done).length;
-      const pct = total ? Math.round((doneCount / total) * 100) : 0;
-
+      const total = data.checklist.length;
+      const done = data.checklist.filter(c => c.done).length;
+      const pct = total ? Math.round(done / total * 100) : 0;
       document.getElementById('progressPct').textContent = pct + '%';
       document.getElementById('progressFill').style.width = pct + '%';
-      document.getElementById('progressCount').textContent = `${doneCount} / ${total} 완료`;
-
+      document.getElementById('progressCount').textContent = `${done} / ${total} 완료`;
       let msg = '정희 여사님과 딸 소연이의 설레는 모녀 여행 준비 중 🌸';
-      if (pct === 100) msg = '완벽해요! 이제 즐겁게 출발할 일만 남았어요 ✈️🎉';
+      if (total && pct === 100) msg = '완벽해요! 이제 즐겁게 출발할 일만 남았어요 ✈️🎉';
       else if (pct >= 50) msg = '절반 이상 준비 완료! 아주 순조로워요 😊';
       document.getElementById('progressMsg').textContent = msg;
 
-      const filtered = checklist.filter(c => currentCheckFilter === 'all' || c.owner === currentCheckFilter);
-
-      container.innerHTML = filtered.map(c => {
-        const ownerClass = c.owner === 'mom' ? 'owner-mom' : (c.owner === 'dau' ? 'owner-dau' : 'owner-all');
-        const ownerLabel = c.owner === 'mom' ? '👩 정희 여사님' : (c.owner === 'dau' ? '👧 딸 소연' : '🌸 공통');
-
-        return `
-          <div class="check-item ${c.done ? 'checked' : ''}" onclick="toggleCheck(${c.id})">
+      const list = data.checklist.filter(c => currentCheckFilter === 'all' || c.owner === currentCheckFilter);
+      document.getElementById('checklistContainer').innerHTML = list.length ? list.map(c => {
+        const o = OWNER[c.owner] || OWNER.all_owner;
+        return `<div class="check-item sort-item ${c.done ? 'checked' : ''}" data-id="${c.id}" data-action="toggle-check">
             <div class="check-box">${c.done ? '✓' : ''}</div>
             <div class="check-content">
-              <div class="check-meta">
-                <span class="owner-tag ${ownerClass}">${ownerLabel}</span>
-              </div>
-              <div class="check-title">${c.title}</div>
-              <div class="check-desc">${c.desc}</div>
+              <span class="owner-tag ${o.cls}">${o.label}</span>
+              <div class="check-title">${esc(c.title)}</div>
+              ${c.desc ? `<div class="check-desc">${fmt(c.desc)}</div>` : ''}
             </div>
+            ${editBtn('checklist', c.id)}
+          </div>`;
+      }).join('') : '<p class="edit-hint" style="text-align:center;padding:18px 0;">이 담당자의 준비물이 없어요.</p>';
+      document.querySelectorAll('#checkFilterBar .filter-pill').forEach(p => p.classList.toggle('active', p.dataset.key === currentCheckFilter));
+    }
+
+    /* ---------- Render: memo ---------- */
+    function renderMemo() {
+      const m = data.memo;
+      document.getElementById('addressList').innerHTML = m.addresses.map(a => `
+        <div class="address-box sort-item" data-id="${a.id}">
+          <div class="item-main">
+            <div class="addr-name">${esc(a.name)}</div>
+            ${a.ja ? `<div class="addr-ja">${esc(a.ja)}</div>` : ''}
+            ${a.en ? `<div class="addr-en">${esc(a.en)}</div>` : ''}
+            ${a.ja ? `<button type="button" class="copy-btn" data-action="copy" data-text="${esc(a.ja)}">📋 일본어 복사하기</button>` : ''}
           </div>
-        `;
-      }).join('');
+          ${editBtn('memo.addresses', a.id)}
+        </div>`).join('');
+      document.getElementById('phraseList').innerHTML = m.phrases.map((p, i) => `
+        <div class="phrase-item sort-item" data-id="${p.id}">
+          <div class="item-main">
+            ${p.ko ? `<div class="phrase-ko">${i + 1}. ${esc(p.ko)}</div>` : ''}
+            <div class="phrase-jp">${esc(p.jp)}</div>
+            ${p.pron ? `<div class="phrase-pron">${esc(p.pron)}</div>` : ''}
+          </div>
+          ${editBtn('memo.phrases', p.id)}
+        </div>`).join('');
+      document.getElementById('contactList').innerHTML = m.contacts.map(c => `
+        <li class="sort-item" data-id="${c.id}">
+          <div class="item-main">${c.label ? `<strong>${esc(c.label)}:</strong> ` : ''}${fmt(c.text)}</div>
+          ${editBtn('memo.contacts', c.id)}
+        </li>`).join('');
     }
 
-    // 6. Copy & Toast Utility
-    function copyText(text) {
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(() => showToast('주소가 클립보드에 복사되었습니다!')).catch(() => fallbackCopy(text));
-      } else {
-        fallbackCopy(text);
+    function renderAll() { renderSchedule(); renderSpots(); renderChecklist(); renderMemo(); }
+
+    /* ---------- Edit sheet ---------- */
+    let sheet = null;
+    function openSheet(opts) {
+      sheet = opts;
+      document.getElementById('sheetTitle').textContent = opts.title;
+      const vals = opts.values || {};
+      document.getElementById('sheetForm').innerHTML = opts.fields.map(f => {
+        const v = vals[f.k] == null ? '' : vals[f.k];
+        let input;
+        if (f.type === 'textarea') input = `<textarea name="${f.k}" rows="3" placeholder="${esc(f.ph || '')}">${esc(v)}</textarea>`;
+        else if (f.type === 'select') input = `<select name="${f.k}">${f.options.map(o => `<option value="${o.v}"${o.v === v ? ' selected' : ''}>${esc(o.t)}</option>`).join('')}</select>`;
+        else if (f.type === 'number') input = `<input name="${f.k}" type="number" inputmode="numeric" value="${esc(v)}" placeholder="${esc(f.ph || '')}">`;
+        else input = `<input name="${f.k}" type="text" value="${esc(v)}" placeholder="${esc(f.ph || '')}">`;
+        return `<label class="sheet-field"><span>${esc(f.label)}${f.req ? ' *' : ''}</span>${input}</label>`;
+      }).join('') + (opts.note ? `<p class="sheet-note">${opts.note}</p>` : '');
+      document.getElementById('sheetDel').style.display = opts.onDelete ? '' : 'none';
+      document.body.classList.add('sheet-open');
+    }
+    function closeSheet() {
+      document.body.classList.remove('sheet-open');
+      sheet = null;
+      if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
+    }
+    function sheetSave() {
+      if (!sheet) return;
+      const form = document.getElementById('sheetForm');
+      const vals = {};
+      for (const f of sheet.fields) {
+        const el = form.elements[f.k];
+        let v = el ? el.value : '';
+        if (f.type === 'number') v = parseInt(v, 10) || 0;
+        else v = String(v).trim();
+        if (f.req && !v) { showToast(`'${f.label.split(' (')[0].split(' —')[0]}'을(를) 입력해 주세요`); if (el) el.focus(); return; }
+        vals[f.k] = v;
       }
+      sheet.onSave(vals);
+    }
+    function commit(msg) { save(); renderAll(); closeSheet(); if (msg) showToast(msg); }
+
+    function openItemEditor(listKey, id) {
+      const type = listType(listKey);
+      const list = resolveList(listKey);
+      if (!list || !type) return;
+      const item = id ? list.find(x => String(x.id) === String(id)) : null;
+      const defaults = {};
+      if (!item && type === 'spot') defaults.cat = currentSpotFilter !== 'all' ? currentSpotFilter : 'food';
+      if (!item && type === 'check') defaults.owner = currentCheckFilter !== 'all' ? currentCheckFilter : 'all_owner';
+      openSheet({
+        title: `${TYPE_NAME[type]} ${item ? '수정' : '추가'}`,
+        fields: FIELDS[type],
+        values: item || defaults,
+        note: (type === 'timeline' || type === 'info' || type === 'contact') ? '**굵게** 처럼 별표 두 개로 감싸면 굵은 글씨가 돼요.' : '',
+        onSave(vals) {
+          if (item) Object.assign(item, vals);
+          else {
+            const n = Object.assign({ id: uid() }, vals);
+            if (type === 'spot') n.qty = 1;
+            if (type === 'check') n.done = false;
+            list.push(n);
+          }
+          commit(item ? '수정했어요' : '추가했어요');
+        },
+        onDelete: item ? function () {
+          if (!window.confirm('이 항목을 삭제할까요?')) return;
+          const idx = list.indexOf(item);
+          if (idx >= 0) list.splice(idx, 1);
+          commit('삭제했어요');
+        } : null
+      });
+    }
+    function openDayEditor(dayId) {
+      const d = data.days.find(x => x.id === dayId);
+      if (!d) return;
+      openSheet({
+        title: '일차 제목 수정',
+        fields: [
+          { k: 'tag', label: '날짜 표시' },
+          { k: 'title', label: '제목', req: true },
+          { k: 'emoji', label: '이모지' },
+          { k: 'foodTitle', label: '식사 박스 제목' },
+          { k: 'shopTitle', label: '쇼핑 박스 제목' },
+          { k: 'tipTitle', label: '팁 박스 제목' }
+        ],
+        values: { tag: d.tag, title: d.title, emoji: d.emoji, foodTitle: d.food.title, shopTitle: d.shop.title, tipTitle: d.tip.title },
+        onSave(v) {
+          d.tag = v.tag; d.title = v.title; d.emoji = v.emoji;
+          d.food.title = v.foodTitle; d.shop.title = v.shopTitle; d.tip.title = v.tipTitle;
+          commit('수정했어요');
+        },
+        onDelete: null
+      });
     }
 
+    /* ---------- Font size ---------- */
+    function setFont(size) {
+      const large = size === 'large';
+      document.body.classList.toggle('large-text', large);
+      document.getElementById('fontNormal').classList.toggle('active', !large);
+      document.getElementById('fontLarge').classList.toggle('active', large);
+      SafeStorage.setItem('osaka_font', large ? 'large' : 'normal');
+    }
+
+    /* ---------- Tabs ---------- */
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-section').forEach(s => s.classList.toggle('active', s.id === tabId));
+      document.querySelectorAll('.bottom-nav .nav-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tabId));
+      try { window.scrollTo(0, 0); } catch (e) {}
+    }
+
+    /* ---------- Copy & toast ---------- */
+    function copyText(text) {
+      const ok = () => showToast('클립보드에 복사되었습니다!');
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(ok).catch(() => fallbackCopy(text));
+      else fallbackCopy(text);
+    }
     function fallbackCopy(text) {
       try {
         const ta = document.createElement('textarea');
-        ta.value = text;
-        ta.setAttribute('readonly', '');
-        ta.style.position = 'fixed';
-        ta.style.opacity = '0';
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand('copy');
-        document.body.removeChild(ta);
-        showToast('주소가 클립보드에 복사되었습니다!');
-      } catch (e) {
-        showToast('주소를 길게 눌러 복사해 주세요.');
-      }
+        ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+        showToast('클립보드에 복사되었습니다!');
+      } catch (e) { showToast('글자를 길게 눌러 복사해 주세요.'); }
     }
-
+    let toastTimer = null;
     function showToast(msg) {
       const el = document.getElementById('toast');
-      if (!el) return;
-      el.textContent = msg;
-      el.classList.add('show');
-      setTimeout(() => el.classList.remove('show'), 2200);
+      el.textContent = msg; el.classList.add('show');
+      clearTimeout(toastTimer); toastTimer = setTimeout(() => el.classList.remove('show'), 2000);
     }
 
+    /* ---------- Click handling (single delegated handler) ---------- */
+    let suppressClick = false;
+    document.addEventListener('click', function (e) {
+      if (suppressClick) { suppressClick = false; e.preventDefault(); e.stopPropagation(); }
+    }, true);
 
-    // Explicit iOS Safari event delegation backup
-    document.addEventListener('click', function(e) {
-      const target = e.target;
-      if (!target) return;
-
-      // Font toggle button
-      const fontBtn = target.closest('#fontToggleBtn');
-      if (fontBtn) {
-        toggleFontSize();
-        return;
-      }
-
-      // Bottom nav button
-      const navBtn = target.closest('.bottom-nav .nav-btn');
-      if (navBtn) {
-        const btns = Array.from(document.querySelectorAll('.bottom-nav .nav-btn'));
-        const idx = btns.indexOf(navBtn);
-        const tabIds = ['tab-schedule', 'tab-budget', 'tab-checklist', 'tab-memo'];
-        if (idx >= 0 && tabIds[idx]) {
-          switchTab(tabIds[idx], navBtn);
+    document.addEventListener('click', function (e) {
+      const el = e.target.closest('[data-action]');
+      if (!el) return;
+      const a = el.dataset.action;
+      switch (a) {
+        case 'tab': switchTab(el.dataset.tab); break;
+        case 'font': setFont(el.dataset.size); showToast(el.dataset.size === 'large' ? '글자를 크게 키웠어요' : '기본 글자 크기예요'); break;
+        case 'day-filter': currentDay = el.dataset.key; applyDayFilter(); break;
+        case 'spot-filter': currentSpotFilter = el.dataset.key; renderSpots(); break;
+        case 'check-filter': currentCheckFilter = el.dataset.key; renderChecklist(); break;
+        case 'person': personMode = Number(el.dataset.mode) || 2; renderSpots(); break;
+        case 'qty': {
+          const s = data.spots.find(x => String(x.id) === el.dataset.id);
+          if (s) { s.qty = Math.max(0, (Number(s.qty) || 0) + Number(el.dataset.delta)); save(); renderSpots(); }
+          break;
         }
-        return;
+        case 'toggle-check': {
+          const c = data.checklist.find(x => String(x.id) === el.dataset.id);
+          if (c) { c.done = !c.done; save(); renderChecklist(); }
+          break;
+        }
+        case 'copy': copyText(el.dataset.text || ''); break;
+        case 'add': openItemEditor(el.dataset.list, null); break;
+        case 'edit': openItemEditor(el.dataset.list, el.dataset.id); break;
+        case 'edit-day': openDayEditor(el.dataset.day); break;
+        case 'sheet-save': sheetSave(); break;
+        case 'sheet-close': closeSheet(); break;
+        case 'sheet-delete': if (sheet && sheet.onDelete) sheet.onDelete(); break;
+        case 'reset': {
+          const sec = el.dataset.section;
+          const names = { days: '3박 4일 일정', spots: '맛집·쇼핑 예산 목록', checklist: '출국 체크리스트', memo: '현지 메모' };
+          if (window.confirm(`${names[sec]}을(를) 처음 상태로 되돌릴까요?\n직접 추가·수정한 내용은 사라집니다.`)) {
+            data[sec] = buildDefaults()[sec]; save(); renderAll(); showToast('초기화했어요');
+          }
+          break;
+        }
       }
-
-      // Day filter pills
-      const dayPill = target.closest('#dayFilterBar .filter-pill');
-      if (dayPill) {
-        const label = dayPill.textContent || '';
-        let dayKey = 'all';
-        if (label.indexOf('1일차') >= 0) dayKey = 'day1';
-        else if (label.indexOf('2일차') >= 0) dayKey = 'day2';
-        else if (label.indexOf('3일차') >= 0) dayKey = 'day3';
-        else if (label.indexOf('4일차') >= 0) dayKey = 'day4';
-        filterDay(dayKey, dayPill);
-        return;
-      }
-
-      // Spot filter pills
-      const spotPill = target.closest('#spotFilterBar .filter-pill');
-      if (spotPill) {
-        const label = spotPill.textContent || '';
-        let cat = 'all';
-        if (label.indexOf('식사') >= 0) cat = 'food';
-        else if (label.indexOf('카페') >= 0) cat = 'cafe';
-        else if (label.indexOf('쇼핑') >= 0) cat = 'shop';
-        filterSpots(cat, spotPill);
-        return;
-      }
-
-      // Checklist filter pills
-      const checkPill = target.closest('#tab-checklist .filter-pill');
-      if (checkPill) {
-        const label = checkPill.textContent || '';
-        let ownerKey = 'all';
-        if (label.indexOf('공통') >= 0) ownerKey = 'all_owner';
-        else if (label.indexOf('정희') >= 0) ownerKey = 'mom';
-        else if (label.indexOf('소연') >= 0) ownerKey = 'dau';
-        filterChecklist(ownerKey, checkPill);
-        return;
-      }
-
-      // Person mode buttons
-      if (target.closest('#btnTwoPerson')) {
-        setPersonMode(2);
-        return;
-      }
-      if (target.closest('#btnOnePerson')) {
-        setPersonMode(1);
-        return;
-      }
-    }, false);
-
-
-    // Ensure all buttons have explicit type="button" and initialize safely
-    document.addEventListener('DOMContentLoaded', function() {
-      if (SafeStorage.getItem('osaka_large_text') === '1') {
-        document.body.classList.add('large-text');
-        const btn = document.getElementById('fontToggleBtn');
-        if (btn) btn.textContent = '🔎 기본 글자 크기';
-      }
-
-      // Direct binding for bottom nav buttons on iOS Safari / WKWebView
-      document.querySelectorAll('.bottom-nav .nav-btn').forEach(function(btn, idx) {
-        const fallbackTabs = ['tab-schedule', 'tab-budget', 'tab-checklist', 'tab-memo'];
-        const targetTab = btn.getAttribute('data-tab') || fallbackTabs[idx];
-        const handler = function(ev) {
-          if (ev && ev.cancelable) ev.preventDefault();
-          switchTab(targetTab, btn);
-        };
-        btn.addEventListener('click', handler, false);
-      });
-
-      document.querySelectorAll('button:not([type])').forEach(b => b.setAttribute('type', 'button'));
-      renderSpots();
-      renderChecklist();
     });
+    document.getElementById('sheetForm').addEventListener('submit', function (e) { e.preventDefault(); sheetSave(); });
+    document.addEventListener('input', function (e) {
+      if (e.target && e.target.id === 'exchangeRate') { SafeStorage.setItem('osaka_rate', e.target.value); renderSpots(); }
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && sheet) closeSheet(); });
+
+    /* ---------- Long-press drag to reorder ---------- */
+    const LONG_PRESS_MS = 450;
+    let press = null, drag = null, lastPt = null, rafId = null;
+
+    function ptOf(e) {
+      const t = e.touches && e.touches.length ? e.touches[0] : (e.changedTouches && e.changedTouches.length ? e.changedTouches[0] : e);
+      return { x: t.clientX, y: t.clientY };
+    }
+    function childOrder(list) {
+      return Array.from(list.children).filter(c => c.classList.contains('sort-item')).map(c => c.dataset.id);
+    }
+    function onPressStart(e) {
+      if (drag || document.body.classList.contains('sheet-open')) return;
+      if (e.type === 'mousedown' && e.button !== 0) return;
+      const item = e.target.closest('.sort-item');
+      if (!item || e.target.closest('button, input, select, textarea')) return;
+      const list = item.parentElement;
+      if (!list || !list.classList.contains('sortable')) return;
+      const p = ptOf(e);
+      clearPress();
+      press = { item, list, x: p.x, y: p.y, timer: setTimeout(beginDrag, LONG_PRESS_MS) };
+    }
+    function clearPress() { if (press) { clearTimeout(press.timer); press = null; } }
+    function beginDrag() {
+      if (!press) return;
+      drag = { item: press.item, list: press.list, start: childOrder(press.list).join('|') };
+      press = null;
+      drag.item.classList.add('dragging');
+      document.body.classList.add('is-sorting');
+      try { if (navigator.vibrate) navigator.vibrate(25); } catch (e) {}
+      lastPt = null;
+      rafId = requestAnimationFrame(autoScroll);
+    }
+    function onPressMove(e) {
+      if (press) {
+        const p = ptOf(e);
+        if (Math.abs(p.x - press.x) > 10 || Math.abs(p.y - press.y) > 10) clearPress();
+        return;
+      }
+      if (!drag) return;
+      if (e.cancelable) e.preventDefault();
+      lastPt = ptOf(e);
+      reorderAt(lastPt);
+    }
+    function reorderAt(p) {
+      if (!drag) return;
+      const el = document.elementFromPoint(p.x, p.y);
+      const target = el && el.closest('.sort-item');
+      if (!target || target === drag.item || target.parentElement !== drag.list) return;
+      const r = target.getBoundingClientRect();
+      const horiz = drag.list.classList.contains('sort-h');
+      const after = horiz ? (p.x > r.left + r.width / 2) : (p.y > r.top + r.height / 2);
+      if (after) { if (target.nextElementSibling !== drag.item) drag.list.insertBefore(drag.item, target.nextElementSibling); }
+      else { if (target.previousElementSibling !== drag.item) drag.list.insertBefore(drag.item, target); }
+    }
+    function autoScroll() {
+      if (!drag) return;
+      if (lastPt) {
+        const topEdge = 90, bottomEdge = window.innerHeight - 130;
+        let dy = 0;
+        if (lastPt.y < topEdge) dy = -Math.ceil((topEdge - lastPt.y) / 5);
+        else if (lastPt.y > bottomEdge) dy = Math.ceil((lastPt.y - bottomEdge) / 5);
+        if (dy) { window.scrollBy(0, dy); reorderAt(lastPt); }
+      }
+      rafId = requestAnimationFrame(autoScroll);
+    }
+    function onPressEnd() {
+      clearPress();
+      if (!drag) return;
+      cancelAnimationFrame(rafId);
+      const { item, list, start } = drag;
+      drag = null;
+      item.classList.remove('dragging');
+      document.body.classList.remove('is-sorting');
+      suppressClick = true;
+      setTimeout(() => { suppressClick = false; }, 400);
+      const ids = childOrder(list);
+      if (ids.join('|') === start) return;
+      const arr = resolveList(list.dataset.list);
+      if (!arr) return;
+      // Reorder only the items shown (filters may hide some), keeping hidden ones in place
+      const set = new Set(ids);
+      const byId = new Map(arr.map(x => [String(x.id), x]));
+      const slots = [];
+      arr.forEach((x, i) => { if (set.has(String(x.id))) slots.push(i); });
+      ids.forEach((id, k) => { if (slots[k] != null && byId.has(id)) arr[slots[k]] = byId.get(id); });
+      save();
+      renderAll();
+      showToast('순서를 바꿨어요');
+    }
+    document.addEventListener('touchstart', onPressStart, { passive: true });
+    document.addEventListener('touchmove', onPressMove, { passive: false });
+    document.addEventListener('touchend', onPressEnd);
+    document.addEventListener('touchcancel', onPressEnd);
+    document.addEventListener('mousedown', onPressStart);
+    document.addEventListener('mousemove', onPressMove);
+    document.addEventListener('mouseup', onPressEnd);
+    document.addEventListener('contextmenu', function (e) { if (e.target.closest && e.target.closest('.sort-item')) e.preventDefault(); });
+    document.addEventListener('dragstart', function (e) { if (e.target.closest && e.target.closest('.sort-item')) e.preventDefault(); });
+
+    /* ---------- Init ---------- */
+    (function init() {
+      const savedRate = SafeStorage.getItem('osaka_rate');
+      if (savedRate) document.getElementById('exchangeRate').value = savedRate;
+      setFont(SafeStorage.getItem('osaka_font') === 'large' ? 'large' : 'normal');
+      renderAll();
+    })();
   </script>
 </body>
 </html>
