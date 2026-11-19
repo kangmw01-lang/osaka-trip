@@ -5,330 +5,338 @@
   <meta name="robots" content="noindex, nofollow" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-title" content="모녀 오사카" />
+  <meta name="theme-color" content="#FFF8F5" />
   <title>🌸 정희 여사님과 딸 소연이의 모녀 오사카 3박 4일 여행 가이드</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg-cream: #FFF8F5;
-      --bg-card: #FFFFFF;
-      --bg-soft-pink: #FFF0F2;
-      --bg-soft-mint: #EFF8F4;
-      --bg-soft-amber: #FFF8EB;
-      --bg-soft-lavender: #F5F2FF;
-      --primary: #F06578;
-      --primary-dark: #D94B5F;
-      --primary-light: #FFDCE1;
-      --secondary: #377D6A;
-      --secondary-light: #DDF2EC;
-      --text-main: #2A2426;
-      --text-sub: #5E5458;
-      --text-muted: #8C8085;
-      --border-soft: #F0E1E4;
-      --shadow-card: 0 6px 20px rgba(240, 101, 120, 0.08);
-      --radius-lg: 20px;
-      --radius-md: 14px;
-      --radius-sm: 10px;
+      --bg-cream: #FFF8F5; --bg-card: #FFFFFF; --bg-soft-pink: #FFF0F2; --bg-soft-mint: #EFF8F4;
+      --bg-soft-amber: #FFF8EB; --bg-soft-lavender: #F5F2FF;
+      --primary: #F06578; --primary-dark: #D94B5F; --primary-light: #FFDCE1;
+      --secondary: #377D6A; --secondary-light: #DDF2EC;
+      --text-main: #2A2426; --text-sub: #5E5458; --text-muted: #8C8085;
+      --border-soft: #F0E1E4; --shadow-card: 0 6px 20px rgba(240, 101, 120, 0.08);
+      --radius-lg: 20px; --radius-md: 14px; --radius-sm: 10px;
+      --handle-bg: #F1ECED; --handle-dot: #A79CA0;
       --base-font: 15px;
     }
     body.large-text { --base-font: 18.5px; }
-
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
     html, body { -webkit-text-size-adjust: 100%; }
-
     body {
       font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
-      background-color: var(--bg-cream);
-      color: var(--text-main);
-      font-size: var(--base-font);
-      line-height: 1.65;
-      padding-bottom: calc(92px + env(safe-area-inset-bottom));
-      background-image: radial-gradient(#FFE3E8 1px, transparent 1px);
-      background-size: 22px 22px;
+      background-color: var(--bg-cream); color: var(--text-main);
+      font-size: var(--base-font); line-height: 1.65;
+      padding-bottom: calc(96px + env(safe-area-inset-bottom));
+      background-image: radial-gradient(#FFE3E8 1px, transparent 1px); background-size: 22px 22px;
     }
     body.sheet-open { overflow: hidden; }
-    body.is-sorting, body.is-sorting * { user-select: none !important; -webkit-user-select: none !important; }
-
-    button { font-family: inherit; touch-action: manipulation; }
+    body.is-sorting, body.is-sorting * { user-select: none !important; -webkit-user-select: none !important; cursor: grabbing !important; }
+    button { font-family: inherit; touch-action: manipulation; color: inherit; }
     [data-action] { cursor: pointer; }
-
     .app-container { max-width: 680px; margin: 0 auto; padding: 14px 14px 24px; }
 
-    /* Top bar */
+    /* ---------- Top bar ---------- */
     .top-bar {
       position: sticky; top: 0; z-index: 100;
-      background: rgba(255, 248, 245, 0.94);
-      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-      padding: 10px 14px; padding-top: calc(10px + env(safe-area-inset-top));
+      background: rgba(255, 248, 245, 0.94); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      padding: 8px 12px; padding-top: calc(8px + env(safe-area-inset-top));
       border-bottom: 1px solid var(--border-soft);
-      display: flex; align-items: center; justify-content: space-between; gap: 8px;
     }
-    .top-title {
-      font-size: 0.92em; font-weight: 700; color: var(--primary-dark);
-      min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    .top-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; max-width: 680px; margin: 0 auto; }
+    .top-title { font-size: 0.9em; font-weight: 700; color: var(--primary-dark); min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .top-tools { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+    .tool-btn {
+      border: 1.5px solid var(--secondary); background: #FFFFFF; color: var(--secondary);
+      font-weight: 700; font-size: 13px; padding: 5px 10px; border-radius: 999px; white-space: nowrap;
+      box-shadow: 0 2px 8px rgba(55, 125, 106, 0.12);
     }
-    .font-seg {
-      display: inline-flex; flex-shrink: 0;
-      background: #FFFFFF; border: 1.5px solid var(--primary);
-      border-radius: 999px; padding: 2px;
-      box-shadow: 0 2px 8px rgba(240, 101, 120, 0.12);
-    }
-    .font-seg button {
-      border: none; background: transparent; color: var(--primary-dark);
-      font-weight: 700; padding: 5px 11px; border-radius: 999px;
-      font-size: 13px; line-height: 1.3; white-space: nowrap;
-    }
+    .font-seg { display: inline-flex; background: #FFFFFF; border: 1.5px solid var(--primary); border-radius: 999px; padding: 2px; box-shadow: 0 2px 8px rgba(240,101,120,0.12); }
+    .font-seg button { border: none; background: transparent; color: var(--primary-dark); font-weight: 700; padding: 4px 9px; border-radius: 999px; font-size: 13px; line-height: 1.3; white-space: nowrap; }
     .font-seg button .big-ga { font-size: 1.2em; }
     .font-seg button.active { background: var(--primary); color: #FFFFFF; }
+    .sync-pill { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 700; color: var(--text-muted); background: transparent; border: none; padding: 2px 0 0; }
+    .sync-dot { width: 7px; height: 7px; border-radius: 50%; background: #C9C0C3; }
+    .sync-pill.ok .sync-dot { background: #2FA36B; }
+    .sync-pill.ok { color: #2B7D58; }
+    .sync-pill.busy .sync-dot { background: #E5A33C; }
+    .sync-pill.off .sync-dot { background: #D94B5F; }
+    .sync-pill.off { color: #C93B50; }
 
-    /* Hero */
-    .hero-card {
-      background: linear-gradient(135deg, #FF8596 0%, #F06578 55%, #E87A90 100%);
-      color: #FFFFFF; border-radius: var(--radius-lg);
-      padding: 22px 20px; margin-bottom: 16px;
-      box-shadow: 0 10px 26px rgba(240, 101, 120, 0.25);
-      position: relative; overflow: hidden;
-    }
-    .hero-card::after {
-      content: "🌸"; position: absolute; right: 14px; bottom: -8px;
-      font-size: 4.5rem; opacity: 0.18; pointer-events: none;
-    }
+    /* ---------- Hero & quick ---------- */
+    .hero-card { background: linear-gradient(135deg, #FF8596 0%, #F06578 55%, #E87A90 100%); color: #FFFFFF; border-radius: var(--radius-lg); padding: 22px 20px; margin-bottom: 16px; box-shadow: 0 10px 26px rgba(240,101,120,0.25); position: relative; overflow: hidden; }
+    .hero-card::after { content: "🌸"; position: absolute; right: 14px; bottom: -8px; font-size: 4.5rem; opacity: 0.18; pointer-events: none; }
     .hero-card > * { position: relative; z-index: 1; }
     .hero-badge-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
     .hero-pill { background: rgba(255,255,255,0.24); padding: 4px 11px; border-radius: 999px; font-size: 0.78em; font-weight: 600; }
     .hero-title { font-size: 1.38em; font-weight: 700; line-height: 1.35; margin-bottom: 6px; letter-spacing: -0.4px; }
     .hero-subtitle { font-size: 0.88em; opacity: 0.95; line-height: 1.5; }
-
-    /* Quick grid */
     .quick-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 18px; }
     .quick-item { background: var(--bg-card); border: 1px solid var(--border-soft); border-radius: var(--radius-md); padding: 12px 13px; box-shadow: var(--shadow-card); }
     .quick-label { font-size: 0.76em; font-weight: 700; color: var(--primary-dark); margin-bottom: 4px; }
     .quick-val { font-size: 0.84em; font-weight: 600; line-height: 1.45; }
     .quick-sub { font-size: 0.76em; color: var(--text-sub); margin-top: 2px; }
 
-    /* Filter pills */
+    /* ---------- Filters / hints ---------- */
     .filter-scroll { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 6px; scrollbar-width: none; }
     .filter-scroll::-webkit-scrollbar { display: none; }
-    .filter-pill {
-      background: #FFFFFF; border: 1.5px solid var(--border-soft); color: var(--text-sub);
-      font-size: 0.85em; font-weight: 600; padding: 8px 14px; border-radius: 999px; white-space: nowrap;
-    }
+    .filter-pill { background: #FFFFFF; border: 1.5px solid var(--border-soft); color: var(--text-sub); font-size: 0.85em; font-weight: 600; padding: 8px 14px; border-radius: 999px; white-space: nowrap; }
     .filter-pill.active { background: var(--primary); border-color: var(--primary); color: #FFFFFF; box-shadow: 0 4px 12px rgba(240,101,120,0.25); }
-
-    .edit-hint { font-size: 0.76em; color: var(--text-muted); margin: 0 2px 12px; }
-
+    .edit-hint { font-size: 0.76em; color: var(--text-muted); margin: 0 2px 12px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .hint-grip { display: inline-block; width: 16px; height: 18px; border-radius: 4px; background: var(--handle-bg) radial-gradient(circle, var(--handle-dot) 1.2px, transparent 1.4px) center / 5px 5px; vertical-align: middle; }
     .tab-section { display: none; }
     .tab-section.active { display: block; }
 
-    /* Shared edit / add buttons */
-    .edit-btn {
-      border: none; background: transparent; color: var(--text-muted);
-      font-size: 1em; line-height: 1; width: 32px; height: 30px; border-radius: 8px;
-      flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center;
-    }
+    /* ---------- Shared buttons ---------- */
+    .edit-btn { border: none; background: transparent; color: var(--text-muted); font-size: 1em; line-height: 1; width: 32px; height: 30px; border-radius: 8px; flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; }
     .edit-btn:active { background: var(--bg-soft-pink); color: var(--primary-dark); }
-    .add-inline {
-      display: block; width: 100%; margin: 4px 0 14px;
-      border: 1.5px dashed var(--primary-light); background: #FFFBFB; color: var(--primary-dark);
-      font-weight: 700; font-size: 0.85em; padding: 9px; border-radius: var(--radius-sm);
-    }
-    .add-inline.small {
-      display: inline-block; width: auto; margin: 6px 0 0; padding: 4px 12px;
-      font-size: 0.78em; border-radius: 999px; background: rgba(255,255,255,0.7);
-    }
-    .reset-link {
-      display: block; margin: 6px auto 0; border: none; background: transparent;
-      color: var(--text-muted); font-size: 0.78em; text-decoration: underline;
-    }
+    .add-inline { display: block; width: 100%; margin: 4px 0 14px; border: 1.5px dashed var(--primary-light); background: #FFFBFB; color: var(--primary-dark); font-weight: 700; font-size: 0.85em; padding: 9px; border-radius: var(--radius-sm); }
+    .add-inline.small { display: inline-block; width: auto; margin: 6px 0 0; padding: 4px 12px; font-size: 0.78em; border-radius: 999px; background: rgba(255,255,255,0.7); }
+    .reset-link { display: block; margin: 6px auto 0; border: none; background: transparent; color: var(--text-muted); font-size: 0.78em; text-decoration: underline; }
 
-    /* Sortable */
-    .sort-item { -webkit-touch-callout: none; user-select: none; -webkit-user-select: none; }
+    /* ---------- Drag handle ---------- */
+    .drag-handle {
+      flex: 0 0 34px; align-self: stretch; min-height: 34px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--handle-bg); border-radius: 9px;
+      touch-action: none; cursor: grab;
+      -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
+    }
+    .drag-handle::before { content: ""; width: 11px; height: 19px; background-image: radial-gradient(circle, var(--handle-dot) 1.6px, transparent 1.8px); background-size: 5.5px 6.3px; }
+    .drag-handle:active { background: #E6DCDF; }
     .sort-item.dragging {
-      background: #FFFFFF !important;
-      box-shadow: 0 10px 26px rgba(240, 101, 120, 0.3) !important;
-      outline: 2px dashed var(--primary);
-      outline-offset: 2px;
-      border-radius: 10px;
-      transform: scale(1.02);
-      position: relative; z-index: 50;
-      transition: transform 0.12s ease;
+      background: #FFFFFF !important; box-shadow: 0 12px 28px rgba(240, 101, 120, 0.28) !important;
+      outline: 2px solid var(--primary); outline-offset: 1px; border-radius: 12px;
+      transform: scale(1.015); position: relative; z-index: 50;
     }
+    .sort-item.dragging .drag-handle { background: var(--primary-light); }
 
-    /* Day cards */
-    .day-card { background: var(--bg-card); border: 1px solid var(--border-soft); border-radius: var(--radius-lg); padding: 18px 16px; margin-bottom: 18px; box-shadow: var(--shadow-card); }
+    /* ---------- Day cards ---------- */
+    .day-card { background: var(--bg-card); border: 1px solid var(--border-soft); border-radius: var(--radius-lg); padding: 18px 14px 18px 16px; margin-bottom: 18px; box-shadow: var(--shadow-card); }
     .day-header { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding-bottom: 12px; margin-bottom: 14px; border-bottom: 2px dashed var(--border-soft); }
     .day-head-right { display: flex; align-items: center; gap: 2px; flex-shrink: 0; }
     .day-tag { display: inline-block; background: var(--bg-soft-pink); color: var(--primary-dark); font-size: 0.78em; font-weight: 700; padding: 4px 10px; border-radius: 999px; margin-bottom: 4px; }
     .day-title { font-size: 1.15em; font-weight: 700; }
     .day-emoji { font-size: 2rem; background: var(--bg-cream); width: 50px; height: 50px; border-radius: 16px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border-soft); }
-
-    .timeline { list-style: none; margin-bottom: 6px; padding-left: 16px; border-left: 2.5px solid var(--primary-light); min-height: 8px; }
-    .timeline-item { position: relative; margin-bottom: 6px; padding: 3px 0 3px 6px; display: flex; align-items: flex-start; gap: 4px; }
-    .timeline-item::before {
-      content: ""; position: absolute; left: -22px; top: 10px; width: 10px; height: 10px; border-radius: 50%;
-      background: var(--primary); border: 2px solid #FFFFFF; box-shadow: 0 0 0 2px var(--primary-light);
-    }
-    .item-main { flex: 1; min-width: 0; }
+    .timeline { list-style: none; margin-bottom: 6px; padding-left: 14px; border-left: 2.5px solid var(--primary-light); min-height: 8px; }
+    .timeline-item { position: relative; margin-bottom: 6px; padding-left: 4px; display: flex; align-items: flex-start; gap: 8px; }
+    .timeline-item::before { content: ""; position: absolute; left: -21px; top: 12px; width: 10px; height: 10px; border-radius: 50%; background: var(--primary); border: 2px solid #FFFFFF; box-shadow: 0 0 0 2px var(--primary-light); }
+    .timeline-item .drag-handle { flex-basis: 32px; }
+    .item-main { flex: 1; min-width: 0; padding-top: 3px; }
     .time-badge { display: inline-block; font-size: 0.78em; font-weight: 700; color: var(--primary-dark); background: var(--bg-soft-pink); padding: 1px 8px; border-radius: 6px; margin-right: 6px; }
     .time-desc { font-size: 0.92em; font-weight: 500; }
-
-    .info-box { border-radius: var(--radius-md); padding: 13px 12px 10px 14px; margin-bottom: 10px; font-size: 0.89em; }
+    .info-box { border-radius: var(--radius-md); padding: 13px 10px 10px 10px; margin-bottom: 10px; font-size: 0.89em; }
     .info-box.food { background: var(--bg-soft-amber); border: 1px solid #F7E3BE; }
     .info-box.shop { background: var(--bg-soft-lavender); border: 1px solid #E3DCFA; }
     .info-box.tip { background: var(--bg-soft-mint); border: 1px solid #CBE8DF; }
-    .info-box-title { font-weight: 700; font-size: 0.94em; margin-bottom: 6px; }
+    .info-box .drag-handle { background: rgba(255,255,255,0.65); flex-basis: 30px; }
+    .info-box-title { font-weight: 700; font-size: 0.94em; margin: 0 0 6px 4px; }
     .info-box.food .info-box-title { color: #A86414; }
     .info-box.shop .info-box-title { color: #543D99; }
     .info-box.tip .info-box-title { color: #246352; }
     .info-list { list-style: none; }
-    .info-list > li { display: flex; align-items: flex-start; gap: 4px; padding: 2px 0; margin-bottom: 2px; }
-    .info-list > li .item-main { position: relative; padding-left: 13px; }
-    .info-list > li .item-main::before { content: "•"; position: absolute; left: 1px; top: 0; font-weight: 700; }
-    .info-list .edit-btn { height: 24px; width: 28px; }
-
+    .info-list > li { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 5px; }
+    .info-list .item-main { padding-top: 4px; }
+    .info-list .edit-btn { height: 28px; width: 28px; }
     .link-btn-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
     .link-chip { display: inline-flex; align-items: stretch; border-radius: 999px; box-shadow: 0 2px 6px rgba(0,0,0,0.04); }
-    .mini-link-btn {
-      display: inline-flex; align-items: center; gap: 5px; background: #FFFFFF;
-      border: 1px solid var(--border-soft); color: var(--text-main); text-decoration: none;
-      font-size: 0.8em; font-weight: 600; padding: 7px 12px; border-radius: 999px;
-    }
-    .link-chip .mini-link-btn { border-radius: 999px 0 0 999px; }
+    .link-chip .drag-handle { flex-basis: 26px; min-height: 0; border-radius: 999px 0 0 999px; border: 1px solid var(--border-soft); border-right: none; }
+    .link-chip .drag-handle::before { width: 6px; }
+    .mini-link-btn { display: inline-flex; align-items: center; gap: 5px; background: #FFFFFF; border: 1px solid var(--border-soft); color: var(--text-main); text-decoration: none; font-size: 0.8em; font-weight: 600; padding: 7px 12px; border-radius: 999px; }
+    .link-chip .mini-link-btn { border-radius: 0; }
     .link-chip .edit-btn { height: auto; width: 30px; background: #FFFFFF; border: 1px solid var(--border-soft); border-left: none; border-radius: 0 999px 999px 0; font-size: 0.85em; }
     .mini-link-btn.primary-link { background: var(--secondary); border-color: var(--secondary); color: #FFFFFF; }
 
-    /* Budget */
-    .budget-summary-card { background: linear-gradient(135deg, #377D6A 0%, #2B6656 100%); color: #FFFFFF; border-radius: var(--radius-lg); padding: 18px; margin-bottom: 16px; box-shadow: 0 8px 22px rgba(55,125,106,0.22); }
-    .budget-top-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    /* ---------- Budget ---------- */
+    .seg-tabs { display: flex; background: #FFFFFF; border: 1px solid var(--border-soft); border-radius: 999px; padding: 4px; margin-bottom: 14px; box-shadow: var(--shadow-card); }
+    .seg-tabs button { flex: 1; border: none; background: transparent; padding: 9px 6px; border-radius: 999px; font-weight: 700; font-size: 0.9em; color: var(--text-sub); }
+    .seg-tabs button.active { background: var(--secondary); color: #FFFFFF; }
+    .budget-summary-card { background: linear-gradient(135deg, #377D6A 0%, #2B6656 100%); color: #FFFFFF; border-radius: var(--radius-lg); padding: 18px; margin-bottom: 14px; box-shadow: 0 8px 22px rgba(55,125,106,0.22); }
+    .budget-top-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
     .person-toggle { display: inline-flex; background: rgba(255,255,255,0.18); border-radius: 999px; padding: 3px; }
     .person-btn { border: none; background: transparent; color: #FFFFFF; font-size: 0.78em; font-weight: 700; padding: 5px 11px; border-radius: 999px; }
     .person-btn.active { background: #FFFFFF; color: var(--secondary); }
     .budget-amounts { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
-    .budget-jpy { font-size: 1.55em; font-weight: 700; }
+    .budget-jpy { font-size: 1.7em; font-weight: 700; letter-spacing: -0.5px; }
     .budget-krw { font-size: 0.95em; background: rgba(255,255,255,0.16); padding: 3px 10px; border-radius: 999px; }
-    .rate-row { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; font-size: 0.8em; margin-bottom: 12px; }
+    .rate-row { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; font-size: 0.8em; margin-bottom: 10px; }
     .rate-input { width: 70px; padding: 3px 6px; border-radius: 6px; border: none; font-weight: 700; text-align: center; color: var(--text-main); font-size: 16px; }
     .bar-track { height: 10px; background: rgba(255,255,255,0.22); border-radius: 999px; overflow: hidden; display: flex; margin-bottom: 8px; }
     .bar-track > div { height: 100%; transition: width 0.3s; }
-    .bar-seg-food { background: #FFD166; }
-    .bar-seg-cafe { background: #FF9EAA; }
-    .bar-seg-play { background: #C9B8FF; }
-    .bar-seg-shop { background: #A0E7E5; }
+    .bar-seg-food { background: #FFD166; } .bar-seg-cafe { background: #FF9EAA; } .bar-seg-play { background: #C9B8FF; } .bar-seg-shop { background: #A0E7E5; }
     .bar-legend { display: flex; justify-content: space-between; font-size: 0.76em; flex-wrap: wrap; gap: 6px; }
+    .budget-meter-label { display: flex; justify-content: space-between; font-size: 0.8em; margin-bottom: 4px; gap: 6px; flex-wrap: wrap; }
+    .meter-fill { background: #FFD166; }
+    .meter-fill.over { background: #FF8A8A; }
+    .ghost-btn { border: 1px solid rgba(255,255,255,0.6); background: transparent; color: #FFFFFF; font-size: 0.74em; font-weight: 700; padding: 3px 10px; border-radius: 999px; }
 
-    .spot-card { background: #FFFFFF; border: 1px solid var(--border-soft); border-radius: var(--radius-md); padding: 14px; margin-bottom: 11px; box-shadow: var(--shadow-card); }
+    .stat-card { background: #FFFFFF; border: 1px solid var(--border-soft); border-radius: var(--radius-md); padding: 14px; margin-bottom: 14px; box-shadow: var(--shadow-card); }
+    .stat-title { font-weight: 700; font-size: 0.9em; margin-bottom: 8px; color: var(--text-main); }
+    .cat-row { display: grid; grid-template-columns: 26px 1fr auto; align-items: center; gap: 8px; font-size: 0.85em; margin-bottom: 7px; }
+    .cat-row .cat-bar { grid-column: 2 / 4; height: 6px; background: #F4ECEE; border-radius: 999px; overflow: hidden; margin-top: -4px; }
+    .cat-row .cat-bar > div { height: 100%; background: var(--primary); border-radius: 999px; }
+    .mini-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+    .mini-chip { background: var(--bg-cream); border: 1px solid var(--border-soft); border-radius: 999px; font-size: 0.78em; font-weight: 600; padding: 4px 10px; }
+    .day-group { margin-bottom: 14px; }
+    .day-group-head { display: flex; justify-content: space-between; align-items: baseline; font-size: 0.84em; font-weight: 700; color: var(--text-sub); margin: 0 4px 6px; }
+    .exp-row { display: flex; align-items: center; gap: 10px; background: #FFFFFF; border: 1px solid var(--border-soft); border-radius: var(--radius-md); padding: 10px 12px; margin-bottom: 7px; box-shadow: 0 3px 10px rgba(0,0,0,0.03); }
+    .exp-icon { width: 38px; height: 38px; border-radius: 12px; background: var(--bg-soft-pink); display: flex; align-items: center; justify-content: center; font-size: 1.25rem; flex-shrink: 0; }
+    .exp-main { flex: 1; min-width: 0; }
+    .exp-title { font-weight: 700; font-size: 0.92em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .exp-meta { font-size: 0.74em; color: var(--text-muted); }
+    .exp-amt { text-align: right; flex-shrink: 0; }
+    .exp-amt b { display: block; font-size: 0.98em; }
+    .exp-amt small { font-size: 0.74em; color: var(--text-muted); }
+    .empty-box { text-align: center; color: var(--text-muted); font-size: 0.85em; padding: 26px 10px; background: #FFFFFF; border: 1.5px dashed var(--border-soft); border-radius: var(--radius-md); }
+
+    .fab {
+      position: fixed; right: max(16px, calc(50% - 324px)); bottom: calc(84px + env(safe-area-inset-bottom)); z-index: 120;
+      display: none; align-items: center; gap: 6px; border: none; background: var(--primary); color: #FFFFFF;
+      font-size: 1em; font-weight: 700; padding: 13px 20px; border-radius: 999px; box-shadow: 0 10px 24px rgba(240,101,120,0.42);
+    }
+    body.show-fab .fab { display: inline-flex; }
+
+    .spot-card { display: flex; gap: 0; background: #FFFFFF; border: 1px solid var(--border-soft); border-radius: var(--radius-md); margin-bottom: 11px; box-shadow: var(--shadow-card); overflow: hidden; }
+    .spot-card > .drag-handle, .check-item > .drag-handle, .address-box > .drag-handle, .phrase-item > .drag-handle { flex-basis: 38px; border-radius: 0; }
+    .spot-body { flex: 1; min-width: 0; padding: 14px 12px 12px 12px; }
     .spot-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 6px; }
     .spot-actions { display: flex; align-items: center; gap: 2px; flex-shrink: 0; }
     .spot-cat-badge { font-size: 0.74em; font-weight: 700; padding: 3px 9px; border-radius: 999px; display: inline-block; margin-bottom: 4px; }
-    .cat-food { background: #FFF0D6; color: #A86414; }
-    .cat-cafe { background: #FFE6EA; color: #C93B50; }
-    .cat-play { background: #EEE8FF; color: #5B47A8; }
-    .cat-shop { background: #E2F6F5; color: #23706C; }
+    .cat-food { background: #FFF0D6; color: #A86414; } .cat-cafe { background: #FFE6EA; color: #C93B50; } .cat-play { background: #EEE8FF; color: #5B47A8; } .cat-shop { background: #E2F6F5; color: #23706C; }
     .spot-name { font-size: 1.02em; font-weight: 700; }
     .spot-loc { font-size: 0.8em; color: var(--text-sub); }
     .spot-menu { font-size: 0.88em; font-weight: 600; margin: 6px 0 4px; }
     .spot-reason { font-size: 0.83em; color: var(--text-sub); margin-bottom: 10px; }
-    .spot-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 8px; border-top: 1px solid #F4ECEE; gap: 8px; }
+    .spot-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 8px; border-top: 1px solid #F4ECEE; gap: 8px; flex-wrap: wrap; }
     .spot-price { font-weight: 700; font-size: 0.92em; color: var(--secondary); }
     .spot-price small { font-size: 0.82em; color: #666; font-weight: 500; }
-    .qty-control { display: inline-flex; align-items: center; gap: 8px; background: var(--bg-cream); padding: 4px 10px; border-radius: 999px; border: 1px solid var(--border-soft); flex-shrink: 0; }
+    .spot-right { display: flex; align-items: center; gap: 6px; }
+    .spent-btn { border: 1px solid var(--secondary); background: var(--secondary-light); color: var(--secondary); font-size: 0.76em; font-weight: 700; padding: 5px 9px; border-radius: 999px; }
+    .qty-control { display: inline-flex; align-items: center; gap: 6px; background: var(--bg-cream); padding: 3px 8px; border-radius: 999px; border: 1px solid var(--border-soft); }
     .qty-btn { width: 26px; height: 26px; border-radius: 50%; border: none; background: #FFFFFF; color: var(--primary-dark); font-weight: 700; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
-    .qty-num { font-size: 0.88em; font-weight: 700; min-width: 18px; text-align: center; }
+    .qty-num { font-size: 0.88em; font-weight: 700; min-width: 16px; text-align: center; }
 
-    /* Checklist */
+    /* ---------- Checklist ---------- */
     .progress-card { background: #FFFFFF; border: 1px solid var(--border-soft); border-radius: var(--radius-lg); padding: 16px; margin-bottom: 14px; box-shadow: var(--shadow-card); }
     .progress-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; gap: 8px; }
     .progress-pct { font-size: 1.3em; font-weight: 700; color: var(--primary-dark); }
     .progress-track { height: 12px; background: var(--bg-soft-pink); border-radius: 999px; overflow: hidden; margin-bottom: 8px; }
     .progress-fill { height: 100%; background: linear-gradient(90deg, #FF8FA0, #F06578); border-radius: 999px; transition: width 0.3s ease; }
-    .check-item { background: #FFFFFF; border: 1px solid var(--border-soft); border-radius: var(--radius-md); padding: 13px 8px 13px 14px; margin-bottom: 9px; display: flex; align-items: flex-start; gap: 12px; box-shadow: 0 3px 10px rgba(0,0,0,0.03); }
+    .check-item { background: #FFFFFF; border: 1px solid var(--border-soft); border-radius: var(--radius-md); margin-bottom: 9px; display: flex; align-items: stretch; box-shadow: 0 3px 10px rgba(0,0,0,0.03); overflow: hidden; }
+    .check-tap { flex: 1; min-width: 0; display: flex; align-items: flex-start; gap: 12px; padding: 13px 4px 13px 12px; }
     .check-item.checked { background: #FAF9FA; }
     .check-item.checked .check-content { opacity: 0.6; }
     .check-box { width: 24px; height: 24px; border-radius: 8px; border: 2px solid var(--primary); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; color: #FFFFFF; font-weight: 700; font-size: 0.85em; background: #FFFFFF; }
     .check-item.checked .check-box { background: var(--secondary); border-color: var(--secondary); }
     .check-content { flex: 1; min-width: 0; }
+    .check-item > .edit-btn { align-self: center; margin-right: 4px; }
     .owner-tag { display: inline-block; font-size: 0.72em; font-weight: 700; padding: 2px 8px; border-radius: 999px; margin-bottom: 3px; }
-    .owner-all { background: #EBF3FA; color: #2B5B84; }
-    .owner-mom { background: #FFE6EA; color: #C93B50; }
-    .owner-dau { background: #E6F5F0; color: #246352; }
+    .owner-all { background: #EBF3FA; color: #2B5B84; } .owner-mom { background: #FFE6EA; color: #C93B50; } .owner-dau { background: #E6F5F0; color: #246352; }
     .check-title { font-weight: 700; font-size: 0.95em; }
     .check-item.checked .check-title { text-decoration: line-through; color: var(--text-muted); }
     .check-desc { font-size: 0.82em; color: var(--text-sub); margin-top: 2px; }
 
-    /* Memo */
-    .memo-card { background: #FFFFFF; border: 1px solid var(--border-soft); border-radius: var(--radius-lg); padding: 16px; margin-bottom: 14px; box-shadow: var(--shadow-card); }
-    .memo-title { font-size: 1.02em; font-weight: 700; color: var(--primary-dark); margin-bottom: 10px; }
-    .address-box { background: var(--bg-cream); border: 1px solid var(--border-soft); border-radius: var(--radius-sm); padding: 12px 8px 12px 12px; font-size: 0.88em; margin-bottom: 10px; display: flex; gap: 4px; align-items: flex-start; }
+    /* ---------- Memo ---------- */
+    .memo-card { background: #FFFFFF; border: 1px solid var(--border-soft); border-radius: var(--radius-lg); padding: 16px 12px; margin-bottom: 14px; box-shadow: var(--shadow-card); }
+    .memo-title { font-size: 1.02em; font-weight: 700; color: var(--primary-dark); margin: 0 4px 10px; }
+    .address-box, .phrase-item { background: var(--bg-cream); border: 1px solid var(--border-soft); border-radius: var(--radius-sm); margin-bottom: 9px; display: flex; align-items: stretch; overflow: hidden; }
+    .address-box .item-main, .phrase-item .item-main { padding: 11px 4px 11px 12px; font-size: 0.88em; }
+    .address-box > .edit-btn, .phrase-item > .edit-btn { align-self: center; margin-right: 4px; }
     .addr-name { font-weight: 700; }
     .addr-ja { color: var(--text-sub); margin: 4px 0; }
     .addr-en { color: var(--text-sub); margin-bottom: 8px; }
-    .copy-btn { background: var(--secondary); color: #FFFFFF; border: none; border-radius: 999px; padding: 7px 14px; font-size: 0.92em; font-weight: 700; }
-    .phrase-item { padding: 11px 8px 11px 12px; border-radius: var(--radius-sm); background: var(--bg-cream); margin-bottom: 8px; border: 1px solid #F3E5E8; display: flex; gap: 4px; align-items: flex-start; }
+    .btn-row { display: flex; flex-wrap: wrap; gap: 6px; }
+    .copy-btn { background: var(--secondary); color: #FFFFFF; border: none; border-radius: 999px; padding: 7px 13px; font-size: 0.92em; font-weight: 700; }
+    .speak-btn { background: #FFFFFF; color: var(--primary-dark); border: 1.5px solid var(--primary); border-radius: 999px; padding: 6px 12px; font-size: 0.92em; font-weight: 700; }
+    .phrase-item .item-main { font-size: 1em; }
     .phrase-ko { font-size: 0.84em; font-weight: 700; color: var(--primary-dark); }
-    .phrase-jp { font-size: 1.05em; font-weight: 700; margin: 2px 0; }
+    .phrase-jp { font-size: 1.08em; font-weight: 700; margin: 3px 0; display: flex; align-items: flex-start; gap: 6px; }
+    .phrase-jp .spk { flex-shrink: 0; font-size: 0.85em; background: #FFFFFF; border: 1.5px solid var(--primary-light); border-radius: 999px; padding: 0 7px; line-height: 1.6; }
+    .phrase-jp:active { color: var(--primary-dark); }
     .phrase-pron { font-size: 0.84em; color: var(--secondary); font-weight: 600; }
     .contact-list { list-style: none; font-size: 0.88em; }
-    .contact-list > li { display: flex; gap: 4px; align-items: flex-start; padding: 6px 0; border-bottom: 1px dashed #F3E5E8; }
+    .contact-list > li { display: flex; gap: 8px; align-items: flex-start; padding: 5px 0; border-bottom: 1px dashed #F3E5E8; }
     .contact-list > li:last-child { border-bottom: none; }
+    .contact-list .drag-handle { flex-basis: 32px; }
 
-    /* Bottom nav */
-    .bottom-nav {
-      position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(255,255,255,0.96); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-      border-top: 1px solid var(--border-soft); display: flex; justify-content: space-around;
-      padding: 8px 6px calc(8px + env(safe-area-inset-bottom));
-      box-shadow: 0 -4px 18px rgba(0,0,0,0.05);
-    }
+    /* ---------- Bottom nav / toast ---------- */
+    .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.96); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-top: 1px solid var(--border-soft); display: flex; justify-content: space-around; padding: 8px 6px calc(8px + env(safe-area-inset-bottom)); box-shadow: 0 -4px 18px rgba(0,0,0,0.05); }
     .nav-btn { flex: 1; border: none; background: transparent; display: flex; flex-direction: column; align-items: center; gap: 3px; color: var(--text-muted); font-size: 0.76em; font-weight: 600; padding: 4px 2px; border-radius: 12px; }
     .nav-btn .nav-icon { font-size: 1.35rem; line-height: 1; }
     .nav-btn.active { color: var(--primary-dark); background: var(--bg-soft-pink); font-weight: 700; }
-
-    /* Toast */
-    .toast {
-      position: fixed; bottom: calc(84px + env(safe-area-inset-bottom)); left: 50%;
-      transform: translateX(-50%) translateY(20px);
-      background: rgba(42,36,38,0.92); color: #FFFFFF; padding: 9px 18px; border-radius: 999px;
-      font-size: 0.85em; font-weight: 600; opacity: 0; pointer-events: none; transition: all 0.25s ease; z-index: 400; white-space: nowrap;
-    }
+    .toast { position: fixed; bottom: calc(140px + env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%) translateY(20px); background: rgba(42,36,38,0.92); color: #FFFFFF; padding: 9px 18px; border-radius: 999px; font-size: 0.85em; font-weight: 600; opacity: 0; pointer-events: none; transition: all 0.25s ease; z-index: 400; white-space: nowrap; max-width: 92vw; overflow: hidden; text-overflow: ellipsis; }
     .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-    /* Edit sheet */
+    /* ---------- Sheet ---------- */
     .sheet-backdrop { position: fixed; inset: 0; background: rgba(42,36,38,0.4); z-index: 300; opacity: 0; pointer-events: none; transition: opacity 0.2s ease; }
-    .sheet {
-      position: fixed; left: 0; right: 0; bottom: 0; z-index: 310;
-      max-width: 680px; margin: 0 auto; max-height: 88vh; overflow-y: auto;
-      background: #FFFFFF; border-radius: 22px 22px 0 0;
-      padding: 10px 18px calc(18px + env(safe-area-inset-bottom));
-      transform: translateY(105%); visibility: hidden; transition: transform 0.25s ease, visibility 0s linear 0.25s;
-      box-shadow: 0 -8px 30px rgba(0,0,0,0.12);
-    }
+    .sheet { position: fixed; left: 0; right: 0; bottom: 0; z-index: 310; max-width: 680px; margin: 0 auto; max-height: 90vh; overflow-y: auto; -webkit-overflow-scrolling: touch; background: #FFFFFF; border-radius: 22px 22px 0 0; padding: 10px 16px calc(16px + env(safe-area-inset-bottom)); transform: translateY(105%); visibility: hidden; transition: transform 0.25s ease, visibility 0s linear 0.25s; box-shadow: 0 -8px 30px rgba(0,0,0,0.12); }
     body.sheet-open .sheet-backdrop { opacity: 1; pointer-events: auto; }
     body.sheet-open .sheet { transform: translateY(0); visibility: visible; transition: transform 0.25s ease, visibility 0s; }
     .sheet-handle { width: 44px; height: 5px; border-radius: 999px; background: #E9DADE; margin: 0 auto 12px; }
     .sheet-title { font-weight: 700; font-size: 1.05em; color: var(--primary-dark); margin-bottom: 12px; }
     .sheet-field { display: block; margin-bottom: 12px; }
     .sheet-field > span { display: block; font-size: 0.8em; font-weight: 700; color: var(--text-sub); margin-bottom: 4px; }
-    .sheet-field input, .sheet-field textarea, .sheet-field select {
-      width: 100%; padding: 10px 12px; border: 1px solid var(--border-soft); border-radius: var(--radius-sm);
-      background: var(--bg-cream); color: var(--text-main); font-family: inherit; font-size: 16px; line-height: 1.5;
-    }
+    .sheet-field input, .sheet-field textarea, .sheet-field select, .sheet-input { width: 100%; padding: 10px 12px; border: 1px solid var(--border-soft); border-radius: var(--radius-sm); background: var(--bg-cream); color: var(--text-main); font-family: inherit; font-size: 16px; line-height: 1.5; }
     .sheet-field textarea { resize: vertical; min-height: 70px; }
     .sheet-note { font-size: 0.76em; color: var(--text-muted); margin: -4px 0 12px; }
-    .sheet-actions { display: flex; gap: 8px; margin-top: 6px; }
-    .sheet-actions button { border: none; border-radius: var(--radius-sm); padding: 11px 14px; font-size: 0.92em; font-weight: 700; }
-    .sheet-del { background: #FFF0F0; color: #C93B50; }
-    .sheet-cancel { background: #F4EFF0; color: var(--text-sub); margin-left: auto; }
-    .sheet-save { background: var(--primary); color: #FFFFFF; min-width: 84px; }
+    .sheet-actions { display: flex; gap: 8px; margin-top: 8px; position: sticky; bottom: 0; background: #FFFFFF; padding-top: 6px; }
+    .sheet-actions button { border: none; border-radius: var(--radius-sm); padding: 12px 14px; font-size: 0.95em; font-weight: 700; }
+    .sheet-del { background: #FFF0F0; color: #C93B50 !important; }
+    .sheet-cancel { background: #F4EFF0; color: var(--text-sub) !important; margin-left: auto; }
+    .sheet-save { background: var(--primary); color: #FFFFFF !important; min-width: 96px; }
+
+    /* Expense entry */
+    .amt-display { display: flex; align-items: center; justify-content: space-between; gap: 10px; background: var(--bg-cream); border: 1.5px solid var(--primary-light); border-radius: var(--radius-md); padding: 10px 12px; margin-bottom: 4px; }
+    .amt-num { font-size: 1.9em; font-weight: 700; letter-spacing: -0.5px; line-height: 1.2; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .amt-sub { font-size: 0.78em; color: var(--text-muted); margin: 0 4px 8px; min-height: 1.2em; }
+    .cur-toggle { display: inline-flex; background: #FFFFFF; border: 1px solid var(--border-soft); border-radius: 999px; padding: 2px; flex-shrink: 0; }
+    .cur-toggle button { border: none; background: transparent; font-weight: 700; font-size: 0.82em; padding: 5px 10px; border-radius: 999px; color: var(--text-sub); }
+    .cur-toggle button.active { background: var(--primary); color: #FFFFFF; }
+    .quick-amts { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; margin-bottom: 10px; }
+    .quick-amts::-webkit-scrollbar { display: none; }
+    .quick-amts button { flex-shrink: 0; border: 1px solid var(--border-soft); background: #FFFFFF; font-weight: 700; font-size: 0.8em; padding: 6px 10px; border-radius: 999px; color: var(--text-sub); }
+    .cat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 10px; }
+    .cat-grid button { border: 1.5px solid var(--border-soft); background: #FFFFFF; border-radius: 12px; padding: 6px 2px; display: flex; flex-direction: column; align-items: center; gap: 1px; font-size: 0.72em; font-weight: 700; color: var(--text-sub); }
+    .cat-grid button .ci { font-size: 1.45rem; line-height: 1.2; }
+    .cat-grid button.active { border-color: var(--primary); background: var(--bg-soft-pink); color: var(--primary-dark); }
+    .chip-line { display: flex; align-items: center; gap: 6px; margin-bottom: 8px; flex-wrap: wrap; }
+    .chip-line > span { font-size: 0.76em; font-weight: 700; color: var(--text-sub); width: 34px; flex-shrink: 0; }
+    .chip-line button { border: 1.5px solid var(--border-soft); background: #FFFFFF; font-weight: 700; font-size: 0.78em; padding: 5px 10px; border-radius: 999px; color: var(--text-sub); }
+    .chip-line button.active { border-color: var(--secondary); background: var(--secondary-light); color: var(--secondary); }
+    .keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 8px; }
+    .keypad button { border: none; background: #F6F1F2; border-radius: 12px; padding: 12px 0; font-size: 1.3em; font-weight: 700; color: var(--text-main); }
+    .keypad button:active { background: var(--primary-light); }
+
+    /* Translate sheet */
+    .tr-section { margin-bottom: 14px; }
+    .tr-label { font-size: 0.8em; font-weight: 700; color: var(--text-sub); margin-bottom: 6px; }
+    .tr-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
+    .tr-btn { display: flex; align-items: center; justify-content: center; gap: 6px; text-decoration: none; border: 1.5px solid var(--border-soft); background: #FFFFFF; color: var(--text-main); font-weight: 700; font-size: 0.85em; padding: 11px 6px; border-radius: 12px; text-align: center; }
+    .tr-btn.main { background: var(--secondary); border-color: var(--secondary); color: #FFFFFF; }
+    .tr-btn.wide { grid-column: 1 / 3; }
+    .tr-tip { background: var(--bg-soft-mint); border: 1px solid #CBE8DF; border-radius: 12px; padding: 10px 12px; font-size: 0.82em; margin-top: 8px; }
+    .tr-tip b { color: #246352; }
+    .tr-tip.me { outline: 2px solid var(--secondary); }
   </style>
 </head>
 <body>
   <header class="top-bar">
-    <div class="top-title">🌸 정희 여사님과 딸 소연이의 모녀 여행</div>
-    <div class="font-seg" role="group" aria-label="글자 크기">
-      <button type="button" id="fontNormal" class="active" data-action="font" data-size="normal">가 기본</button>
-      <button type="button" id="fontLarge" data-action="font" data-size="large"><span class="big-ga">가</span> 크게</button>
+    <div class="top-row">
+      <div style="min-width:0">
+        <div class="top-title">🌸 정희 여사님과 딸 소연이의 모녀 여행</div>
+        <button type="button" class="sync-pill" id="syncPill" data-action="sync-now"><span class="sync-dot"></span><span id="syncText">연결 중…</span></button>
+      </div>
+      <div class="top-tools">
+        <button type="button" class="tool-btn" data-action="open-translate">🌐 통역</button>
+        <div class="font-seg" role="group" aria-label="글자 크기">
+          <button type="button" id="fontNormal" class="active" data-action="font" data-size="normal">가 기본</button>
+          <button type="button" id="fontLarge" data-action="font" data-size="large"><span class="big-ga">가</span> 크게</button>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -336,36 +344,20 @@
     <section class="hero-card">
       <div class="hero-badge-row">
         <span class="hero-pill">2026.12.03(목) ~ 12.06(일) · 3박 4일</span>
-        <span class="hero-pill">정희 여사님 첫 일본 여행 🎀</span>
+        <span class="hero-pill" id="ddayPill">정희 여사님 첫 일본 여행 🎀</span>
       </div>
       <h1 class="hero-title">정희 여사님과 딸 소연이의<br />오사카 힐링 · 미식 모녀 여행</h1>
       <p class="hero-subtitle">무리한 일정 없이 맛있는 음식, 예쁜 카페 휴식, 백화점 쇼핑과 노천탕으로 채운 우리 둘만의 추억 가이드</p>
     </section>
 
     <section class="quick-grid">
-      <div class="quick-item">
-        <div class="quick-label">✈️ 항공 스케줄</div>
-        <div class="quick-val">출국 12/03 09:05→11:00</div>
-        <div class="quick-sub">귀국 12/06 15:40→18:05</div>
-      </div>
-      <div class="quick-item">
-        <div class="quick-label">🏨 숙소 (3박 연박)</div>
-        <div class="quick-val">칸데오 호텔 오사카 난바</div>
-        <div class="quick-sub">체크인 15:00 · 17층 노천탕</div>
-      </div>
-      <div class="quick-item">
-        <div class="quick-label">🚌 공항 리무진</div>
-        <div class="quick-val">간사이(T1) ↔ 도톤플라자</div>
-        <div class="quick-sub">호텔 도보 3~4분 (현장발권)</div>
-      </div>
-      <div class="quick-item">
-        <div class="quick-label">🧣 12월 초 날씨</div>
-        <div class="quick-val">오사카 6~13℃ · 교토 4~11℃</div>
-        <div class="quick-sub">경량패딩 · 머플러 · 핫팩</div>
-      </div>
+      <div class="quick-item"><div class="quick-label">✈️ 항공 스케줄</div><div class="quick-val">출국 12/03 09:05→11:00</div><div class="quick-sub">귀국 12/06 15:40→18:05</div></div>
+      <div class="quick-item"><div class="quick-label">🏨 숙소 (3박 연박)</div><div class="quick-val">칸데오 호텔 오사카 난바</div><div class="quick-sub">체크인 15:00 · 17층 노천탕</div></div>
+      <div class="quick-item"><div class="quick-label">🚌 공항 리무진</div><div class="quick-val">간사이(T1) ↔ 도톤플라자</div><div class="quick-sub">호텔 도보 3~4분 (현장발권)</div></div>
+      <div class="quick-item"><div class="quick-label">🧣 12월 초 날씨</div><div class="quick-val">오사카 6~13℃ · 교토 4~11℃</div><div class="quick-sub">경량패딩 · 머플러 · 핫팩</div></div>
     </section>
 
-    <!-- TAB 1: 일정 -->
+    <!-- TAB 1 -->
     <section id="tab-schedule" class="tab-section active">
       <div class="filter-scroll" id="dayFilterBar">
         <button type="button" class="filter-pill active" data-action="day-filter" data-key="all">전체 일정 (4일)</button>
@@ -374,58 +366,76 @@
         <button type="button" class="filter-pill" data-action="day-filter" data-key="day3">3일차 · 12/05(토)</button>
         <button type="button" class="filter-pill" data-action="day-filter" data-key="day4">4일차 · 12/06(일)</button>
       </div>
-      <p class="edit-hint">✎ 버튼으로 수정·삭제 · 항목을 <b>길게 눌러</b> 위아래로 움직이면 순서가 바뀌어요</p>
+      <p class="edit-hint"><span class="hint-grip"></span> 왼쪽 회색 손잡이를 잡고 위아래로 끌면 순서 변경 · ✎ 수정·삭제</p>
       <div id="scheduleContainer"></div>
       <button type="button" class="reset-link" data-action="reset" data-section="days">일정을 처음 상태로 초기화</button>
     </section>
 
-    <!-- TAB 2: 맛집·쇼핑 예산 -->
+    <!-- TAB 2 -->
     <section id="tab-budget" class="tab-section">
-      <div class="budget-summary-card">
-        <div class="budget-top-row">
-          <span style="font-weight: 700; font-size: 0.95em;">💴 여행 예상 경비 계산기</span>
-          <div class="person-toggle">
-            <button type="button" id="btnTwoPerson" class="person-btn active" data-action="person" data-mode="2">모녀 2인 기준</button>
-            <button type="button" id="btnOnePerson" class="person-btn" data-action="person" data-mode="1">1인 기준</button>
+      <div class="seg-tabs">
+        <button type="button" id="viewLedgerBtn" class="active" data-action="budget-view" data-view="ledger">💳 지출 기록</button>
+        <button type="button" id="viewPlanBtn" data-action="budget-view" data-view="plan">📋 예상 경비 · 맛집</button>
+      </div>
+
+      <div id="ledgerView">
+        <div class="budget-summary-card">
+          <div class="budget-top-row">
+            <span style="font-weight: 700; font-size: 0.95em;">💳 실제 쓴 돈 (모녀 합계)</span>
+            <button type="button" class="ghost-btn" data-action="set-budget">예산 설정</button>
+          </div>
+          <div class="budget-amounts">
+            <span class="budget-jpy" id="spentJpy">¥0</span>
+            <span class="budget-krw" id="spentKrw">약 0원</span>
+          </div>
+          <div class="budget-meter-label"><span id="budgetLabel">예산 ¥0</span><span id="budgetLeft">남은 돈 ¥0</span></div>
+          <div class="bar-track"><div id="budgetMeter" class="meter-fill" style="width:0%"></div></div>
+          <div class="rate-row" style="margin:6px 0 0;">
+            <span>환율 100엔 =</span>
+            <input type="number" inputmode="numeric" class="rate-input" data-rate value="920" />
+            <span>원</span>
           </div>
         </div>
-        <div class="budget-amounts">
-          <span class="budget-jpy" id="totalJpy">¥0</span>
-          <span class="budget-krw" id="totalKrw">약 0원</span>
-        </div>
-        <div class="rate-row">
-          <span>적용 환율: 100엔 =</span>
-          <input type="number" inputmode="numeric" id="exchangeRate" class="rate-input" value="920" />
-          <span>원 (식사·카페·체험은 2인 모드 시 자동 ×2)</span>
-        </div>
-        <div class="bar-track">
-          <div id="barFood" class="bar-seg-food"></div>
-          <div id="barCafe" class="bar-seg-cafe"></div>
-          <div id="barPlay" class="bar-seg-play"></div>
-          <div id="barShop" class="bar-seg-shop"></div>
-        </div>
-        <div class="bar-legend">
-          <span id="legendFood">🟡 식사 ¥0</span>
-          <span id="legendCafe">🩷 카페 ¥0</span>
-          <span id="legendPlay">🟣 체험 ¥0</span>
-          <span id="legendShop">🩵 쇼핑 ¥0</span>
-        </div>
+        <div class="stat-card" id="catStats"></div>
+        <div id="expenseList"></div>
       </div>
 
-      <div class="filter-scroll" id="spotFilterBar">
-        <button type="button" class="filter-pill active" data-action="spot-filter" data-key="all">전체 보기</button>
-        <button type="button" class="filter-pill" data-action="spot-filter" data-key="food">🍽️ 식사</button>
-        <button type="button" class="filter-pill" data-action="spot-filter" data-key="cafe">☕ 카페 · 찻집</button>
-        <button type="button" class="filter-pill" data-action="spot-filter" data-key="play">🚢 체험 · 관광</button>
-        <button type="button" class="filter-pill" data-action="spot-filter" data-key="shop">🛍️ 백화점 · 쇼핑</button>
+      <div id="planView" style="display:none">
+        <div class="budget-summary-card">
+          <div class="budget-top-row">
+            <span style="font-weight: 700; font-size: 0.95em;">📋 예상 경비 계산기</span>
+            <div class="person-toggle">
+              <button type="button" id="btnTwoPerson" class="person-btn active" data-action="person" data-mode="2">모녀 2인</button>
+              <button type="button" id="btnOnePerson" class="person-btn" data-action="person" data-mode="1">1인</button>
+            </div>
+          </div>
+          <div class="budget-amounts">
+            <span class="budget-jpy" id="totalJpy">¥0</span>
+            <span class="budget-krw" id="totalKrw">약 0원</span>
+          </div>
+          <div class="rate-row">
+            <span>환율 100엔 =</span>
+            <input type="number" inputmode="numeric" class="rate-input" data-rate value="920" />
+            <span>원 (식사·카페·체험은 2인 모드 시 ×2)</span>
+          </div>
+          <div class="bar-track"><div id="barFood" class="bar-seg-food"></div><div id="barCafe" class="bar-seg-cafe"></div><div id="barPlay" class="bar-seg-play"></div><div id="barShop" class="bar-seg-shop"></div></div>
+          <div class="bar-legend"><span id="legendFood">🟡 식사 ¥0</span><span id="legendCafe">🩷 카페 ¥0</span><span id="legendPlay">🟣 체험 ¥0</span><span id="legendShop">🩵 쇼핑 ¥0</span></div>
+        </div>
+        <div class="filter-scroll" id="spotFilterBar">
+          <button type="button" class="filter-pill active" data-action="spot-filter" data-key="all">전체 보기</button>
+          <button type="button" class="filter-pill" data-action="spot-filter" data-key="food">🍽️ 식사</button>
+          <button type="button" class="filter-pill" data-action="spot-filter" data-key="cafe">☕ 카페 · 찻집</button>
+          <button type="button" class="filter-pill" data-action="spot-filter" data-key="play">🚢 체험 · 관광</button>
+          <button type="button" class="filter-pill" data-action="spot-filter" data-key="shop">🛍️ 백화점 · 쇼핑</button>
+        </div>
+        <p class="edit-hint"><span class="hint-grip"></span> 손잡이로 순서 변경 · ✎ 수정·삭제 · <b>💳 썼어요</b>를 누르면 지출 기록으로 바로 옮겨져요</p>
+        <div id="spotsContainer" class="sortable" data-list="spots"></div>
+        <button type="button" class="add-inline" data-action="add" data-list="spots">＋ 식당 · 쇼핑 · 체험 추가</button>
+        <button type="button" class="reset-link" data-action="reset" data-section="spots">맛집·예산 목록 초기화</button>
       </div>
-      <p class="edit-hint">✎ 버튼으로 수정·삭제 · 카드를 <b>길게 눌러</b> 순서 이동</p>
-      <div id="spotsContainer" class="sortable" data-list="spots"></div>
-      <button type="button" class="add-inline" data-action="add" data-list="spots">＋ 식당 · 쇼핑 · 체험 추가</button>
-      <button type="button" class="reset-link" data-action="reset" data-section="spots">맛집·예산 목록 초기화</button>
     </section>
 
-    <!-- TAB 3: 체크리스트 -->
+    <!-- TAB 3 -->
     <section id="tab-checklist" class="tab-section">
       <div class="progress-card">
         <div class="progress-header">
@@ -438,31 +448,30 @@
         <div class="progress-track"><div class="progress-fill" id="progressFill" style="width: 0%;"></div></div>
         <div style="font-size: 0.78em; color: var(--text-muted);" id="progressCount">0 / 0 완료</div>
       </div>
-
       <div class="filter-scroll" id="checkFilterBar">
         <button type="button" class="filter-pill active" data-action="check-filter" data-key="all">전체 준비물</button>
         <button type="button" class="filter-pill" data-action="check-filter" data-key="all_owner">🌸 공통</button>
         <button type="button" class="filter-pill" data-action="check-filter" data-key="mom">👩 정희 여사님</button>
         <button type="button" class="filter-pill" data-action="check-filter" data-key="dau">👧 딸 소연</button>
       </div>
-      <p class="edit-hint">터치하면 체크 · ✎ 버튼으로 수정·삭제 · <b>길게 눌러</b> 순서 이동</p>
+      <p class="edit-hint"><span class="hint-grip"></span> 손잡이로 순서 변경 · 내용을 터치하면 체크 · ✎ 수정·삭제</p>
       <div id="checklistContainer" class="sortable" data-list="checklist"></div>
       <button type="button" class="add-inline" data-action="add" data-list="checklist">＋ 준비물 추가</button>
       <button type="button" class="reset-link" data-action="reset" data-section="checklist">체크리스트 초기화</button>
     </section>
 
-    <!-- TAB 4: 현지 메모 -->
+    <!-- TAB 4 -->
     <section id="tab-memo" class="tab-section">
-      <p class="edit-hint">✎ 버튼으로 수정·삭제 · 항목을 <b>길게 눌러</b> 순서 이동</p>
-      <div class="memo-card">
-        <div class="memo-title">🏨 숙소 · 주요 장소 주소 (택시·길찾기용)</div>
-        <div id="addressList" class="sortable" data-list="memo.addresses"></div>
-        <button type="button" class="add-inline small" data-action="add" data-list="memo.addresses">＋ 주소 추가</button>
-      </div>
+      <p class="edit-hint"><span class="hint-grip"></span> 손잡이로 순서 변경 · ✎ 수정·삭제 · 일본어를 누르면 🔊 소리로 읽어줘요</p>
       <div class="memo-card">
         <div class="memo-title">🗣️ 손가락으로 짚어 보여주는 여행 일본어</div>
         <div id="phraseList" class="sortable" data-list="memo.phrases"></div>
         <button type="button" class="add-inline small" data-action="add" data-list="memo.phrases">＋ 회화 추가</button>
+      </div>
+      <div class="memo-card">
+        <div class="memo-title">🏨 숙소 · 주요 장소 주소 (택시·길찾기용)</div>
+        <div id="addressList" class="sortable" data-list="memo.addresses"></div>
+        <button type="button" class="add-inline small" data-action="add" data-list="memo.addresses">＋ 주소 추가</button>
       </div>
       <div class="memo-card">
         <div class="memo-title">📞 비상 연락처 &amp; 유용한 메모</div>
@@ -473,9 +482,11 @@
     </section>
   </main>
 
+  <button type="button" class="fab" data-action="add-expense">＋ 지출 기록</button>
+
   <nav class="bottom-nav">
     <button type="button" class="nav-btn active" data-action="tab" data-tab="tab-schedule"><span class="nav-icon">📅</span><span>3박 4일 일정</span></button>
-    <button type="button" class="nav-btn" data-action="tab" data-tab="tab-budget"><span class="nav-icon">🍽️</span><span>맛집·쇼핑예산</span></button>
+    <button type="button" class="nav-btn" data-action="tab" data-tab="tab-budget"><span class="nav-icon">💴</span><span>지출·예산</span></button>
     <button type="button" class="nav-btn" data-action="tab" data-tab="tab-checklist"><span class="nav-icon">✅</span><span>출국 체크</span></button>
     <button type="button" class="nav-btn" data-action="tab" data-tab="tab-memo"><span class="nav-icon">🗣️</span><span>현지 메모</span></button>
   </nav>
@@ -487,27 +498,32 @@
     <form id="sheetForm" autocomplete="off"></form>
     <div class="sheet-actions">
       <button type="button" class="sheet-del" id="sheetDel" data-action="sheet-delete">🗑 삭제</button>
-      <button type="button" class="sheet-cancel" data-action="sheet-close">취소</button>
-      <button type="button" class="sheet-save" data-action="sheet-save">저장</button>
+      <button type="button" class="sheet-cancel" id="sheetCancel" data-action="sheet-close">취소</button>
+      <button type="button" class="sheet-save" id="sheetSave" data-action="sheet-save">저장</button>
     </div>
   </div>
 
   <div id="toast" class="toast"></div>
 
   <script>
-    /* ---------- Storage ---------- */
+    /* =========================================================
+       Shared online storage (Firebase Realtime Database, REST)
+       ========================================================= */
+    const SYNC_BASE = 'https://osaka-trip-share-default-rtdb.asia-southeast1.firebasedatabase.app/trips/mjs-osaka-fdc2ca23e9e74934';
+    const SECTIONS = ['days', 'spots', 'checklist', 'memo'];
+
     const SafeStorage = {
       _mem: {},
       getItem(k) { try { if (window.localStorage) return window.localStorage.getItem(k); } catch (e) {} return Object.prototype.hasOwnProperty.call(this._mem, k) ? this._mem[k] : null; },
       setItem(k, v) { try { if (window.localStorage) { window.localStorage.setItem(k, v); return; } } catch (e) {} this._mem[k] = String(v); }
     };
-    const STORE_KEY = 'osaka_trip_v2';
+    const STORE_KEY = 'osaka_trip_v3';
+    const SYNCED_KEY = 'osaka_trip_v3_synced';
 
     let _seq = 0;
     function uid() { _seq++; return 'i' + Date.now().toString(36) + _seq.toString(36) + Math.random().toString(36).slice(2, 5); }
     function withIds(arr) { return arr.map(x => Object.assign({ id: uid() }, x)); }
 
-    /* ---------- Default data ---------- */
     function buildDefaults() {
       return {
         days: [
@@ -694,28 +710,49 @@
       };
     }
 
+
+    function normalize(p) {
+      const d = buildDefaults();
+      if (!p || typeof p !== 'object') return d;
+      SECTIONS.forEach(s => { if (!p[s] || typeof p[s] !== 'object') p[s] = d[s]; });
+      if (!p.expenses || typeof p.expenses !== 'object' || Array.isArray(p.expenses)) p.expenses = {};
+      if (!p.settings || typeof p.settings !== 'object') p.settings = {};
+      if (!p.settings.rate) p.settings.rate = 920;
+      return p;
+    }
     function loadData() {
       try {
-        const raw = SafeStorage.getItem(STORE_KEY);
-        if (raw) {
-          const p = JSON.parse(raw);
-          if (p && Array.isArray(p.days) && Array.isArray(p.spots) && Array.isArray(p.checklist) && p.memo) return p;
-        }
+        let raw = SafeStorage.getItem(STORE_KEY);
+        if (!raw) raw = SafeStorage.getItem('osaka_trip_v2'); // carry over edits made on the previous version
+        if (raw) return normalize(JSON.parse(raw));
       } catch (e) {}
-      return buildDefaults();
+      return normalize(buildDefaults());
     }
     let data = loadData();
-    function save() { SafeStorage.setItem(STORE_KEY, JSON.stringify(data)); }
+    let synced = (function () {
+      try { const s = JSON.parse(SafeStorage.getItem(SYNCED_KEY) || 'null'); if (s && s.sec && s.exp) return s; } catch (e) {}
+      return { sec: {}, exp: {}, settings: null };
+    })();
+    function persistLocal() {
+      SafeStorage.setItem(STORE_KEY, JSON.stringify(data));
+      SafeStorage.setItem(SYNCED_KEY, JSON.stringify(synced));
+    }
+    function save() { persistLocal(); schedulePush(); }
 
     /* ---------- Helpers ---------- */
-    function esc(s) {
-      return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-    }
+    function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
     function fmt(s) { return esc(s).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>'); }
+    function stable(o) { return o == null ? 'null' : JSON.stringify(o, Object.keys(o).sort()); }
     function mapUrl(q) { return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(q); }
     function linkUrl(u) { u = String(u || '').trim(); return /^https?:\/\//i.test(u) ? u : mapUrl(u); }
+    const HANDLE = '<span class="drag-handle" title="잡고 끌어서 순서 변경" aria-label="순서 이동 손잡이"></span>';
     function editBtn(listKey, id) { return `<button type="button" class="edit-btn" data-action="edit" data-list="${listKey}" data-id="${id}" aria-label="수정">✎</button>`; }
     function addBtn(listKey, label, small) { return `<button type="button" class="add-inline${small ? ' small' : ''}" data-action="add" data-list="${listKey}">＋ ${label}</button>`; }
+    function rate() { return Number(data.settings.rate) || 920; }
+    function yen(n) { return '¥' + Math.round(n).toLocaleString(); }
+    function won(n) { return Math.round(n).toLocaleString() + '원'; }
+    const isAndroid = /Android/i.test(navigator.userAgent);
+    const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 
     const CAT = {
       food: { label: '🍽️ 식사', cls: 'cat-food', perPerson: true },
@@ -728,16 +765,33 @@
       mom: { label: '👩 정희 여사님', cls: 'owner-mom' },
       dau: { label: '👧 딸 소연', cls: 'owner-dau' }
     };
+    const EXP_CAT = {
+      food: { icon: '🍽️', label: '식사' },
+      cafe: { icon: '☕', label: '카페' },
+      snack: { icon: '🏪', label: '편의점' },
+      transport: { icon: '🚃', label: '교통' },
+      play: { icon: '🎡', label: '관광' },
+      shop: { icon: '🛍️', label: '쇼핑' },
+      gift: { icon: '🎁', label: '선물' },
+      etc: { icon: '💡', label: '기타' }
+    };
+    const PAYERS = { together: '🌸 같이', mom: '👩 엄마', dau: '👧 소연' };
+    const PAYS = { cash: '💴 현금', card: '💳 카드' };
+    const DAYS = { pre: { label: '여행 전', short: '여행 전' }, d1: { label: '12/3 (목) 1일차', short: '12/3' }, d2: { label: '12/4 (금) 2일차', short: '12/4' }, d3: { label: '12/5 (토) 3일차', short: '12/5' }, d4: { label: '12/6 (일) 4일차', short: '12/6' } };
+    function todayKey() {
+      const d = new Date();
+      const ymd = d.getFullYear() * 10000 + (d.getMonth() + 1) * 100 + d.getDate();
+      if (ymd < 20261203) return 'pre';
+      if (ymd === 20261203) return 'd1';
+      if (ymd === 20261204) return 'd2';
+      if (ymd === 20261205) return 'd3';
+      return 'd4';
+    }
 
     /* ---------- List registry ---------- */
     function resolveList(key) {
       const p = key.split('.');
-      if (p[0] === 'day') {
-        const d = data.days.find(x => x.id === p[1]);
-        if (!d) return null;
-        const v = d[p[2]];
-        return Array.isArray(v) ? v : (v ? v.items : null);
-      }
+      if (p[0] === 'day') { const d = data.days.find(x => x.id === p[1]); if (!d) return null; const v = d[p[2]]; return Array.isArray(v) ? v : (v ? v.items : null); }
       if (p[0] === 'spots') return data.spots;
       if (p[0] === 'checklist') return data.checklist;
       if (p[0] === 'memo') return data.memo[p[1]];
@@ -752,84 +806,49 @@
     }
     const TYPE_NAME = { timeline: '일정', info: '메모 항목', link: '링크 버튼', spot: '맛집·쇼핑·체험', check: '준비물', address: '주소', phrase: '일본어 회화', contact: '연락처·메모' };
     const FIELDS = {
-      timeline: [
-        { k: 'time', label: '시간', ph: '예: 18:30 - 20:00' },
-        { k: 'desc', label: '내용', type: 'textarea', req: true, ph: '예: 도톤보리 리버크루즈 탑승' }
-      ],
-      info: [
-        { k: 'label', label: '소제목 (선택)', ph: '예: 저녁' },
-        { k: 'text', label: '내용', type: 'textarea', req: true }
-      ],
-      link: [
-        { k: 'label', label: '버튼 이름', req: true, ph: '예: 📍 리버크루즈 지도' },
-        { k: 'url', label: '링크 주소 또는 구글지도 검색어', req: true, ph: 'https://… 또는 장소 이름(영문 추천)' }
-      ],
+      timeline: [{ k: 'time', label: '시간', ph: '예: 18:30 - 20:00' }, { k: 'desc', label: '내용', type: 'textarea', req: true, ph: '예: 도톤보리 리버크루즈 탑승' }],
+      info: [{ k: 'label', label: '소제목 (선택)', ph: '예: 저녁' }, { k: 'text', label: '내용', type: 'textarea', req: true }],
+      link: [{ k: 'label', label: '버튼 이름', req: true, ph: '예: 📍 리버크루즈 지도' }, { k: 'url', label: '링크 주소 또는 구글지도 검색어', req: true, ph: 'https://… 또는 장소 이름(영문 추천)' }],
       spot: [
         { k: 'cat', label: '분류', type: 'select', options: Object.keys(CAT).map(v => ({ v, t: CAT[v].label })) },
-        { k: 'name', label: '장소 / 품목명', req: true },
-        { k: 'loc', label: '위치' },
-        { k: 'menu', label: '메뉴 · 품목' },
+        { k: 'name', label: '장소 / 품목명', req: true }, { k: 'loc', label: '위치' }, { k: 'menu', label: '메뉴 · 품목' },
         { k: 'price', label: '예산 (엔) — 식사·카페·체험은 1인 기준', type: 'number', ph: '예: 2000' },
-        { k: 'reason', label: '메모', type: 'textarea' },
-        { k: 'map', label: '구글지도 검색어 (선택, 비우면 장소명으로 검색)' }
+        { k: 'reason', label: '메모', type: 'textarea' }, { k: 'map', label: '구글지도 검색어 (선택, 비우면 장소명으로 검색)' }
       ],
-      check: [
-        { k: 'owner', label: '담당', type: 'select', options: Object.keys(OWNER).map(v => ({ v, t: OWNER[v].label })) },
-        { k: 'title', label: '준비물', req: true },
-        { k: 'desc', label: '메모', type: 'textarea' }
-      ],
-      address: [
-        { k: 'name', label: '장소 이름', req: true },
-        { k: 'ja', label: '일본어 주소 · 가게명 (복사 버튼으로 복사됨)' },
-        { k: 'en', label: '보조 설명 (영문 주소 등)' }
-      ],
-      phrase: [
-        { k: 'ko', label: '한국어 뜻' },
-        { k: 'jp', label: '일본어', req: true },
-        { k: 'pron', label: '발음' }
-      ],
-      contact: [
-        { k: 'label', label: '항목', ph: '예: 호텔 프런트' },
-        { k: 'text', label: '내용', type: 'textarea', req: true }
-      ]
+      check: [{ k: 'owner', label: '담당', type: 'select', options: Object.keys(OWNER).map(v => ({ v, t: OWNER[v].label })) }, { k: 'title', label: '준비물', req: true }, { k: 'desc', label: '메모', type: 'textarea' }],
+      address: [{ k: 'name', label: '장소 이름', req: true }, { k: 'ja', label: '일본어 주소 · 가게명 (복사·듣기 가능)' }, { k: 'en', label: '보조 설명 (영문 주소 등)' }],
+      phrase: [{ k: 'ko', label: '한국어 뜻' }, { k: 'jp', label: '일본어', req: true }, { k: 'pron', label: '발음' }],
+      contact: [{ k: 'label', label: '항목', ph: '예: 호텔 프런트' }, { k: 'text', label: '내용', type: 'textarea', req: true }]
     };
 
     /* ---------- Render: schedule ---------- */
     let currentDay = 'all';
     function renderSchedule() {
-      const c = document.getElementById('scheduleContainer');
-      c.innerHTML = data.days.map(d => {
-        const tl = `day.${d.id}.timeline`;
-        const lk = `day.${d.id}.links`;
+      document.getElementById('scheduleContainer').innerHTML = data.days.map(d => {
+        const tl = `day.${d.id}.timeline`, lk = `day.${d.id}.links`;
         const boxes = ['food', 'shop', 'tip'].map(k => {
           const box = d[k]; if (!box) return '';
           const key = `day.${d.id}.${k}`;
           return `<div class="info-box ${k}">
               <div class="info-box-title">${esc(box.title)}</div>
               <ul class="info-list sortable" data-list="${key}">
-                ${box.items.map(it => `<li class="sort-item" data-id="${it.id}"><div class="item-main">${it.label ? `<strong>${esc(it.label)}:</strong> ` : ''}${fmt(it.text)}</div>${editBtn(key, it.id)}</li>`).join('')}
+                ${(box.items || []).map(it => `<li class="sort-item" data-id="${it.id}">${HANDLE}<div class="item-main">${it.label ? `<strong>${esc(it.label)}:</strong> ` : ''}${fmt(it.text)}</div>${editBtn(key, it.id)}</li>`).join('')}
               </ul>
               ${addBtn(key, '추가', true)}
             </div>`;
         }).join('');
         return `<article class="day-card" data-day="${d.id}">
             <div class="day-header">
-              <div>
-                <span class="day-tag">${esc(d.tag)}</span>
-                <h2 class="day-title">${esc(d.title)}</h2>
-              </div>
-              <div class="day-head-right">
-                <div class="day-emoji">${esc(d.emoji)}</div>
-                <button type="button" class="edit-btn" data-action="edit-day" data-day="${d.id}" aria-label="일차 제목 수정">✎</button>
-              </div>
+              <div><span class="day-tag">${esc(d.tag)}</span><h2 class="day-title">${esc(d.title)}</h2></div>
+              <div class="day-head-right"><div class="day-emoji">${esc(d.emoji)}</div><button type="button" class="edit-btn" data-action="edit-day" data-day="${d.id}" aria-label="일차 제목 수정">✎</button></div>
             </div>
             <ul class="timeline sortable" data-list="${tl}">
-              ${d.timeline.map(t => `<li class="timeline-item sort-item" data-id="${t.id}"><div class="item-main">${t.time ? `<span class="time-badge">${esc(t.time)}</span>` : ''}<span class="time-desc">${fmt(t.desc)}</span></div>${editBtn(tl, t.id)}</li>`).join('')}
+              ${(d.timeline || []).map(t => `<li class="timeline-item sort-item" data-id="${t.id}">${HANDLE}<div class="item-main">${t.time ? `<span class="time-badge">${esc(t.time)}</span>` : ''}<span class="time-desc">${fmt(t.desc)}</span></div>${editBtn(tl, t.id)}</li>`).join('')}
             </ul>
             ${addBtn(tl, '일정 추가')}
             ${boxes}
             <div class="link-btn-row sortable sort-h" data-list="${lk}">
-              ${d.links.map(l => `<span class="link-chip sort-item" data-id="${l.id}"><a class="mini-link-btn${l.primary ? ' primary-link' : ''}" href="${esc(linkUrl(l.url))}" target="_blank" rel="noopener noreferrer">${esc(l.label)}</a>${editBtn(lk, l.id)}</span>`).join('')}
+              ${(d.links || []).map(l => `<span class="link-chip sort-item" data-id="${l.id}">${HANDLE}<a class="mini-link-btn${l.primary ? ' primary-link' : ''}" href="${esc(linkUrl(l.url))}" target="_blank" rel="noopener noreferrer">${esc(l.label)}</a>${editBtn(lk, l.id)}</span>`).join('')}
             </div>
             ${addBtn(lk, '지도·링크 추가', true)}
           </article>`;
@@ -837,169 +856,231 @@
       applyDayFilter();
     }
     function applyDayFilter() {
-      document.querySelectorAll('#scheduleContainer .day-card').forEach(card => {
-        card.style.display = (currentDay === 'all' || card.dataset.day === currentDay) ? '' : 'none';
-      });
+      document.querySelectorAll('#scheduleContainer .day-card').forEach(card => { card.style.display = (currentDay === 'all' || card.dataset.day === currentDay) ? '' : 'none'; });
       document.querySelectorAll('#dayFilterBar .filter-pill').forEach(p => p.classList.toggle('active', p.dataset.key === currentDay));
     }
 
-    /* ---------- Render: spots & budget ---------- */
-    let personMode = 2;
-    let currentSpotFilter = 'all';
-    function getRate() {
-      const el = document.getElementById('exchangeRate');
-      return el ? (parseFloat(el.value) || 920) : 920;
-    }
+    /* ---------- Render: planned spots ---------- */
+    let personMode = 2, currentSpotFilter = 'all';
     function multOf(s) { return (personMode === 2 && CAT[s.cat] && CAT[s.cat].perPerson) ? 2 : 1; }
+    function planTotal(mode) {
+      const keep = personMode; personMode = mode || personMode;
+      const t = data.spots.reduce((a, s) => a + (Number(s.price) || 0) * (Number(s.qty) || 0) * multOf(s), 0);
+      personMode = keep; return t;
+    }
     function renderSpots() {
-      const rate = getRate();
+      const r = rate();
       const sums = { food: 0, cafe: 0, play: 0, shop: 0 };
-      data.spots.forEach(s => {
-        const sub = (Number(s.price) || 0) * (Number(s.qty) || 0) * multOf(s);
-        sums[CAT[s.cat] ? s.cat : 'shop'] += sub;
-      });
+      data.spots.forEach(s => { sums[CAT[s.cat] ? s.cat : 'shop'] += (Number(s.price) || 0) * (Number(s.qty) || 0) * multOf(s); });
       const total = sums.food + sums.cafe + sums.play + sums.shop;
-      document.getElementById('totalJpy').textContent = '¥' + total.toLocaleString();
-      document.getElementById('totalKrw').textContent = '약 ' + Math.round(total / 100 * rate).toLocaleString() + '원';
+      document.getElementById('totalJpy').textContent = yen(total);
+      document.getElementById('totalKrw').textContent = '약 ' + won(total / 100 * r);
       const pct = v => total ? (v / total * 100) : 0;
-      document.getElementById('barFood').style.width = pct(sums.food) + '%';
-      document.getElementById('barCafe').style.width = pct(sums.cafe) + '%';
-      document.getElementById('barPlay').style.width = pct(sums.play) + '%';
-      document.getElementById('barShop').style.width = pct(sums.shop) + '%';
-      document.getElementById('legendFood').textContent = `🟡 식사 ¥${sums.food.toLocaleString()}`;
-      document.getElementById('legendCafe').textContent = `🩷 카페 ¥${sums.cafe.toLocaleString()}`;
-      document.getElementById('legendPlay').textContent = `🟣 체험 ¥${sums.play.toLocaleString()}`;
-      document.getElementById('legendShop').textContent = `🩵 쇼핑 ¥${sums.shop.toLocaleString()}`;
-
+      ['Food', 'Cafe', 'Play', 'Shop'].forEach(k => { document.getElementById('bar' + k).style.width = pct(sums[k.toLowerCase()]) + '%'; });
+      document.getElementById('legendFood').textContent = `🟡 식사 ${yen(sums.food)}`;
+      document.getElementById('legendCafe').textContent = `🩷 카페 ${yen(sums.cafe)}`;
+      document.getElementById('legendPlay').textContent = `🟣 체험 ${yen(sums.play)}`;
+      document.getElementById('legendShop').textContent = `🩵 쇼핑 ${yen(sums.shop)}`;
       const list = data.spots.filter(s => currentSpotFilter === 'all' || s.cat === currentSpotFilter);
-      const c = document.getElementById('spotsContainer');
-      c.innerHTML = list.length ? list.map(s => {
-        const cat = CAT[s.cat] || CAT.shop;
-        const m = multOf(s);
+      document.getElementById('spotsContainer').innerHTML = list.length ? list.map(s => {
+        const cat = CAT[s.cat] || CAT.shop, m = multOf(s);
         const jpy = (Number(s.price) || 0) * (Number(s.qty) || 0) * m;
-        const krw = Math.round(jpy / 100 * rate);
         return `<div class="spot-card sort-item" data-id="${s.id}">
-            <div class="spot-header">
-              <div style="min-width:0">
-                <span class="spot-cat-badge ${cat.cls}">${cat.label}</span>
-                <div class="spot-name">${esc(s.name)}</div>
-                ${s.loc ? `<div class="spot-loc">📍 ${esc(s.loc)}</div>` : ''}
+            ${HANDLE}
+            <div class="spot-body">
+              <div class="spot-header">
+                <div style="min-width:0"><span class="spot-cat-badge ${cat.cls}">${cat.label}</span><div class="spot-name">${esc(s.name)}</div>${s.loc ? `<div class="spot-loc">📍 ${esc(s.loc)}</div>` : ''}</div>
+                <div class="spot-actions"><a class="mini-link-btn" href="${esc(mapUrl(s.map || (s.name + ' Osaka')))}" target="_blank" rel="noopener noreferrer">지도</a>${editBtn('spots', s.id)}</div>
               </div>
-              <div class="spot-actions">
-                <a class="mini-link-btn" href="${esc(mapUrl(s.map || (s.name + ' Osaka')))}" target="_blank" rel="noopener noreferrer">지도</a>
-                ${editBtn('spots', s.id)}
-              </div>
-            </div>
-            ${s.menu ? `<div class="spot-menu">✨ ${fmt(s.menu)}</div>` : ''}
-            ${s.reason ? `<div class="spot-reason">${fmt(s.reason)}</div>` : ''}
-            <div class="spot-footer">
-              <div class="spot-price">¥${jpy.toLocaleString()} <small>(약 ${krw.toLocaleString()}원${m === 2 ? ' · 2인' : ''})</small></div>
-              <div class="qty-control">
-                <button type="button" class="qty-btn" data-action="qty" data-id="${s.id}" data-delta="-1" aria-label="수량 줄이기">-</button>
-                <span class="qty-num">${Number(s.qty) || 0}</span>
-                <button type="button" class="qty-btn" data-action="qty" data-id="${s.id}" data-delta="1" aria-label="수량 늘리기">+</button>
+              ${s.menu ? `<div class="spot-menu">✨ ${fmt(s.menu)}</div>` : ''}
+              ${s.reason ? `<div class="spot-reason">${fmt(s.reason)}</div>` : ''}
+              <div class="spot-footer">
+                <div class="spot-price">${yen(jpy)} <small>(약 ${won(jpy / 100 * r)}${m === 2 ? ' · 2인' : ''})</small></div>
+                <div class="spot-right">
+                  <button type="button" class="spent-btn" data-action="spot-spent" data-id="${s.id}">💳 썼어요</button>
+                  <div class="qty-control">
+                    <button type="button" class="qty-btn" data-action="qty" data-id="${s.id}" data-delta="-1" aria-label="수량 줄이기">-</button>
+                    <span class="qty-num">${Number(s.qty) || 0}</span>
+                    <button type="button" class="qty-btn" data-action="qty" data-id="${s.id}" data-delta="1" aria-label="수량 늘리기">+</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>`;
-      }).join('') : '<p class="edit-hint" style="text-align:center;padding:18px 0;">이 분류에 등록된 항목이 없어요.</p>';
+      }).join('') : '<div class="empty-box">이 분류에 등록된 항목이 없어요.</div>';
       document.querySelectorAll('#spotFilterBar .filter-pill').forEach(p => p.classList.toggle('active', p.dataset.key === currentSpotFilter));
       document.getElementById('btnTwoPerson').classList.toggle('active', personMode === 2);
       document.getElementById('btnOnePerson').classList.toggle('active', personMode === 1);
     }
 
+    /* ---------- Render: expense ledger ---------- */
+    function expJpy(e) { const a = Number(e.amount) || 0; return e.cur === 'KRW' ? a / rate() * 100 : a; }
+    function budgetTarget() { return Number(data.settings.budget) || planTotal(2); }
+    function renderLedger() {
+      const exps = Object.keys(data.expenses).map(id => Object.assign({ id }, data.expenses[id]));
+      const total = exps.reduce((a, e) => a + expJpy(e), 0);
+      const r = rate();
+      document.getElementById('spentJpy').textContent = yen(total);
+      document.getElementById('spentKrw').textContent = '약 ' + won(total / 100 * r);
+      const target = budgetTarget();
+      const left = target - total;
+      document.getElementById('budgetLabel').textContent = `예산 ${yen(target)}${data.settings.budget ? '' : ' (예상경비 기준)'}`;
+      document.getElementById('budgetLeft').textContent = left >= 0 ? `남은 돈 ${yen(left)}` : `${yen(-left)} 초과`;
+      const meter = document.getElementById('budgetMeter');
+      meter.style.width = Math.min(100, target ? total / target * 100 : 0) + '%';
+      meter.classList.toggle('over', left < 0);
+
+      // category stats
+      const byCat = {}; Object.keys(EXP_CAT).forEach(k => byCat[k] = 0);
+      const byWho = { together: 0, mom: 0, dau: 0 }, byPay = { cash: 0, card: 0 };
+      exps.forEach(e => { const j = expJpy(e); byCat[EXP_CAT[e.cat] ? e.cat : 'etc'] += j; byWho[PAYERS[e.who] ? e.who : 'together'] += j; byPay[PAYS[e.pay] ? e.pay : 'cash'] += j; });
+      const stat = document.getElementById('catStats');
+      if (!exps.length) { stat.style.display = 'none'; }
+      else {
+        stat.style.display = '';
+        const cats = Object.keys(byCat).filter(k => byCat[k] > 0).sort((a, b) => byCat[b] - byCat[a]);
+        stat.innerHTML = `<div class="stat-title">어디에 썼을까?</div>
+          ${cats.map(k => `<div class="cat-row"><span>${EXP_CAT[k].icon}</span><span>${EXP_CAT[k].label} <small style="color:var(--text-muted)">${Math.round(byCat[k] / total * 100)}%</small></span><b>${yen(byCat[k])}</b><div class="cat-bar"><div style="width:${byCat[k] / total * 100}%"></div></div></div>`).join('')}
+          <div class="mini-chips" style="margin-top:10px">
+            ${Object.keys(byWho).filter(k => byWho[k]).map(k => `<span class="mini-chip">${PAYERS[k]} ${yen(byWho[k])}</span>`).join('')}
+            ${Object.keys(byPay).filter(k => byPay[k]).map(k => `<span class="mini-chip">${PAYS[k]} ${yen(byPay[k])}</span>`).join('')}
+          </div>`;
+      }
+
+      // grouped list
+      const list = document.getElementById('expenseList');
+      if (!exps.length) {
+        list.innerHTML = '<div class="empty-box">아직 기록이 없어요.<br>오른쪽 아래 <b>＋ 지출 기록</b>을 눌러 쓴 돈을 바로 적어보세요.<br><small>금액 → 분류 → 저장, 3번 터치면 끝!</small></div>';
+        return;
+      }
+      const order = ['d4', 'd3', 'd2', 'd1', 'pre'];
+      list.innerHTML = order.map(dk => {
+        const items = exps.filter(e => (DAYS[e.day] ? e.day : 'pre') === dk).sort((a, b) => (b.ts || 0) - (a.ts || 0));
+        if (!items.length) return '';
+        const sum = items.reduce((a, e) => a + expJpy(e), 0);
+        return `<div class="day-group">
+            <div class="day-group-head"><span>${DAYS[dk].label}</span><span>${yen(sum)}</span></div>
+            ${items.map(e => {
+              const c = EXP_CAT[e.cat] || EXP_CAT.etc;
+              const amt = Number(e.amount) || 0;
+              const main = e.cur === 'KRW' ? won(amt) : yen(amt);
+              const sub = e.cur === 'KRW' ? '≈ ' + yen(amt / r * 100) : '≈ ' + won(amt / 100 * r);
+              return `<div class="exp-row" data-action="edit-expense" data-id="${e.id}">
+                  <div class="exp-icon">${c.icon}</div>
+                  <div class="exp-main"><div class="exp-title">${esc(e.memo || c.label)}</div><div class="exp-meta">${c.label} · ${PAYS[e.pay] || ''} · ${PAYERS[e.who] || ''}</div></div>
+                  <div class="exp-amt"><b>${main}</b><small>${sub}</small></div>
+                </div>`;
+            }).join('')}
+          </div>`;
+      }).join('');
+    }
+
     /* ---------- Render: checklist ---------- */
     let currentCheckFilter = 'all';
     function renderChecklist() {
-      const total = data.checklist.length;
-      const done = data.checklist.filter(c => c.done).length;
+      const total = data.checklist.length, done = data.checklist.filter(c => c.done).length;
       const pct = total ? Math.round(done / total * 100) : 0;
       document.getElementById('progressPct').textContent = pct + '%';
       document.getElementById('progressFill').style.width = pct + '%';
       document.getElementById('progressCount').textContent = `${done} / ${total} 완료`;
       let msg = '정희 여사님과 딸 소연이의 설레는 모녀 여행 준비 중 🌸';
-      if (total && pct === 100) msg = '완벽해요! 이제 즐겁게 출발할 일만 남았어요 ✈️🎉';
-      else if (pct >= 50) msg = '절반 이상 준비 완료! 아주 순조로워요 😊';
+      if (total && pct === 100) msg = '완벽해요! 이제 즐겁게 출발할 일만 남았어요 ✈️🎉'; else if (pct >= 50) msg = '절반 이상 준비 완료! 아주 순조로워요 😊';
       document.getElementById('progressMsg').textContent = msg;
-
       const list = data.checklist.filter(c => currentCheckFilter === 'all' || c.owner === currentCheckFilter);
       document.getElementById('checklistContainer').innerHTML = list.length ? list.map(c => {
         const o = OWNER[c.owner] || OWNER.all_owner;
-        return `<div class="check-item sort-item ${c.done ? 'checked' : ''}" data-id="${c.id}" data-action="toggle-check">
-            <div class="check-box">${c.done ? '✓' : ''}</div>
-            <div class="check-content">
-              <span class="owner-tag ${o.cls}">${o.label}</span>
-              <div class="check-title">${esc(c.title)}</div>
-              ${c.desc ? `<div class="check-desc">${fmt(c.desc)}</div>` : ''}
+        return `<div class="check-item sort-item ${c.done ? 'checked' : ''}" data-id="${c.id}">
+            ${HANDLE}
+            <div class="check-tap" data-action="toggle-check" data-id="${c.id}">
+              <div class="check-box">${c.done ? '✓' : ''}</div>
+              <div class="check-content"><span class="owner-tag ${o.cls}">${o.label}</span><div class="check-title">${esc(c.title)}</div>${c.desc ? `<div class="check-desc">${fmt(c.desc)}</div>` : ''}</div>
             </div>
             ${editBtn('checklist', c.id)}
           </div>`;
-      }).join('') : '<p class="edit-hint" style="text-align:center;padding:18px 0;">이 담당자의 준비물이 없어요.</p>';
+      }).join('') : '<div class="empty-box">이 담당자의 준비물이 없어요.</div>';
       document.querySelectorAll('#checkFilterBar .filter-pill').forEach(p => p.classList.toggle('active', p.dataset.key === currentCheckFilter));
     }
 
     /* ---------- Render: memo ---------- */
     function renderMemo() {
       const m = data.memo;
-      document.getElementById('addressList').innerHTML = m.addresses.map(a => `
-        <div class="address-box sort-item" data-id="${a.id}">
-          <div class="item-main">
-            <div class="addr-name">${esc(a.name)}</div>
-            ${a.ja ? `<div class="addr-ja">${esc(a.ja)}</div>` : ''}
-            ${a.en ? `<div class="addr-en">${esc(a.en)}</div>` : ''}
-            ${a.ja ? `<button type="button" class="copy-btn" data-action="copy" data-text="${esc(a.ja)}">📋 일본어 복사하기</button>` : ''}
-          </div>
-          ${editBtn('memo.addresses', a.id)}
-        </div>`).join('');
-      document.getElementById('phraseList').innerHTML = m.phrases.map((p, i) => `
+      document.getElementById('phraseList').innerHTML = (m.phrases || []).map((p, i) => `
         <div class="phrase-item sort-item" data-id="${p.id}">
+          ${HANDLE}
           <div class="item-main">
             ${p.ko ? `<div class="phrase-ko">${i + 1}. ${esc(p.ko)}</div>` : ''}
-            <div class="phrase-jp">${esc(p.jp)}</div>
+            <div class="phrase-jp" data-action="speak" data-text="${esc(p.jp)}"><span>${esc(p.jp)}</span><span class="spk">🔊</span></div>
             ${p.pron ? `<div class="phrase-pron">${esc(p.pron)}</div>` : ''}
           </div>
           ${editBtn('memo.phrases', p.id)}
         </div>`).join('');
-      document.getElementById('contactList').innerHTML = m.contacts.map(c => `
-        <li class="sort-item" data-id="${c.id}">
-          <div class="item-main">${c.label ? `<strong>${esc(c.label)}:</strong> ` : ''}${fmt(c.text)}</div>
-          ${editBtn('memo.contacts', c.id)}
-        </li>`).join('');
+      document.getElementById('addressList').innerHTML = (m.addresses || []).map(a => `
+        <div class="address-box sort-item" data-id="${a.id}">
+          ${HANDLE}
+          <div class="item-main">
+            <div class="addr-name">${esc(a.name)}</div>
+            ${a.ja ? `<div class="addr-ja">${esc(a.ja)}</div>` : ''}
+            ${a.en ? `<div class="addr-en">${esc(a.en)}</div>` : ''}
+            ${a.ja ? `<div class="btn-row"><button type="button" class="copy-btn" data-action="copy" data-text="${esc(a.ja)}">📋 일본어 복사</button><button type="button" class="speak-btn" data-action="speak" data-text="${esc(a.ja)}">🔊 듣기</button></div>` : ''}
+          </div>
+          ${editBtn('memo.addresses', a.id)}
+        </div>`).join('');
+      document.getElementById('contactList').innerHTML = (m.contacts || []).map(c => `
+        <li class="sort-item" data-id="${c.id}">${HANDLE}<div class="item-main">${c.label ? `<strong>${esc(c.label)}:</strong> ` : ''}${fmt(c.text)}</div>${editBtn('memo.contacts', c.id)}</li>`).join('');
     }
 
-    function renderAll() { renderSchedule(); renderSpots(); renderChecklist(); renderMemo(); }
+    function syncRateInputs() { document.querySelectorAll('[data-rate]').forEach(el => { if (document.activeElement !== el) el.value = rate(); }); }
+    function renderDday() {
+      const now = new Date(); const start = new Date(2026, 11, 3); const end = new Date(2026, 11, 6, 23, 59);
+      const days = Math.ceil((start - new Date(now.getFullYear(), now.getMonth(), now.getDate())) / 86400000);
+      const el = document.getElementById('ddayPill');
+      if (days > 0) el.textContent = `출발까지 D-${days} ✈️`;
+      else if (now <= end) el.textContent = `여행 ${1 - days}일차 🎀`;
+      else el.textContent = '정희 여사님 첫 일본 여행 🎀';
+    }
+    function renderAll() { renderSchedule(); renderSpots(); renderLedger(); renderChecklist(); renderMemo(); syncRateInputs(); }
 
-    /* ---------- Edit sheet ---------- */
+    /* ---------- Sheet ---------- */
     let sheet = null;
     function openSheet(opts) {
       sheet = opts;
       document.getElementById('sheetTitle').textContent = opts.title;
-      const vals = opts.values || {};
-      document.getElementById('sheetForm').innerHTML = opts.fields.map(f => {
-        const v = vals[f.k] == null ? '' : vals[f.k];
-        let input;
-        if (f.type === 'textarea') input = `<textarea name="${f.k}" rows="3" placeholder="${esc(f.ph || '')}">${esc(v)}</textarea>`;
-        else if (f.type === 'select') input = `<select name="${f.k}">${f.options.map(o => `<option value="${o.v}"${o.v === v ? ' selected' : ''}>${esc(o.t)}</option>`).join('')}</select>`;
-        else if (f.type === 'number') input = `<input name="${f.k}" type="number" inputmode="numeric" value="${esc(v)}" placeholder="${esc(f.ph || '')}">`;
-        else input = `<input name="${f.k}" type="text" value="${esc(v)}" placeholder="${esc(f.ph || '')}">`;
-        return `<label class="sheet-field"><span>${esc(f.label)}${f.req ? ' *' : ''}</span>${input}</label>`;
-      }).join('') + (opts.note ? `<p class="sheet-note">${opts.note}</p>` : '');
+      const form = document.getElementById('sheetForm');
+      if (opts.html != null) form.innerHTML = opts.html;
+      else {
+        const vals = opts.values || {};
+        form.innerHTML = opts.fields.map(f => {
+          const v = vals[f.k] == null ? '' : vals[f.k];
+          let input;
+          if (f.type === 'textarea') input = `<textarea name="${f.k}" rows="3" placeholder="${esc(f.ph || '')}">${esc(v)}</textarea>`;
+          else if (f.type === 'select') input = `<select name="${f.k}">${f.options.map(o => `<option value="${o.v}"${o.v === v ? ' selected' : ''}>${esc(o.t)}</option>`).join('')}</select>`;
+          else if (f.type === 'number') input = `<input name="${f.k}" type="number" inputmode="numeric" value="${esc(v)}" placeholder="${esc(f.ph || '')}">`;
+          else input = `<input name="${f.k}" type="text" value="${esc(v)}" placeholder="${esc(f.ph || '')}">`;
+          return `<label class="sheet-field"><span>${esc(f.label)}${f.req ? ' *' : ''}</span>${input}</label>`;
+        }).join('') + (opts.note ? `<p class="sheet-note">${opts.note}</p>` : '');
+      }
       document.getElementById('sheetDel').style.display = opts.onDelete ? '' : 'none';
+      document.getElementById('sheetSave').style.display = opts.onSave ? '' : 'none';
+      document.getElementById('sheetSave').textContent = opts.saveLabel || '저장';
+      document.getElementById('sheetCancel').textContent = opts.onSave ? '취소' : '닫기';
+      document.getElementById('sheet').scrollTop = 0;
       document.body.classList.add('sheet-open');
     }
     function closeSheet() {
       document.body.classList.remove('sheet-open');
       sheet = null;
       if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
+      flushRemote();
     }
     function sheetSave() {
-      if (!sheet) return;
+      if (!sheet || !sheet.onSave) return;
+      if (!sheet.fields) { sheet.onSave(); return; }
       const form = document.getElementById('sheetForm');
       const vals = {};
       for (const f of sheet.fields) {
         const el = form.elements[f.k];
         let v = el ? el.value : '';
-        if (f.type === 'number') v = parseInt(v, 10) || 0;
-        else v = String(v).trim();
+        if (f.type === 'number') v = parseInt(v, 10) || 0; else v = String(v).trim();
         if (f.req && !v) { showToast(`'${f.label.split(' (')[0].split(' —')[0]}'을(를) 입력해 주세요`); if (el) el.focus(); return; }
         vals[f.k] = v;
       }
@@ -1008,8 +1089,7 @@
     function commit(msg) { save(); renderAll(); closeSheet(); if (msg) showToast(msg); }
 
     function openItemEditor(listKey, id) {
-      const type = listType(listKey);
-      const list = resolveList(listKey);
+      const type = listType(listKey), list = resolveList(listKey);
       if (!list || !type) return;
       const item = id ? list.find(x => String(x.id) === String(id)) : null;
       const defaults = {};
@@ -1017,51 +1097,144 @@
       if (!item && type === 'check') defaults.owner = currentCheckFilter !== 'all' ? currentCheckFilter : 'all_owner';
       openSheet({
         title: `${TYPE_NAME[type]} ${item ? '수정' : '추가'}`,
-        fields: FIELDS[type],
-        values: item || defaults,
+        fields: FIELDS[type], values: item || defaults,
         note: (type === 'timeline' || type === 'info' || type === 'contact') ? '**굵게** 처럼 별표 두 개로 감싸면 굵은 글씨가 돼요.' : '',
         onSave(vals) {
           if (item) Object.assign(item, vals);
-          else {
-            const n = Object.assign({ id: uid() }, vals);
-            if (type === 'spot') n.qty = 1;
-            if (type === 'check') n.done = false;
-            list.push(n);
-          }
+          else { const n = Object.assign({ id: uid() }, vals); if (type === 'spot') n.qty = 1; if (type === 'check') n.done = false; list.push(n); }
           commit(item ? '수정했어요' : '추가했어요');
         },
-        onDelete: item ? function () {
-          if (!window.confirm('이 항목을 삭제할까요?')) return;
-          const idx = list.indexOf(item);
-          if (idx >= 0) list.splice(idx, 1);
-          commit('삭제했어요');
-        } : null
+        onDelete: item ? function () { if (!window.confirm('이 항목을 삭제할까요?')) return; const i = list.indexOf(item); if (i >= 0) list.splice(i, 1); commit('삭제했어요'); } : null
       });
     }
     function openDayEditor(dayId) {
-      const d = data.days.find(x => x.id === dayId);
-      if (!d) return;
+      const d = data.days.find(x => x.id === dayId); if (!d) return;
       openSheet({
         title: '일차 제목 수정',
-        fields: [
-          { k: 'tag', label: '날짜 표시' },
-          { k: 'title', label: '제목', req: true },
-          { k: 'emoji', label: '이모지' },
-          { k: 'foodTitle', label: '식사 박스 제목' },
-          { k: 'shopTitle', label: '쇼핑 박스 제목' },
-          { k: 'tipTitle', label: '팁 박스 제목' }
-        ],
+        fields: [{ k: 'tag', label: '날짜 표시' }, { k: 'title', label: '제목', req: true }, { k: 'emoji', label: '이모지' }, { k: 'foodTitle', label: '식사 박스 제목' }, { k: 'shopTitle', label: '쇼핑 박스 제목' }, { k: 'tipTitle', label: '팁 박스 제목' }],
         values: { tag: d.tag, title: d.title, emoji: d.emoji, foodTitle: d.food.title, shopTitle: d.shop.title, tipTitle: d.tip.title },
-        onSave(v) {
-          d.tag = v.tag; d.title = v.title; d.emoji = v.emoji;
-          d.food.title = v.foodTitle; d.shop.title = v.shopTitle; d.tip.title = v.tipTitle;
-          commit('수정했어요');
-        },
+        onSave(v) { d.tag = v.tag; d.title = v.title; d.emoji = v.emoji; d.food.title = v.foodTitle; d.shop.title = v.shopTitle; d.tip.title = v.tipTitle; commit('수정했어요'); },
         onDelete: null
       });
     }
 
-    /* ---------- Font size ---------- */
+    /* ---------- Expense quick entry (keypad) ---------- */
+    let exp = null;
+    function openExpense(id, preset) {
+      const cur = id ? data.expenses[id] : null;
+      exp = cur ? Object.assign({}, cur, { amount: String(cur.amount || 0) })
+        : Object.assign({ amount: '0', cur: 'JPY', cat: 'food', pay: 'card', who: 'together', day: todayKey(), memo: '' }, preset || {});
+      exp.amount = String(exp.amount || '0');
+      openSheet({
+        title: cur ? '지출 수정' : '💳 지출 기록',
+        html: expenseHtml(),
+        saveLabel: '저장',
+        onSave() {
+          const amt = parseInt(exp.amount, 10) || 0;
+          if (!amt) { showToast('금액을 입력해 주세요'); return; }
+          const memoEl = document.getElementById('expMemo');
+          const rec = { amount: amt, cur: exp.cur, cat: exp.cat, pay: exp.pay, who: exp.who, day: exp.day, memo: memoEl ? memoEl.value.trim() : '', ts: cur ? (cur.ts || Date.now()) : Date.now() };
+          data.expenses[id || uid()] = rec;
+          currentBudgetView = 'ledger';
+          commit(cur ? '수정했어요' : `${rec.cur === 'KRW' ? won(amt) : yen(amt)} 기록했어요`);
+          applyBudgetView();
+        },
+        onDelete: cur ? function () { if (!window.confirm('이 지출을 삭제할까요?')) return; delete data.expenses[id]; commit('삭제했어요'); } : null
+      });
+    }
+    function expenseHtml() {
+      const chip = (act, map, val) => Object.keys(map).map(k => `<button type="button" class="${k === val ? 'active' : ''}" data-action="${act}" data-v="${k}">${typeof map[k] === 'string' ? map[k] : map[k].short}</button>`).join('');
+      return `
+        <div class="amt-display">
+          <div class="amt-num" id="expAmt"></div>
+          <div class="cur-toggle">
+            <button type="button" class="${exp.cur === 'JPY' ? 'active' : ''}" data-action="exp-cur" data-v="JPY">¥ 엔</button>
+            <button type="button" class="${exp.cur === 'KRW' ? 'active' : ''}" data-action="exp-cur" data-v="KRW">₩ 원</button>
+          </div>
+        </div>
+        <div class="amt-sub" id="expConv"></div>
+        <div class="quick-amts" id="quickAmts"></div>
+        <div class="cat-grid">${Object.keys(EXP_CAT).map(k => `<button type="button" class="${k === exp.cat ? 'active' : ''}" data-action="exp-cat" data-v="${k}"><span class="ci">${EXP_CAT[k].icon}</span>${EXP_CAT[k].label}</button>`).join('')}</div>
+        <div class="chip-line"><span>결제</span>${chip('exp-pay', PAYS, exp.pay)}</div>
+        <div class="chip-line"><span>누가</span>${chip('exp-who', PAYERS, exp.who)}</div>
+        <div class="chip-line"><span>날짜</span>${chip('exp-day', DAYS, exp.day)}</div>
+        <input id="expMemo" class="sheet-input" type="text" maxlength="40" placeholder="메모 (선택) 예: 다코야키, 지하철" value="${esc(exp.memo || '')}" />
+        <div class="keypad">
+          ${['1', '2', '3', '4', '5', '6', '7', '8', '9', '00', '0', '⌫'].map(k => `<button type="button" data-action="kp" data-k="${k}">${k}</button>`).join('')}
+        </div>`;
+    }
+    function refreshExpenseView() {
+      if (!exp) return;
+      const amt = parseInt(exp.amount, 10) || 0;
+      const a = document.getElementById('expAmt'); if (!a) return;
+      a.textContent = exp.cur === 'KRW' ? '₩ ' + amt.toLocaleString() : '¥ ' + amt.toLocaleString();
+      a.style.color = amt ? 'var(--text-main)' : 'var(--text-muted)';
+      document.getElementById('expConv').textContent = amt ? (exp.cur === 'KRW' ? '≈ ' + yen(amt / rate() * 100) : '≈ ' + won(amt / 100 * rate())) : '키패드로 금액을 눌러주세요';
+      const q = exp.cur === 'KRW' ? [1000, 5000, 10000, 50000] : [100, 500, 1000, 5000, 10000];
+      document.getElementById('quickAmts').innerHTML = q.map(v => `<button type="button" data-action="exp-add" data-v="${v}">+${v.toLocaleString()}</button>`).join('') + '<button type="button" data-action="exp-clear">지우기</button>';
+    }
+    function setChipActive(act, v) { document.querySelectorAll(`#sheetForm [data-action="${act}"]`).forEach(b => b.classList.toggle('active', b.dataset.v === v)); }
+
+    /* ---------- Translate / interpreter sheet ---------- */
+    function openTranslate() {
+      const gtApp = 'intent://translate.google.com/?sl=ko&tl=ja#Intent;scheme=https;package=com.google.android.apps.translate;S.browser_fallback_url=' + encodeURIComponent('https://translate.google.com/?sl=ko&tl=ja&op=translate') + ';end';
+      openSheet({
+        title: '🌐 번역 · 통역',
+        html: `
+          <div class="tr-section">
+            <div class="tr-label">하고 싶은 말을 한국어로 적고 번역하기</div>
+            <textarea id="trText" class="sheet-input" rows="2" placeholder="예: 화장실이 어디예요?"></textarea>
+            <div class="tr-btns">
+              <button type="button" class="tr-btn main" data-action="tr-go" data-to="google">구글 번역 (한→일)</button>
+              <button type="button" class="tr-btn" data-action="tr-go" data-to="papago">파파고 (한→일)</button>
+            </div>
+          </div>
+          <div class="tr-section">
+            <div class="tr-label">🎙️ 말로 바로 통역 (대화 모드)</div>
+            <div class="tr-btns">
+              ${isAndroid ? `<a class="tr-btn main wide" href="${esc(gtApp)}">구글 번역 앱 열기 → '대화' 버튼</a>` : `<a class="tr-btn main wide" href="https://translate.google.com/?sl=ko&tl=ja&op=translate" target="_blank" rel="noopener">구글 번역 열기</a>`}
+              <a class="tr-btn" href="https://translate.google.com/?sl=ja&tl=ko&op=translate" target="_blank" rel="noopener">일본어 → 한국어</a>
+              <a class="tr-btn" href="https://papago.naver.com/?sk=ja&tk=ko" target="_blank" rel="noopener">파파고 일→한</a>
+            </div>
+            <div class="tr-tip ${isAndroid ? 'me' : ''}"><b>📱 갤럭시 (정희 여사님)</b><br>화면 위에서 아래로 두 번 쓸어내려 빠른 설정의 <b>'통역'</b> 아이콘을 누르면 한국어↔일본어 대화 통역이 돼요 (갤럭시 AI 지원 기종). 없으면 위의 구글 번역 앱 → <b>'대화'</b>를 쓰세요.</div>
+            <div class="tr-tip ${isIOS ? 'me' : ''}"><b>📱 아이폰 (소연)</b><br>기본 <b>'번역'</b> 앱 → 아래 <b>'대화'</b> 탭 → 언어를 한국어·일본어로 맞추고 마이크를 누르면 돼요. 구글 번역 앱이 있으면 앱의 '대화' 버튼도 좋아요.</div>
+            <div class="tr-tip"><b>📷 메뉴판·간판 읽기</b><br>구글 번역 앱이나 파파고 앱의 <b>카메라</b> 버튼으로 비추면 일본어가 한국어로 바뀌어 보여요.</div>
+          </div>`,
+        onSave: null, onDelete: null
+      });
+    }
+    function trGo(to) {
+      const t = (document.getElementById('trText') || {}).value || '';
+      const url = to === 'papago'
+        ? 'https://papago.naver.com/?sk=ko&tk=ja&st=' + encodeURIComponent(t)
+        : 'https://translate.google.com/?sl=ko&tl=ja&op=translate&text=' + encodeURIComponent(t);
+      window.open(url, '_blank', 'noopener');
+    }
+
+    /* ---------- Japanese text-to-speech ---------- */
+    let jaVoice = null;
+    function pickVoice() {
+      try {
+        const vs = window.speechSynthesis.getVoices() || [];
+        jaVoice = vs.find(v => /^ja[-_]JP/i.test(v.lang) && /Kyoko|O-ren|Google|Hattori/i.test(v.name)) || vs.find(v => /^ja/i.test(v.lang)) || null;
+      } catch (e) { jaVoice = null; }
+    }
+    if ('speechSynthesis' in window) { pickVoice(); try { window.speechSynthesis.onvoiceschanged = pickVoice; } catch (e) {} }
+    function speakJa(text) {
+      if (!text) return;
+      if (!('speechSynthesis' in window) || typeof SpeechSynthesisUtterance === 'undefined') { showToast('이 브라우저는 음성 읽기를 지원하지 않아요'); return; }
+      const synth = window.speechSynthesis;
+      const go = () => {
+        const u = new SpeechSynthesisUtterance(text);
+        u.lang = 'ja-JP'; if (jaVoice) u.voice = jaVoice; u.rate = 0.85; u.pitch = 1;
+        u.onerror = (ev) => { if (ev && ev.error !== 'interrupted' && ev.error !== 'canceled') showToast('일본어 음성을 재생하지 못했어요 (음량·무음 모드 확인)'); };
+        synth.speak(u);
+      };
+      if (synth.speaking || synth.pending) { synth.cancel(); setTimeout(go, 120); } else go();
+      showToast('🔊 일본어로 읽는 중…');
+    }
+
+    /* ---------- Font / tabs / misc ---------- */
     function setFont(size) {
       const large = size === 'large';
       document.body.classList.toggle('large-text', large);
@@ -1069,41 +1242,36 @@
       document.getElementById('fontLarge').classList.toggle('active', large);
       SafeStorage.setItem('osaka_font', large ? 'large' : 'normal');
     }
-
-    /* ---------- Tabs ---------- */
+    let currentTab = 'tab-schedule', currentBudgetView = SafeStorage.getItem('osaka_budget_view') || 'ledger';
+    function applyBudgetView() {
+      document.getElementById('ledgerView').style.display = currentBudgetView === 'ledger' ? '' : 'none';
+      document.getElementById('planView').style.display = currentBudgetView === 'plan' ? '' : 'none';
+      document.getElementById('viewLedgerBtn').classList.toggle('active', currentBudgetView === 'ledger');
+      document.getElementById('viewPlanBtn').classList.toggle('active', currentBudgetView === 'plan');
+      document.body.classList.toggle('show-fab', currentTab === 'tab-budget');
+      SafeStorage.setItem('osaka_budget_view', currentBudgetView);
+    }
     function switchTab(tabId) {
+      currentTab = tabId;
       document.querySelectorAll('.tab-section').forEach(s => s.classList.toggle('active', s.id === tabId));
       document.querySelectorAll('.bottom-nav .nav-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tabId));
+      applyBudgetView();
       try { window.scrollTo(0, 0); } catch (e) {}
     }
-
-    /* ---------- Copy & toast ---------- */
     function copyText(text) {
       const ok = () => showToast('클립보드에 복사되었습니다!');
-      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(ok).catch(() => fallbackCopy(text));
-      else fallbackCopy(text);
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(ok).catch(() => fallbackCopy(text)); else fallbackCopy(text);
     }
     function fallbackCopy(text) {
-      try {
-        const ta = document.createElement('textarea');
-        ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
-        document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
-        showToast('클립보드에 복사되었습니다!');
-      } catch (e) { showToast('글자를 길게 눌러 복사해 주세요.'); }
+      try { const ta = document.createElement('textarea'); ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); showToast('클립보드에 복사되었습니다!'); }
+      catch (e) { showToast('글자를 길게 눌러 복사해 주세요.'); }
     }
     let toastTimer = null;
-    function showToast(msg) {
-      const el = document.getElementById('toast');
-      el.textContent = msg; el.classList.add('show');
-      clearTimeout(toastTimer); toastTimer = setTimeout(() => el.classList.remove('show'), 2000);
-    }
+    function showToast(msg) { const el = document.getElementById('toast'); el.textContent = msg; el.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => el.classList.remove('show'), 2000); }
 
-    /* ---------- Click handling (single delegated handler) ---------- */
+    /* ---------- Click handling ---------- */
     let suppressClick = false;
-    document.addEventListener('click', function (e) {
-      if (suppressClick) { suppressClick = false; e.preventDefault(); e.stopPropagation(); }
-    }, true);
-
+    document.addEventListener('click', function (e) { if (suppressClick) { suppressClick = false; e.preventDefault(); e.stopPropagation(); } }, true);
     document.addEventListener('click', function (e) {
       const el = e.target.closest('[data-action]');
       if (!el) return;
@@ -1115,145 +1283,310 @@
         case 'spot-filter': currentSpotFilter = el.dataset.key; renderSpots(); break;
         case 'check-filter': currentCheckFilter = el.dataset.key; renderChecklist(); break;
         case 'person': personMode = Number(el.dataset.mode) || 2; renderSpots(); break;
-        case 'qty': {
-          const s = data.spots.find(x => String(x.id) === el.dataset.id);
-          if (s) { s.qty = Math.max(0, (Number(s.qty) || 0) + Number(el.dataset.delta)); save(); renderSpots(); }
-          break;
-        }
-        case 'toggle-check': {
-          const c = data.checklist.find(x => String(x.id) === el.dataset.id);
-          if (c) { c.done = !c.done; save(); renderChecklist(); }
-          break;
-        }
+        case 'budget-view': currentBudgetView = el.dataset.view; applyBudgetView(); break;
+        case 'qty': { const s = data.spots.find(x => String(x.id) === el.dataset.id); if (s) { s.qty = Math.max(0, (Number(s.qty) || 0) + Number(el.dataset.delta)); save(); renderSpots(); renderLedger(); } break; }
+        case 'toggle-check': { const c = data.checklist.find(x => String(x.id) === el.dataset.id); if (c) { c.done = !c.done; save(); renderChecklist(); } break; }
         case 'copy': copyText(el.dataset.text || ''); break;
+        case 'speak': speakJa(el.dataset.text || ''); break;
         case 'add': openItemEditor(el.dataset.list, null); break;
         case 'edit': openItemEditor(el.dataset.list, el.dataset.id); break;
         case 'edit-day': openDayEditor(el.dataset.day); break;
+        case 'add-expense': openExpense(null); refreshExpenseView(); break;
+        case 'edit-expense': openExpense(el.dataset.id); refreshExpenseView(); break;
+        case 'spot-spent': {
+          const s = data.spots.find(x => String(x.id) === el.dataset.id); if (!s) break;
+          const map = { food: 'food', cafe: 'cafe', play: 'play', shop: 'shop' };
+          openExpense(null, { amount: String((Number(s.price) || 0) * (Number(s.qty) || 1) * multOf(s)), cat: map[s.cat] || 'etc', memo: s.name });
+          refreshExpenseView(); break;
+        }
+        case 'kp': {
+          if (!exp) break; const k = el.dataset.k;
+          if (k === '⌫') exp.amount = exp.amount.length > 1 ? exp.amount.slice(0, -1) : '0';
+          else if (exp.amount.length < 9) exp.amount = String(parseInt((exp.amount === '0' ? '' : exp.amount) + k, 10) || 0);
+          refreshExpenseView(); break;
+        }
+        case 'exp-add': if (exp) { exp.amount = String((parseInt(exp.amount, 10) || 0) + Number(el.dataset.v)); refreshExpenseView(); } break;
+        case 'exp-clear': if (exp) { exp.amount = '0'; refreshExpenseView(); } break;
+        case 'exp-cur': if (exp) { exp.cur = el.dataset.v; setChipActive('exp-cur', exp.cur); refreshExpenseView(); } break;
+        case 'exp-cat': if (exp) { exp.cat = el.dataset.v; setChipActive('exp-cat', exp.cat); } break;
+        case 'exp-pay': if (exp) { exp.pay = el.dataset.v; setChipActive('exp-pay', exp.pay); } break;
+        case 'exp-who': if (exp) { exp.who = el.dataset.v; setChipActive('exp-who', exp.who); } break;
+        case 'exp-day': if (exp) { exp.day = el.dataset.v; setChipActive('exp-day', exp.day); } break;
+        case 'set-budget':
+          openSheet({
+            title: '여행 예산 설정 (모녀 합계)',
+            fields: [{ k: 'budget', label: '예산 (엔) — 비우거나 0이면 예상 경비 합계를 사용', type: 'number', ph: '예: 200000' }],
+            values: { budget: data.settings.budget || '' },
+            onSave(v) { data.settings.budget = Number(v.budget) || 0; commit('예산을 저장했어요'); }, onDelete: null
+          });
+          break;
+        case 'open-translate': openTranslate(); break;
+        case 'tr-go': trGo(el.dataset.to); break;
+        case 'sync-now': manualSync(); break;
         case 'sheet-save': sheetSave(); break;
         case 'sheet-close': closeSheet(); break;
         case 'sheet-delete': if (sheet && sheet.onDelete) sheet.onDelete(); break;
         case 'reset': {
           const sec = el.dataset.section;
           const names = { days: '3박 4일 일정', spots: '맛집·쇼핑 예산 목록', checklist: '출국 체크리스트', memo: '현지 메모' };
-          if (window.confirm(`${names[sec]}을(를) 처음 상태로 되돌릴까요?\n직접 추가·수정한 내용은 사라집니다.`)) {
-            data[sec] = buildDefaults()[sec]; save(); renderAll(); showToast('초기화했어요');
-          }
+          if (window.confirm(`${names[sec]}을(를) 처음 상태로 되돌릴까요?\n직접 추가·수정한 내용은 사라지고, 공유 중인 다른 폰에도 반영됩니다.`)) { data[sec] = buildDefaults()[sec]; save(); renderAll(); showToast('초기화했어요'); }
           break;
         }
       }
     });
-    document.getElementById('sheetForm').addEventListener('submit', function (e) { e.preventDefault(); sheetSave(); });
+    document.getElementById('sheetForm').addEventListener('submit', function (e) { e.preventDefault(); if (sheet && sheet.onSave) sheetSave(); });
     document.addEventListener('input', function (e) {
-      if (e.target && e.target.id === 'exchangeRate') { SafeStorage.setItem('osaka_rate', e.target.value); renderSpots(); }
+      if (e.target && e.target.hasAttribute && e.target.hasAttribute('data-rate')) {
+        const v = parseFloat(e.target.value); if (!v) return;
+        data.settings.rate = v; save();
+        document.querySelectorAll('[data-rate]').forEach(el => { if (el !== e.target) el.value = v; });
+        renderSpots(); renderLedger();
+      }
     });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && sheet) closeSheet(); });
 
-    /* ---------- Long-press drag to reorder ---------- */
-    const LONG_PRESS_MS = 450;
-    let press = null, drag = null, lastPt = null, rafId = null;
-
-    function ptOf(e) {
-      const t = e.touches && e.touches.length ? e.touches[0] : (e.changedTouches && e.changedTouches.length ? e.changedTouches[0] : e);
-      return { x: t.clientX, y: t.clientY };
-    }
-    function childOrder(list) {
-      return Array.from(list.children).filter(c => c.classList.contains('sort-item')).map(c => c.dataset.id);
-    }
-    function onPressStart(e) {
-      if (drag || document.body.classList.contains('sheet-open')) return;
+    /* ---------- Drag handle reordering ---------- */
+    let drag = null, lastPt = null, rafId = null;
+    function ptOf(e) { const t = e.touches && e.touches.length ? e.touches[0] : (e.changedTouches && e.changedTouches.length ? e.changedTouches[0] : e); return { x: t.clientX, y: t.clientY }; }
+    function childOrder(list) { return Array.from(list.children).filter(c => c.classList.contains('sort-item')).map(c => c.dataset.id); }
+    function onHandleStart(e) {
+      if (drag || sheet) return;
       if (e.type === 'mousedown' && e.button !== 0) return;
-      const item = e.target.closest('.sort-item');
-      if (!item || e.target.closest('button, input, select, textarea')) return;
-      const list = item.parentElement;
+      const h = e.target.closest && e.target.closest('.drag-handle'); if (!h) return;
+      const item = h.closest('.sort-item'); const list = item && item.parentElement;
       if (!list || !list.classList.contains('sortable')) return;
-      const p = ptOf(e);
-      clearPress();
-      press = { item, list, x: p.x, y: p.y, timer: setTimeout(beginDrag, LONG_PRESS_MS) };
-    }
-    function clearPress() { if (press) { clearTimeout(press.timer); press = null; } }
-    function beginDrag() {
-      if (!press) return;
-      drag = { item: press.item, list: press.list, start: childOrder(press.list).join('|') };
-      press = null;
-      drag.item.classList.add('dragging');
-      document.body.classList.add('is-sorting');
-      try { if (navigator.vibrate) navigator.vibrate(25); } catch (e) {}
-      lastPt = null;
+      if (e.cancelable) e.preventDefault();
+      drag = { item, list, start: childOrder(list).join('|') };
+      item.classList.add('dragging'); document.body.classList.add('is-sorting');
+      try { if (navigator.vibrate) navigator.vibrate(15); } catch (er) {}
+      lastPt = ptOf(e);
       rafId = requestAnimationFrame(autoScroll);
     }
-    function onPressMove(e) {
-      if (press) {
-        const p = ptOf(e);
-        if (Math.abs(p.x - press.x) > 10 || Math.abs(p.y - press.y) > 10) clearPress();
-        return;
-      }
+    function onHandleMove(e) {
       if (!drag) return;
       if (e.cancelable) e.preventDefault();
-      lastPt = ptOf(e);
-      reorderAt(lastPt);
+      lastPt = ptOf(e); reorderAt(lastPt);
     }
     function reorderAt(p) {
       if (!drag) return;
       const el = document.elementFromPoint(p.x, p.y);
-      const target = el && el.closest('.sort-item');
+      const target = el && el.closest && el.closest('.sort-item');
       if (!target || target === drag.item || target.parentElement !== drag.list) return;
       const r = target.getBoundingClientRect();
-      const horiz = drag.list.classList.contains('sort-h');
-      const after = horiz ? (p.x > r.left + r.width / 2) : (p.y > r.top + r.height / 2);
+      const after = drag.list.classList.contains('sort-h') ? (p.x > r.left + r.width / 2) : (p.y > r.top + r.height / 2);
       if (after) { if (target.nextElementSibling !== drag.item) drag.list.insertBefore(drag.item, target.nextElementSibling); }
       else { if (target.previousElementSibling !== drag.item) drag.list.insertBefore(drag.item, target); }
     }
     function autoScroll() {
       if (!drag) return;
       if (lastPt) {
-        const topEdge = 90, bottomEdge = window.innerHeight - 130;
-        let dy = 0;
-        if (lastPt.y < topEdge) dy = -Math.ceil((topEdge - lastPt.y) / 5);
-        else if (lastPt.y > bottomEdge) dy = Math.ceil((lastPt.y - bottomEdge) / 5);
+        const topEdge = 110, bottomEdge = window.innerHeight - 130; let dy = 0;
+        if (lastPt.y < topEdge) dy = -Math.ceil((topEdge - lastPt.y) / 5); else if (lastPt.y > bottomEdge) dy = Math.ceil((lastPt.y - bottomEdge) / 5);
         if (dy) { window.scrollBy(0, dy); reorderAt(lastPt); }
       }
       rafId = requestAnimationFrame(autoScroll);
     }
-    function onPressEnd() {
-      clearPress();
+    function onHandleEnd() {
       if (!drag) return;
       cancelAnimationFrame(rafId);
-      const { item, list, start } = drag;
-      drag = null;
-      item.classList.remove('dragging');
-      document.body.classList.remove('is-sorting');
-      suppressClick = true;
-      setTimeout(() => { suppressClick = false; }, 400);
+      const { item, list, start } = drag; drag = null;
+      item.classList.remove('dragging'); document.body.classList.remove('is-sorting');
+      suppressClick = true; setTimeout(() => { suppressClick = false; }, 350);
       const ids = childOrder(list);
-      if (ids.join('|') === start) return;
-      const arr = resolveList(list.dataset.list);
-      if (!arr) return;
-      // Reorder only the items shown (filters may hide some), keeping hidden ones in place
-      const set = new Set(ids);
-      const byId = new Map(arr.map(x => [String(x.id), x]));
-      const slots = [];
-      arr.forEach((x, i) => { if (set.has(String(x.id))) slots.push(i); });
-      ids.forEach((id, k) => { if (slots[k] != null && byId.has(id)) arr[slots[k]] = byId.get(id); });
-      save();
-      renderAll();
-      showToast('순서를 바꿨어요');
+      if (ids.join('|') !== start) {
+        const arr = resolveList(list.dataset.list);
+        if (arr) {
+          const set = new Set(ids), byId = new Map(arr.map(x => [String(x.id), x])), slots = [];
+          arr.forEach((x, i) => { if (set.has(String(x.id))) slots.push(i); });
+          ids.forEach((id, k) => { if (slots[k] != null && byId.has(id)) arr[slots[k]] = byId.get(id); });
+          save(); renderAll(); showToast('순서를 바꿨어요');
+        }
+      }
+      flushRemote();
     }
-    document.addEventListener('touchstart', onPressStart, { passive: true });
-    document.addEventListener('touchmove', onPressMove, { passive: false });
-    document.addEventListener('touchend', onPressEnd);
-    document.addEventListener('touchcancel', onPressEnd);
-    document.addEventListener('mousedown', onPressStart);
-    document.addEventListener('mousemove', onPressMove);
-    document.addEventListener('mouseup', onPressEnd);
-    document.addEventListener('contextmenu', function (e) { if (e.target.closest && e.target.closest('.sort-item')) e.preventDefault(); });
-    document.addEventListener('dragstart', function (e) { if (e.target.closest && e.target.closest('.sort-item')) e.preventDefault(); });
+    document.addEventListener('touchstart', onHandleStart, { passive: false });
+    document.addEventListener('touchmove', onHandleMove, { passive: false });
+    document.addEventListener('touchend', onHandleEnd);
+    document.addEventListener('touchcancel', onHandleEnd);
+    document.addEventListener('mousedown', onHandleStart);
+    document.addEventListener('mousemove', onHandleMove);
+    document.addEventListener('mouseup', onHandleEnd);
+    document.addEventListener('contextmenu', function (e) { if (e.target.closest && e.target.closest('.drag-handle')) e.preventDefault(); });
+
+    /* =========================================================
+       Sync engine: local-first, pushes changed parts, listens live
+       ========================================================= */
+    const SYNC_ON = /^https?:\/\//.test(SYNC_BASE);
+    let remote = null, syncReady = false, remotePending = false, pushTimer = null, retryTimer = null, es = null;
+    const inflight = { sec: {}, exp: {}, settings: false };
+    function setStatus(kind, text) {
+      const p = document.getElementById('syncPill'); p.className = 'sync-pill ' + kind;
+      document.getElementById('syncText').textContent = text;
+    }
+    function api(path, value) {
+      const url = `${SYNC_BASE}/${path}.json`;
+      const opt = value === null ? { method: 'DELETE' } : { method: 'PUT', body: JSON.stringify(value) };
+      return fetch(url, opt).then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r; });
+    }
+    function schedulePush() { if (!SYNC_ON) return; clearTimeout(pushTimer); pushTimer = setTimeout(pushChanges, 350); }
+    function pushChanges() {
+      if (!SYNC_ON || !syncReady) return;
+      const jobs = [];
+      SECTIONS.forEach(name => {
+        const s = JSON.stringify(data[name]);
+        if (s === synced.sec[name] || inflight.sec[name]) return;
+        const prev = synced.sec[name]; synced.sec[name] = s; inflight.sec[name] = true;
+        jobs.push(api(`sections/${name}`, s).catch(err => { if (synced.sec[name] === s) synced.sec[name] = prev; throw err; }).finally(() => { inflight.sec[name] = false; }));
+      });
+      const ids = new Set([...Object.keys(data.expenses), ...Object.keys(synced.exp)]);
+      ids.forEach(id => {
+        const cur = data.expenses[id]; const s = cur ? stable(cur) : undefined;
+        if (s === synced.exp[id] || inflight.exp[id]) return;
+        const prev = synced.exp[id]; inflight.exp[id] = true;
+        if (s === undefined) delete synced.exp[id]; else synced.exp[id] = s;
+        jobs.push(api(`expenses/${id}`, cur ? cur : null).catch(err => { if (prev === undefined) delete synced.exp[id]; else synced.exp[id] = prev; throw err; }).finally(() => { delete inflight.exp[id]; }));
+      });
+      const ss = stable(data.settings);
+      if (ss !== synced.settings && !inflight.settings) {
+        const prev = synced.settings; synced.settings = ss; inflight.settings = true;
+        jobs.push(api('settings', data.settings).catch(err => { synced.settings = prev; throw err; }).finally(() => { inflight.settings = false; }));
+      }
+      if (!jobs.length) return;
+      persistLocal();
+      setStatus('busy', '저장 중…');
+      Promise.all(jobs).then(() => { persistLocal(); setStatus('ok', '두 폰 공유 중'); flushRemote(); })
+        .catch(() => { persistLocal(); setStatus('off', '오프라인 · 이 폰에 임시 저장'); clearTimeout(retryTimer); retryTimer = setTimeout(pushChanges, 8000); });
+    }
+    function setAt(path, value) {
+      const parts = path.split('/').filter(Boolean);
+      if (!parts.length) { remote = (value && typeof value === 'object') ? value : {}; return; }
+      if (!remote || typeof remote !== 'object') remote = {};
+      let node = remote;
+      for (let i = 0; i < parts.length - 1; i++) { if (!node[parts[i]] || typeof node[parts[i]] !== 'object') node[parts[i]] = {}; node = node[parts[i]]; }
+      const last = parts[parts.length - 1];
+      if (value === null) delete node[last]; else node[last] = value;
+    }
+    function onRemote(kind, msg) {
+      let payload; try { payload = JSON.parse(msg.data); } catch (e) { return; }
+      if (!payload) return;
+      if (kind === 'put') setAt(payload.path, payload.data);
+      else if (kind === 'patch' && payload.data) Object.keys(payload.data).forEach(k => setAt((payload.path === '/' ? '' : payload.path) + '/' + k, payload.data[k]));
+      if (!syncReady) {
+        syncReady = true;
+        reconcile(true);
+        setStatus('ok', '두 폰 공유 중');
+        pushChanges();
+        return;
+      }
+      remotePending = true; flushRemote();
+    }
+    function flushRemote() {
+      if (!remotePending || sheet || drag) return;
+      remotePending = false; reconcile(false);
+    }
+    function reconcile(initial) {
+      if (!remote) remote = {};
+      let changed = false;
+      const rs = remote.sections || {};
+      SECTIONS.forEach(name => {
+        const r = rs[name];
+        if (typeof r !== 'string' || r === synced.sec[name]) return;
+        if (inflight.sec[name]) { remotePending = true; return; }
+        let rv; try { rv = JSON.parse(r); } catch (e) { return; }
+        const base = synced.sec[name];
+        const localStr = JSON.stringify(data[name]);
+        if (base === undefined || localStr === base) data[name] = rv;            // nothing unsent here: take theirs
+        else { try { data[name] = merge3(JSON.parse(base), data[name], rv); } catch (e) { data[name] = rv; } } // both changed: keep both
+        synced.sec[name] = r; changed = true;
+      });
+      const re = (remote.expenses && typeof remote.expenses === 'object') ? remote.expenses : {};
+      new Set([...Object.keys(re), ...Object.keys(synced.exp)]).forEach(id => {
+        if (inflight.exp[id]) { remotePending = true; return; }
+        const s = re[id] ? stable(re[id]) : undefined;
+        if (s === synced.exp[id]) return;
+        if (s === undefined) { if (synced.exp[id] !== undefined) { delete data.expenses[id]; delete synced.exp[id]; changed = true; } }
+        else { data.expenses[id] = re[id]; synced.exp[id] = s; changed = true; }
+      });
+      if (remote.settings && typeof remote.settings === 'object' && !inflight.settings) {
+        const s = stable(remote.settings);
+        if (s !== synced.settings) { data.settings = Object.assign({ rate: 920 }, remote.settings); synced.settings = s; changed = true; }
+      }
+      data = normalize(data);
+      persistLocal();
+      if (changed) { renderAll(); if (!initial) showToast('🔄 다른 폰에서 바뀐 내용을 반영했어요'); }
+      schedulePush(); // merged results that differ from the server get sent back
+    }
+
+    /* 3-way merge: base = last shared version, local = this phone, remote = other phone */
+    function same(a, b) { return JSON.stringify(a) === JSON.stringify(b); }
+    function isIdList(a) { return Array.isArray(a) && a.every(x => x && typeof x === 'object' && 'id' in x); }
+    function merge3(base, local, remote) {
+      if (same(local, base)) return remote;
+      if (same(remote, base) || same(local, remote)) return local;
+      if (isIdList(local) && isIdList(remote) && (base === undefined || isIdList(base))) return mergeList(base || [], local, remote);
+      if (local && remote && typeof local === 'object' && typeof remote === 'object' && !Array.isArray(local) && !Array.isArray(remote)) {
+        const b = (base && typeof base === 'object' && !Array.isArray(base)) ? base : {};
+        const out = {};
+        new Set([...Object.keys(local), ...Object.keys(remote)]).forEach(k => {
+          const inL = k in local, inR = k in remote, inB = k in b;
+          if (inL && inR) out[k] = merge3(b[k], local[k], remote[k]);
+          else if (inL) { if (!inB || !same(local[k], b[k])) out[k] = local[k]; }
+          else if (inR) { if (!inB || !same(remote[k], b[k])) out[k] = remote[k]; }
+        });
+        return out;
+      }
+      return local;
+    }
+    function mergeList(base, local, remote) {
+      const key = x => String(x.id);
+      const B = new Map(base.map(x => [key(x), x])), L = new Map(local.map(x => [key(x), x])), R = new Map(remote.map(x => [key(x), x]));
+      const keep = new Map();
+      new Set([...L.keys(), ...R.keys()]).forEach(id => {
+        const l = L.get(id), r = R.get(id), b = B.get(id);
+        if (l && r) keep.set(id, merge3(b, l, r));
+        else if (l) { if (!b || !same(l, b)) keep.set(id, l); }   // added here (or edited here while deleted there)
+        else if (r) { if (!b || !same(r, b)) keep.set(id, r); }   // added there
+      });
+      const ids = arr => arr.map(key);
+      const localMoved = !same(ids(local).filter(id => B.has(id)), ids(base).filter(id => L.has(id)));
+      const primary = localMoved ? ids(local) : ids(remote);
+      const secondary = localMoved ? ids(remote) : ids(local);
+      const order = primary.filter(id => keep.has(id));
+      secondary.forEach((id, i) => {
+        if (!keep.has(id) || order.includes(id)) return;
+        let pos = 0;
+        for (let j = i - 1; j >= 0; j--) { const k = order.indexOf(secondary[j]); if (k >= 0) { pos = k + 1; break; } }
+        order.splice(pos, 0, id);
+      });
+      return order.map(id => keep.get(id));
+    }
+    function connect() {
+      if (!SYNC_ON) { setStatus('off', '이 폰에만 저장'); return; }
+      if (typeof EventSource === 'undefined') { setStatus('off', '실시간 공유 미지원 브라우저'); return; }
+      try { if (es) es.close(); } catch (e) {}
+      setStatus('busy', '공유 저장소 연결 중…');
+      es = new EventSource(`${SYNC_BASE}.json`);
+      es.addEventListener('put', m => onRemote('put', m));
+      es.addEventListener('patch', m => onRemote('patch', m));
+      es.addEventListener('cancel', () => setStatus('off', '공유 권한 오류'));
+      es.onerror = () => { if (!navigator.onLine) setStatus('off', '오프라인 · 이 폰에 임시 저장'); else if (!syncReady) setStatus('busy', '다시 연결 중…'); };
+      es.onopen = () => { if (syncReady) { setStatus('ok', '두 폰 공유 중'); pushChanges(); } };
+    }
+    function manualSync() {
+      if (!SYNC_ON) { showToast('공유 저장소가 아직 설정되지 않았어요'); return; }
+      showToast('다시 연결하고 있어요…'); syncReady = false; remote = null; connect();
+    }
+    window.addEventListener('online', () => { pushChanges(); if (es && es.readyState === 2) connect(); });
+    window.addEventListener('offline', () => setStatus('off', '오프라인 · 이 폰에 임시 저장'));
+    document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible' && SYNC_ON && (!es || es.readyState === 2)) connect(); });
 
     /* ---------- Init ---------- */
     (function init() {
-      const savedRate = SafeStorage.getItem('osaka_rate');
-      if (savedRate) document.getElementById('exchangeRate').value = savedRate;
       setFont(SafeStorage.getItem('osaka_font') === 'large' ? 'large' : 'normal');
+      renderDday();
       renderAll();
+      applyBudgetView();
+      connect();
     })();
   </script>
 </body>
