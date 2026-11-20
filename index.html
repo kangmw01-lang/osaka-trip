@@ -11,7 +11,7 @@
   <title>🌸 정희 여사님과 딸 소연이의 모녀 오사카 3박 4일 여행 가이드</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Gowun+Batang:wght@400;700&family=Cormorant+Garamond:ital,wght@0,500;1,500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
       --bg-cream: #FFF8F5; --bg-card: #FFFFFF; --bg-soft-pink: #FFF0F2; --bg-soft-mint: #EFF8F4;
@@ -219,7 +219,6 @@
       font-size: 1em; font-weight: 700; padding: 13px 20px; border-radius: 999px; box-shadow: 0 10px 24px rgba(240,101,120,0.42);
     }
     body.show-fab .fab { display: inline-flex; }
-    body[data-tab="tab-diary"] .fab { background: #2B2622; color: #FBF8F4; box-shadow: 0 10px 24px rgba(43, 38, 34, 0.35); font-weight: 600; letter-spacing: 0.02em; }
 
     .spot-card { display: flex; gap: 0; background: #FFFFFF; border: 1px solid var(--border-soft); border-radius: var(--radius-md); margin-bottom: 11px; box-shadow: var(--shadow-card); overflow: hidden; }
     .spot-card > .drag-handle, .check-item > .drag-handle, .address-box > .drag-handle, .phrase-item > .drag-handle { flex-basis: 38px; border-radius: 0; border-width: 0 1.5px 0 0; }
@@ -285,103 +284,11 @@
     .contact-list .drag-handle { flex-basis: 32px; }
 
 
-    body[data-tab="tab-today"] .hero-card, body[data-tab="tab-today"] .quick-grid, body[data-tab="tab-diary"] .hero-card, body[data-tab="tab-diary"] .quick-grid { display: none; }
-    /* ---------- Today ---------- */
-    #tab-today { font-size: 1.06em; }
-    .td-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 10px; margin: 2px 4px 12px; }
-    .td-date { font-size: 1.15em; font-weight: 700; letter-spacing: -0.3px; }
-    .td-day { font-size: 0.82em; color: var(--primary-dark); font-weight: 700; }
-    .td-clock { text-align: right; font-size: 0.82em; color: var(--text-sub); }
-    .td-clock b { display: block; font-size: 1.5em; color: var(--text-main); letter-spacing: -0.5px; }
-    .td-preview { background: #FFFFFF; border: 1.5px dashed var(--primary-light); border-radius: 16px; padding: 12px; margin-bottom: 14px; font-size: 0.85em; color: var(--text-sub); }
-    .td-preview .filter-scroll { margin: 8px 0 0; padding-bottom: 2px; }
-    .td-card { background: #FFFFFF; border: 1px solid var(--border-soft); border-radius: 22px; padding: 18px 18px 16px; margin-bottom: 14px; box-shadow: var(--shadow-card); }
-    .td-card.now { border: 2px solid var(--primary); box-shadow: 0 10px 26px rgba(240, 101, 120, 0.16); }
-    .td-card.next { border: 2px solid var(--secondary); }
-    .td-pill { display: inline-block; font-size: 0.78em; font-weight: 700; padding: 3px 12px; border-radius: 999px; background: var(--primary); color: #FFFFFF; }
-    .td-card.next .td-pill { background: var(--secondary); }
-    .td-when { font-size: 0.82em; color: var(--text-sub); margin-left: 6px; font-weight: 600; }
-    .td-time { font-size: 1.45em; font-weight: 700; margin: 10px 0 2px; letter-spacing: -0.5px; }
-    .td-desc { font-size: 1.32em; font-weight: 700; line-height: 1.45; word-break: keep-all; }
-    .td-go { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; text-align: center; width: 100%; margin-top: 14px; padding: 16px 12px; font-size: 1.12em; font-weight: 700; color: #FFFFFF; background: var(--secondary); border-radius: 16px; text-decoration: none; border: none; box-shadow: 0 8px 20px rgba(55, 125, 106, 0.28); }
-    .td-go small { display: block; font-size: 0.7em; font-weight: 600; opacity: 0.85; }
-    .td-go.ghost { background: #FFFFFF; color: var(--primary-dark); border: 2px solid var(--primary-light); box-shadow: none; font-size: 0.98em; padding: 12px; }
-    .td-step { display: flex; gap: 8px; margin-bottom: 14px; }
-    .td-step button { flex: 1; border: 1.5px solid var(--border-soft); background: #FFFFFF; border-radius: 14px; padding: 11px; font-weight: 700; color: var(--text-sub); font-size: 0.9em; }
-    .td-rest { background: #FFFFFF; border: 1px solid var(--border-soft); border-radius: 18px; padding: 14px 16px; box-shadow: var(--shadow-card); }
-    .td-rest-title { font-weight: 700; font-size: 0.9em; margin-bottom: 6px; }
-    .td-row { display: flex; gap: 10px; padding: 8px 0; border-bottom: 1px dashed #F3E5E8; font-size: 0.9em; align-items: baseline; }
-    .td-row:last-child { border-bottom: none; }
-    .td-row .t { flex: 0 0 auto; min-width: 54px; font-weight: 700; color: var(--primary-dark); font-size: 0.88em; }
-    .td-row.done { opacity: 0.45; }
-    .td-row.cur { font-weight: 700; }
-    .td-done { text-align: center; padding: 26px 12px; font-size: 1.15em; font-weight: 700; }
-
-    /* ---------- Diary ---------- */
-    #tab-diary { --paper: #FBF8F4; --ink: #2B2622; --ink-soft: #7A6F67; --hair: #E8E0D7; --rose: #B8767E; --sage: #7D8E86; }
-    .dy-wrap { background: var(--paper); border: 1px solid var(--hair); border-radius: 26px; padding: 30px 16px 8px; box-shadow: 0 10px 30px rgba(43, 38, 34, 0.05); }
-    .dy-kicker { font-family: 'Cormorant Garamond', serif; letter-spacing: 0.34em; font-size: 0.74em; color: var(--ink-soft); text-align: center; text-transform: uppercase; }
-    .dy-title { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 500; font-size: 2.45em; text-align: center; color: var(--ink); line-height: 1.05; margin: 8px 0 6px; }
-    .dy-sub { font-family: 'Gowun Batang', serif; text-align: center; color: var(--ink-soft); font-size: 0.9em; }
-    .dy-rule { width: 34px; height: 1px; background: var(--ink); opacity: 0.35; margin: 16px auto; }
-    .dy-tools { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
-    .dy-btn { border: 1px solid var(--ink); background: transparent; color: var(--ink); font-size: 0.82em; letter-spacing: 0.03em; padding: 9px 18px; border-radius: 999px; font-weight: 600; }
-    .dy-btn.ink { background: var(--ink); color: var(--paper); }
-    .dy-me { text-align: center; font-size: 0.78em; color: var(--ink-soft); margin-top: 14px; }
-    .dy-me button { border: none; background: transparent; font: inherit; color: var(--ink-soft); padding: 2px 6px; margin: 0 2px; border-bottom: 1px solid transparent; }
-    .dy-me button.active { color: var(--ink); border-bottom-color: var(--ink); font-weight: 700; }
-    .dy-days { display: flex; justify-content: center; gap: 16px; margin: 20px 0 4px; font-family: 'Cormorant Garamond', serif; font-size: 1.02em; letter-spacing: 0.08em; flex-wrap: wrap; }
-    .dy-days button { border: none; background: none; color: var(--ink-soft); padding: 3px 1px; border-bottom: 1px solid transparent; font: inherit; }
-    .dy-days button.active { color: var(--ink); border-bottom-color: var(--ink); }
-    .dy-feed { margin-top: 16px; }
-    .dy-card { background: #FFFFFF; border: 1px solid var(--hair); border-radius: 18px; overflow: hidden; margin-bottom: 22px; }
-    .dy-head { display: flex; align-items: center; gap: 10px; padding: 12px 8px 12px 14px; }
-    .dy-avatar { width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Gowun Batang', serif; font-weight: 700; color: #FFFFFF; background: var(--rose); font-size: 0.86em; flex-shrink: 0; }
-    .dy-avatar.dau { background: var(--sage); }
-    .dy-author { font-weight: 700; font-size: 0.88em; color: var(--ink); }
-    .dy-meta { font-size: 0.72em; color: var(--ink-soft); }
-    .dy-more { margin-left: auto; border: none; background: none; font-size: 1.25em; color: var(--ink-soft); width: 38px; height: 34px; border-radius: 10px; letter-spacing: 1px; }
-    .dy-photos { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; background: #EFE9E2; aspect-ratio: 4 / 5; }
-    .dy-photos::-webkit-scrollbar { display: none; }
-    .dy-photos img { flex: 0 0 100%; width: 100%; height: 100%; object-fit: cover; scroll-snap-align: center; display: block; opacity: 0; transition: opacity 0.4s ease; }
-    .dy-photos img.in { opacity: 1; }
-    .dy-dots { display: flex; justify-content: center; gap: 5px; padding-top: 10px; }
-    .dy-dots i { width: 5px; height: 5px; border-radius: 50%; background: #D9CFC5; transition: background 0.2s; }
-    .dy-dots i.on { background: var(--ink); }
-    .dy-bar { display: flex; align-items: center; gap: 2px; padding: 6px 8px 0; }
-    .dy-icon { border: none; background: none; display: inline-flex; align-items: center; gap: 6px; padding: 8px; color: var(--ink); font-size: 0.8em; font-weight: 600; border-radius: 10px; font-family: inherit; }
-    .dy-icon svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
-    .dy-icon.liked svg { fill: #C9505B; stroke: #C9505B; }
-    .dy-spacer { flex: 1; }
-    .dy-body { padding: 4px 18px 22px; }
-    .dy-date { font-family: 'Cormorant Garamond', serif; letter-spacing: 0.24em; font-size: 0.76em; color: var(--ink-soft); margin: 6px 0 8px; text-transform: uppercase; }
-    .dy-text { font-family: 'Gowun Batang', serif; font-size: 1.02em; line-height: 1.95; color: var(--ink); white-space: pre-wrap; word-break: keep-all; }
-    .dy-card.textonly .dy-body { padding: 18px 24px 26px; }
-    .dy-card.textonly .dy-text { font-size: 1.12em; }
-    .dy-empty { text-align: center; padding: 36px 10px 34px; font-family: 'Gowun Batang', serif; color: var(--ink-soft); line-height: 1.9; }
-    .dy-empty b { display: block; font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 500; font-size: 1.6em; color: var(--ink); margin-bottom: 4px; }
-    .dy-foot { text-align: center; font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--ink-soft); padding: 4px 0 18px; font-size: 0.95em; }
-
-    /* Diary composer & export (inside sheet) */
-    .dc-photos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 12px; }
-    .dc-tile { position: relative; aspect-ratio: 1; border-radius: 12px; overflow: hidden; background: #F2ECE6; }
-    .dc-tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .dc-tile button { position: absolute; top: 5px; right: 5px; width: 24px; height: 24px; border-radius: 50%; border: none; background: rgba(43, 38, 34, 0.7); color: #FFFFFF !important; font-size: 13px; line-height: 1; }
-    .dc-add { aspect-ratio: 1; border-radius: 12px; border: 1.5px dashed #CFC4B9; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #7A6F67; font-size: 0.8em; font-weight: 600; cursor: pointer; background: #FBF8F4; gap: 2px; }
-    .dc-add .plus { font-size: 1.6em; line-height: 1; font-weight: 300; }
-    .dc-text { width: 100%; min-height: 150px; border: 1px solid #E8E0D7; border-radius: 14px; background: #FBF8F4; padding: 14px; font-family: 'Gowun Batang', serif; font-size: 17px; line-height: 1.85; color: #2B2622; resize: vertical; }
-    .dc-text:focus, .sheet-input:focus { outline: 2px solid var(--primary-light); }
-    .ex-preview { display: block; max-width: 100%; max-height: 46vh; margin: 2px auto 14px; border-radius: 6px; box-shadow: 0 10px 28px rgba(43, 38, 34, 0.16); }
-    .ex-btns { display: grid; gap: 8px; }
-    .ex-btn { display: flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid #2B2622; background: #FFFFFF; color: #2B2622 !important; border-radius: 14px; padding: 14px; font-size: 0.95em; font-weight: 700; font-family: inherit; }
-    .ex-btn.ink { background: #2B2622; color: #FBF8F4 !important; }
-    .ex-btn small { font-weight: 500; opacity: 0.7; }
-    .ex-wait { text-align: center; padding: 30px 0; font-family: 'Gowun Batang', serif; color: #7A6F67; }
     .fx-note { font-size: 0.8em; opacity: 0.92; }
 
     /* ---------- Bottom nav / toast ---------- */
     .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.96); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-top: 1px solid var(--border-soft); display: flex; justify-content: space-around; padding: 8px 6px calc(8px + env(safe-area-inset-bottom)); box-shadow: 0 -4px 18px rgba(0,0,0,0.05); }
-    .nav-btn { flex: 1; min-width: 0; border: none; background: transparent; display: flex; flex-direction: column; align-items: center; gap: 3px; color: var(--text-muted); font-size: 0.72em; font-weight: 600; padding: 4px 1px; border-radius: 12px; white-space: nowrap; }
+    .nav-btn { flex: 1; min-width: 0; border: none; background: transparent; display: flex; flex-direction: column; align-items: center; gap: 3px; color: var(--text-muted); font-size: 0.76em; font-weight: 600; padding: 4px 2px; border-radius: 12px; white-space: nowrap; }
     .nav-btn .nav-icon { font-size: 1.35rem; line-height: 1; }
     .nav-btn.active { color: var(--primary-dark); background: var(--bg-soft-pink); font-weight: 700; }
     .toast { position: fixed; bottom: calc(140px + env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%) translateY(20px); background: rgba(42,36,38,0.92); color: #FFFFFF; padding: 9px 18px; border-radius: 999px; font-size: 0.85em; font-weight: 600; opacity: 0; pointer-events: none; transition: all 0.25s ease; z-index: 400; white-space: nowrap; max-width: 92vw; overflow: hidden; text-overflow: ellipsis; }
@@ -589,38 +496,15 @@
       <button type="button" class="reset-link" data-action="reset" data-section="memo">현지 메모 초기화</button>
     </section>
 
-    <!-- TAB 5: 오늘 -->
-    <section id="tab-today" class="tab-section">
-      <div id="todayView"></div>
-    </section>
-
-    <!-- TAB 6: 일기 -->
-    <section id="tab-diary" class="tab-section">
-      <div class="dy-wrap">
-        <div class="dy-kicker">Osaka · December 2026</div>
-        <h2 class="dy-title">Our Osaka Diary</h2>
-        <div class="dy-sub">정희와 소연, 둘만의 오사카 기록</div>
-        <div class="dy-rule"></div>
-        <div class="dy-tools">
-          <button type="button" class="dy-btn ink" data-action="diary-new">＋ 새 기록</button>
-          <button type="button" class="dy-btn" data-action="diary-book">전체 일기 PDF</button>
-        </div>
-        <div class="dy-me" id="dyMe"></div>
-        <div class="dy-days" id="dyDays"></div>
-        <div class="dy-feed" id="diaryFeed"></div>
-      </div>
-    </section>
   </main>
 
   <button type="button" class="fab" id="fab" data-action="add-expense">＋ 지출 기록</button>
 
   <nav class="bottom-nav">
-    <button type="button" class="nav-btn active" data-action="tab" data-tab="tab-schedule"><span class="nav-icon">📅</span><span>일정</span></button>
+    <button type="button" class="nav-btn active" data-action="tab" data-tab="tab-schedule"><span class="nav-icon">📅</span><span>3박 4일 일정</span></button>
     <button type="button" class="nav-btn" data-action="tab" data-tab="tab-budget"><span class="nav-icon">💴</span><span>지출·예산</span></button>
-    <button type="button" class="nav-btn" data-action="tab" data-tab="tab-checklist"><span class="nav-icon">✅</span><span>체크</span></button>
-    <button type="button" class="nav-btn" data-action="tab" data-tab="tab-memo"><span class="nav-icon">🗣️</span><span>메모</span></button>
-    <button type="button" class="nav-btn" data-action="tab" data-tab="tab-today"><span class="nav-icon">☀️</span><span>오늘</span></button>
-    <button type="button" class="nav-btn" data-action="tab" data-tab="tab-diary"><span class="nav-icon">📔</span><span>일기</span></button>
+    <button type="button" class="nav-btn" data-action="tab" data-tab="tab-checklist"><span class="nav-icon">✅</span><span>출국 체크</span></button>
+    <button type="button" class="nav-btn" data-action="tab" data-tab="tab-memo"><span class="nav-icon">🗣️</span><span>현지 메모</span></button>
   </nav>
 
   <div class="sheet-backdrop" data-action="sheet-close"></div>
@@ -872,7 +756,6 @@
       if (!p || typeof p !== 'object') return d;
       SECTIONS.forEach(s => { if (!p[s] || typeof p[s] !== 'object') p[s] = d[s]; });
       if (!p.expenses || typeof p.expenses !== 'object' || Array.isArray(p.expenses)) p.expenses = {};
-      if (!p.diary || typeof p.diary !== 'object' || Array.isArray(p.diary)) p.diary = {};
       if (!p.settings || typeof p.settings !== 'object') p.settings = {};
       if (!p.settings.rate) p.settings.rate = 920;
       migrateLinks(p.days);
@@ -888,8 +771,8 @@
     }
     let data = loadData();
     let synced = (function () {
-      try { const s = JSON.parse(SafeStorage.getItem(SYNCED_KEY) || 'null'); if (s && s.sec && s.exp) { if (!s.diary) s.diary = {}; return s; } } catch (e) {}
-      return { sec: {}, exp: {}, diary: {}, settings: null };
+      try { const s = JSON.parse(SafeStorage.getItem(SYNCED_KEY) || 'null'); if (s && s.sec && s.exp) return s; } catch (e) {}
+      return { sec: {}, exp: {}, settings: null };
     })();
     function persistLocal() {
       SafeStorage.setItem(STORE_KEY, JSON.stringify(data));
@@ -1228,7 +1111,7 @@
       else if (now <= end) el.textContent = `여행 ${1 - days}일차 🎀`;
       else el.textContent = '정희 여사님 첫 일본 여행 🎀';
     }
-    function renderAll() { renderSchedule(); renderSpots(); renderLedger(); renderChecklist(); renderMemo(); renderToday(); renderDiary(); syncRateInputs(); }
+    function renderAll() { renderSchedule(); renderSpots(); renderLedger(); renderChecklist(); renderMemo(); syncRateInputs(); }
 
     /* ---------- Sheet ---------- */
     let sheet = null;
@@ -1258,7 +1141,7 @@
     }
     function closeSheet() {
       document.body.classList.remove('sheet-open');
-      sheet = null; dc = null; exportFiles = null;
+      sheet = null;
       if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
       flushRemote();
     }
@@ -1491,486 +1374,6 @@
       syncRateInputs();
     }
 
-    /* =========================================================
-       오늘 (Today) — now / next item with big directions button
-       ========================================================= */
-    const TRIP_DATES = { day1: [2026, 11, 3], day2: [2026, 11, 4], day3: [2026, 11, 5], day4: [2026, 11, 6] };
-    const WEEK = ['일', '월', '화', '수', '목', '금', '토'];
-    function tripDayToday() {
-      const d = new Date();
-      return Object.keys(TRIP_DATES).find(k => { const [y, m, dd] = TRIP_DATES[k]; return d.getFullYear() === y && d.getMonth() === m && d.getDate() === dd; }) || null;
-    }
-    function itemTimes(list) {
-      let prev = null;
-      return (list || []).map(it => {
-        const t = String(it.time || '');
-        const ms = Array.from(t.matchAll(/(\d{1,2}):(\d{2})/g)).map(m => (+m[1]) * 60 + (+m[2]));
-        let start = ms.length ? ms[0] : null;
-        let end = (ms.length > 1 && /[-~–]/.test(t)) ? ms[1] : null;
-        if (start == null) start = /오전/.test(t) ? 540 : /점심/.test(t) ? 720 : /오후/.test(t) ? 840 : /저녁/.test(t) ? 1080 : (prev != null ? prev + 1 : 0);
-        if (prev != null && start < prev) start = prev + 1;
-        prev = start;
-        return { it, start, end };
-      });
-    }
-    function fmtClock(min) {
-      const h = Math.floor(min / 60) % 24, m = min % 60;
-      return `${h < 12 ? '오전' : '오후'} ${((h + 11) % 12) + 1}:${String(m).padStart(2, '0')}`;
-    }
-    function placeQuery(it, dayId) { return it.map || suggestPlace(it, `day.${dayId}.timeline`); }
-    function dirUrl(it, dayId) {
-      const q = placeQuery(it, dayId);
-      if (/^https?:\/\//i.test(q)) return q;
-      return 'https://www.google.com/maps/dir/?api=1&travelmode=transit&destination=' + encodeURIComponent(q);
-    }
-    let todayShift = 0, previewDay = 'day1', previewMin = 12 * 60 + 30;
-    function renderToday() {
-      const box = document.getElementById('todayView'); if (!box) return;
-      const realDay = tripDayToday();
-      const now = new Date();
-      const dayId = realDay || previewDay;
-      const min = realDay ? now.getHours() * 60 + now.getMinutes() : previewMin;
-      const d = data.days.find(x => x.id === dayId);
-      if (!d) { box.innerHTML = ''; return; }
-      const T = itemTimes(d.timeline);
-      let cur = -1; T.forEach((x, i) => { if (x.start <= min) cur = i; });
-      let idx = Math.max(-1, Math.min(T.length - 1, cur + todayShift));
-      const nowI = idx >= 0 ? T[idx] : null;
-      const nextI = T[idx + 1] || null;
-      const [y, mo, dd] = TRIP_DATES[dayId];
-      const dateObj = new Date(y, mo, dd);
-      const dayNo = Object.keys(TRIP_DATES).indexOf(dayId) + 1;
-      const between = nowI && nowI.end != null && min > nowI.end && nextI && todayShift === 0;
-      const untilNext = (nextI && todayShift === 0) ? nextI.start - min : null;
-      const wx = (document.getElementById('wxNow') || {}).textContent || '';
-      let html = `
-        <div class="td-head">
-          <div><div class="td-day">${realDay ? '오늘은 여행' : '미리보기 ·'} ${dayNo}일차</div><div class="td-date">${mo + 1}월 ${dd}일 (${WEEK[dateObj.getDay()]})</div></div>
-          <div class="td-clock"><b>${fmtClock(min)}</b>${esc(wx)}</div>
-        </div>`;
-      if (!realDay) {
-        html += `<div class="td-preview">✈️ 여행 당일(12/3~12/6)에는 이 화면이 지금 시간에 맞춰 자동으로 바뀌어요. 지금은 <b>미리보기</b>예요.
-          <div class="filter-scroll">${Object.keys(TRIP_DATES).map((k, i) => `<button type="button" class="filter-pill ${k === previewDay ? 'active' : ''}" data-action="td-day" data-v="${k}">${i + 1}일차</button>`).join('')}</div></div>`;
-      }
-      if (nowI) {
-        html += `<div class="td-card now">
-            <span class="td-pill">지금</span>${between ? '<span class="td-when">이동·자유 시간</span>' : ''}
-            ${nowI.it.time ? `<div class="td-time">${esc(nowI.it.time)}</div>` : ''}
-            <div class="td-desc">${fmt(nowI.it.desc)}</div>
-            ${nowI.it.map ? `<a class="td-go ghost" href="${esc(linkUrl(nowI.it.map))}" target="_blank" rel="noopener noreferrer">📍 지금 장소 지도</a>` : ''}
-          </div>`;
-      } else if (T.length) {
-        html += `<div class="td-card now"><span class="td-pill">아직 시작 전</span><div class="td-desc" style="margin-top:10px">오늘 첫 일정까지 ${T[0].start - min > 0 ? `${Math.floor((T[0].start - min) / 60) ? Math.floor((T[0].start - min) / 60) + '시간 ' : ''}${(T[0].start - min) % 60}분` : '곧'} 남았어요</div></div>`;
-      }
-      if (nextI) {
-        html += `<div class="td-card next">
-            <span class="td-pill">다음 일정</span>${untilNext != null && untilNext > 0 ? `<span class="td-when">${untilNext >= 60 ? Math.floor(untilNext / 60) + '시간 ' : ''}${untilNext % 60}분 후</span>` : ''}
-            ${nextI.it.time ? `<div class="td-time">${esc(nextI.it.time)}</div>` : ''}
-            <div class="td-desc">${fmt(nextI.it.desc)}</div>
-            <a class="td-go" href="${esc(dirUrl(nextI.it, dayId))}" target="_blank" rel="noopener noreferrer">🧭 다음 장소 길찾기<small>${esc(String(placeQuery(nextI.it, dayId)).replace(/^https?:\/\/\S+$/, '저장된 지도 위치'))}</small></a>
-          </div>`;
-      } else if (nowI) {
-        const nextDay = data.days[data.days.findIndex(x => x.id === dayId) + 1];
-        html += `<div class="td-card"><div class="td-done">오늘 일정은 여기까지! 🌙<br><span style="font-size:0.75em;font-weight:500;color:var(--text-sub)">${nextDay && nextDay.timeline[0] ? `내일 첫 일정 · ${esc(nextDay.timeline[0].time || '')} ${fmt(nextDay.timeline[0].desc)}` : '푹 쉬세요. 즐거운 여행이었어요 💕'}</span></div>
-          <a class="td-go ghost" href="${esc(linkUrl('Candeo Hotels Osaka Namba'))}" target="_blank" rel="noopener noreferrer">🏨 호텔로 돌아가는 길</a></div>`;
-      }
-      html += `<div class="td-step">
-          <button type="button" data-action="td-shift" data-v="-1">◀ 이전 일정</button>
-          ${todayShift ? '<button type="button" data-action="td-shift" data-v="0">지금으로</button>' : ''}
-          <button type="button" data-action="td-shift" data-v="1">다음 일정 ▶</button>
-        </div>`;
-      html += `<div class="td-rest"><div class="td-rest-title">${d.emoji} ${esc(d.title)}</div>
-          ${T.map((x, i) => `<div class="td-row ${i < idx ? 'done' : ''} ${i === idx ? 'cur' : ''}"><span class="t">${esc((x.it.time || '').split(/\s*[-~–]\s*/)[0])}</span><span>${fmt(x.it.desc)}</span></div>`).join('')}
-        </div>`;
-      box.innerHTML = html;
-    }
-
-    /* =========================================================
-       일기 (Diary) — photos + short text, share as PDF / save as image
-       ========================================================= */
-    const NAMES = { mom: '정희', dau: '소연' };
-    const ICON = {
-      heart: '<svg viewBox="0 0 24 24"><path d="M12 20.3s-7.5-4.6-9.2-9.3C1.6 7.6 3.9 4.4 7.3 4.4c2 0 3.5 1.1 4.7 2.8 1.2-1.7 2.7-2.8 4.7-2.8 3.4 0 5.7 3.2 4.5 6.6-1.7 4.7-9.2 9.3-9.2 9.3z"/></svg>',
-      share: '<svg viewBox="0 0 24 24"><path d="M21 3 10 14"/><path d="M21 3l-7 18-4-7-7-4z"/></svg>',
-      pdf: '<svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M12 11v6"/><path d="m9 14 3 3 3-3"/></svg>'
-    };
-    function me() { const v = SafeStorage.getItem('osaka_me'); return v === 'mom' || v === 'dau' ? v : null; }
-    let diaryDay = 'all';
-    function entryDate(e) {
-      if (TRIP_DATES[(e.day || '').replace('d', 'day')]) { const [y, m, d] = TRIP_DATES[e.day.replace('d', 'day')]; return new Date(y, m, d); }
-      return new Date(e.ts || Date.now());
-    }
-    function diaryList() {
-      const order = { pre: 0, d1: 1, d2: 2, d3: 3, d4: 4 };
-      return Object.keys(data.diary).map(id => Object.assign({ id }, data.diary[id]))
-        .sort((a, b) => ((order[b.day] || 0) - (order[a.day] || 0)) || ((b.ts || 0) - (a.ts || 0)));
-    }
-    function dateStamp(e) {
-      const dt = entryDate(e);
-      const mon = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'][dt.getMonth()];
-      const wd = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'][dt.getDay()];
-      const dayNo = { d1: 1, d2: 2, d3: 3, d4: 4 }[e.day];
-      return `${mon} ${String(dt.getDate()).padStart(2, '0')} · ${wd}${dayNo ? ' · DAY ' + dayNo : ''}`;
-    }
-    function renderDiary() {
-      const meNow = me();
-      document.getElementById('dyMe').innerHTML = `이 폰은 <button type="button" class="${meNow === 'mom' ? 'active' : ''}" data-action="set-me" data-v="mom">정희</button>·<button type="button" class="${meNow === 'dau' ? 'active' : ''}" data-action="set-me" data-v="dau">소연</button> 의 폰이에요`;
-      const dayKeys = [['all', 'ALL'], ['d1', '12.3'], ['d2', '12.4'], ['d3', '12.5'], ['d4', '12.6']];
-      document.getElementById('dyDays').innerHTML = dayKeys.map(([k, t]) => `<button type="button" class="${k === diaryDay ? 'active' : ''}" data-action="dy-day" data-v="${k}">${t}</button>`).join('');
-      const list = diaryList().filter(e => diaryDay === 'all' || e.day === diaryDay);
-      const feed = document.getElementById('diaryFeed');
-      if (!list.length) {
-        feed.innerHTML = `<div class="dy-empty"><b>The first page</b>아직 비어 있는 첫 페이지예요.<br>오늘의 한 장면을 사진과 함께 남겨보세요.</div>`;
-        return;
-      }
-      feed.innerHTML = list.map(e => {
-        const author = e.author === 'mom' ? 'mom' : 'dau';
-        const likes = e.likes ? Object.keys(e.likes).filter(k => e.likes[k]) : [];
-        const liked = meNow && likes.includes(meNow);
-        const photos = Array.isArray(e.photos) ? e.photos : [];
-        const t = new Date(e.ts || Date.now());
-        return `<article class="dy-card ${photos.length ? '' : 'textonly'}" data-id="${e.id}">
-            <header class="dy-head">
-              <div class="dy-avatar ${author}">${NAMES[author].slice(0, 1)}</div>
-              <div><div class="dy-author">${NAMES[author]}</div><div class="dy-meta">${e.place ? esc(e.place) + ' · ' : ''}${fmtClock(t.getHours() * 60 + t.getMinutes())}</div></div>
-              <button type="button" class="dy-more" data-action="diary-edit" data-id="${e.id}" aria-label="수정">···</button>
-            </header>
-            ${photos.length ? `<div class="dy-photos" data-id="${e.id}">${photos.map(k => `<img alt="" data-photo="${esc(k)}">`).join('')}</div>
-              ${photos.length > 1 ? `<div class="dy-dots">${photos.map((_, i) => `<i class="${i ? '' : 'on'}"></i>`).join('')}</div>` : ''}` : ''}
-            <div class="dy-bar">
-              <button type="button" class="dy-icon ${liked ? 'liked' : ''}" data-action="diary-like" data-id="${e.id}">${ICON.heart}${likes.length ? likes.length : ''}</button>
-              <span class="dy-spacer"></span>
-              <button type="button" class="dy-icon" data-action="diary-share" data-id="${e.id}">${ICON.share}공유하기</button>
-              <button type="button" class="dy-icon" data-action="diary-pdf" data-id="${e.id}">${ICON.pdf}PDF 출력</button>
-            </div>
-            <div class="dy-body">
-              <div class="dy-date">${dateStamp(e)}</div>
-              ${e.text ? `<p class="dy-text">${esc(e.text)}</p>` : ''}
-            </div>
-          </article>`;
-      }).join('') + '<div class="dy-foot">— to be continued</div>';
-      hydratePhotos(feed);
-      feed.querySelectorAll('.dy-photos').forEach(strip => {
-        strip.addEventListener('scroll', () => {
-          const i = Math.round(strip.scrollLeft / strip.clientWidth);
-          const dots = strip.nextElementSibling;
-          if (dots && dots.classList.contains('dy-dots')) Array.from(dots.children).forEach((d, n) => d.classList.toggle('on', n === i));
-        }, { passive: true });
-      });
-    }
-
-    /* ---------- Photo storage: local cache (IndexedDB) + shared online copy ---------- */
-    const photoMem = new Map();
-    const PhotoDB = (function () {
-      let dbp = null;
-      function db() {
-        if (!dbp) dbp = new Promise((res, rej) => {
-          try { const r = indexedDB.open('osaka_photos', 1); r.onupgradeneeded = () => r.result.createObjectStore('p'); r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error); }
-          catch (e) { rej(e); }
-        });
-        return dbp;
-      }
-      const tx = (mode, fn) => db().then(d => new Promise(res => { const t = d.transaction('p', mode); const st = t.objectStore('p'); const r = fn(st); t.oncomplete = () => res(r && r.result !== undefined ? r.result : true); t.onerror = () => res(null); })).catch(() => null);
-      return { get: k => tx('readonly', st => st.get(k)), set: (k, v) => tx('readwrite', st => st.put(v, k)), del: k => tx('readwrite', st => st.delete(k)) };
-    })();
-    async function getPhoto(k) {
-      if (photoMem.has(k)) return photoMem.get(k);
-      let v = await PhotoDB.get(k);
-      if (!v && SYNC_ON) {
-        try { v = await fetch(`${SYNC_BASE}/photos/${encodeURIComponent(k)}.json`).then(r => r.ok ? r.json() : null); } catch (e) { v = null; }
-        if (v) PhotoDB.set(k, v);
-      }
-      if (v) photoMem.set(k, v);
-      return v || null;
-    }
-    function hydratePhotos(root) {
-      root.querySelectorAll('img[data-photo]').forEach(img => {
-        if (img.dataset.loaded) return;
-        const k = img.dataset.photo; let tries = 0;
-        const attempt = () => getPhoto(k).then(v => {
-          if (v) { img.onload = () => img.classList.add('in'); img.src = v; img.dataset.loaded = '1'; }
-          else if (++tries < 8 && img.isConnected) setTimeout(attempt, 3000);
-        });
-        attempt();
-      });
-    }
-    const PENDING_KEY = 'osaka_photo_pending';
-    function pendingPhotos() { try { return JSON.parse(SafeStorage.getItem(PENDING_KEY) || '[]'); } catch (e) { return []; } }
-    function setPending(a) { SafeStorage.setItem(PENDING_KEY, JSON.stringify(Array.from(new Set(a)))); }
-    let uploading = null;
-    function uploadPhotos() {
-      if (!SYNC_ON) return Promise.resolve();
-      if (uploading) return uploading;
-      uploading = (async () => {
-        for (const k of pendingPhotos()) {
-          const v = photoMem.get(k) || await PhotoDB.get(k);
-          if (v) await api(`photos/${encodeURIComponent(k)}`, v);
-          setPending(pendingPhotos().filter(x => x !== k));
-        }
-      })().catch(() => { setTimeout(uploadPhotos, 10000); }).finally(() => { uploading = null; });
-      return uploading;
-    }
-    function compressImage(file, max = 1280, q = 0.82) {
-      return new Promise((res, rej) => {
-        const url = URL.createObjectURL(file); const img = new Image();
-        img.onload = () => {
-          const s = Math.min(1, max / Math.max(img.naturalWidth, img.naturalHeight));
-          const c = document.createElement('canvas'); c.width = Math.round(img.naturalWidth * s); c.height = Math.round(img.naturalHeight * s);
-          c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
-          URL.revokeObjectURL(url); res(c.toDataURL('image/jpeg', q));
-        };
-        img.onerror = () => { URL.revokeObjectURL(url); rej(new Error('image')); };
-        img.src = url;
-      });
-    }
-
-    /* ---------- Composer ---------- */
-    let dc = null;
-    function openDiaryComposer(id) {
-      const e = id ? data.diary[id] : null;
-      dc = {
-        id: id || null, origKeys: e && Array.isArray(e.photos) ? e.photos.slice() : [],
-        photos: e && Array.isArray(e.photos) ? e.photos.map(k => ({ key: k, src: photoMem.get(k) || '' })) : [],
-        author: e ? e.author : (me() || 'dau'), day: e ? e.day : todayKey()
-      };
-      dc.photos.forEach(p => { if (!p.src) getPhoto(p.key).then(v => { p.src = v || ''; renderComposerPhotos(); }); });
-      const chips = (act, map, val) => Object.keys(map).map(k => `<button type="button" class="${k === val ? 'active' : ''}" data-action="${act}" data-v="${k}">${map[k]}</button>`).join('');
-      openSheet({
-        title: e ? '일기 수정' : '오늘의 한 장면',
-        html: `<div class="dc-photos" id="dcPhotos"></div>
-          <textarea id="dcText" class="dc-text" placeholder="오늘은 어떤 하루였나요?">${esc(e ? e.text || '' : '')}</textarea>
-          <input id="dcPlace" class="sheet-input" style="margin:10px 0" type="text" maxlength="30" placeholder="📍 장소 (선택) 예: 도톤보리" value="${esc(e ? e.place || '' : '')}">
-          <div class="chip-line"><span>쓴 사람</span>${chips('dc-author', { mom: '👩 정희', dau: '👧 소연' }, dc.author)}</div>
-          <div class="chip-line"><span>날짜</span>${chips('dc-day', { pre: '여행 전', d1: '12/3', d2: '12/4', d3: '12/5', d4: '12/6' }, dc.day)}</div>`,
-        saveLabel: e ? '저장' : '기록하기',
-        onSave: saveDiary,
-        onDelete: e ? function () {
-          if (!window.confirm('이 일기를 삭제할까요?')) return;
-          (data.diary[id].photos || []).forEach(k => { api(`photos/${encodeURIComponent(k)}`, null).catch(() => {}); PhotoDB.del(k); photoMem.delete(k); });
-          setPending(pendingPhotos().filter(k => !(data.diary[id].photos || []).includes(k)));
-          delete data.diary[id]; dc = null; commit('삭제했어요');
-        } : null
-      });
-      renderComposerPhotos();
-    }
-    function renderComposerPhotos() {
-      const box = document.getElementById('dcPhotos'); if (!box || !dc) return;
-      box.innerHTML = dc.photos.map((p, i) => `<div class="dc-tile">${p.src ? `<img src="${p.src}" alt="">` : ''}<button type="button" data-action="dc-remove" data-i="${i}" aria-label="사진 빼기">✕</button></div>`).join('')
-        + (dc.photos.length < 3 ? `<label class="dc-add"><input type="file" id="dcFile" accept="image/*" multiple hidden><span class="plus">＋</span>사진 ${dc.photos.length}/3</label>` : '');
-    }
-    async function addComposerFiles(files) {
-      const room = 3 - dc.photos.length;
-      const list = Array.from(files || []).slice(0, room);
-      if (!list.length) return;
-      showToast('사진을 정리하는 중…');
-      for (const f of list) { try { dc.photos.push({ key: null, src: await compressImage(f) }); renderComposerPhotos(); } catch (e) { showToast('이 사진은 열 수 없어요'); } }
-    }
-    function saveDiary() {
-      if (!dc) return;
-      const text = (document.getElementById('dcText').value || '').trim();
-      const place = (document.getElementById('dcPlace').value || '').trim();
-      if (!text && !dc.photos.length) { showToast('사진이나 글을 남겨주세요'); return; }
-      if (dc.photos.some(p => !p.key && !p.src)) { showToast('사진을 불러오는 중이에요'); return; }
-      const id = dc.id || ('dy' + uid());
-      const keys = []; const pend = pendingPhotos();
-      dc.photos.forEach(p => {
-        if (p.key) { keys.push(p.key); return; }
-        const k = id + '_' + Math.random().toString(36).slice(2, 9);
-        photoMem.set(k, p.src); PhotoDB.set(k, p.src); pend.push(k); keys.push(k);
-      });
-      setPending(pend);
-      dc.origKeys.filter(k => !keys.includes(k)).forEach(k => { api(`photos/${encodeURIComponent(k)}`, null).catch(() => {}); PhotoDB.del(k); photoMem.delete(k); });
-      const prev = data.diary[id] || {};
-      const rec = { author: dc.author, day: dc.day, text, ts: prev.ts || Date.now() };
-      if (place) rec.place = place;
-      if (keys.length) rec.photos = keys;
-      if (prev.likes && Object.keys(prev.likes).length) rec.likes = prev.likes;
-      data.diary[id] = rec;
-      const isNew = !dc.id; dc = null;
-      persistLocal(); renderAll(); closeSheet();
-      showToast(isNew ? '오늘의 한 장면을 남겼어요 📖' : '수정했어요');
-      uploadPhotos().finally(schedulePush);   // photos first, then the entry
-    }
-
-    /* ---------- Export: diary page image (gallery) & PDF (share) ---------- */
-    function loadImg(src) { return new Promise(res => { const i = new Image(); i.onload = () => res(i); i.onerror = () => res(null); i.src = src; }); }
-    function wrapText(ctx, text, maxW) {
-      const out = [];
-      String(text || '').split('\n').forEach(par => {
-        if (!par.trim()) { out.push(''); return; }
-        let line = '';
-        par.split(' ').forEach(w => {
-          const test = line ? line + ' ' + w : w;
-          if (ctx.measureText(test).width <= maxW) { line = test; return; }
-          if (line) out.push(line);
-          line = w;
-          while (ctx.measureText(line).width > maxW) {      // a very long word: break by characters
-            let n = line.length; while (n > 1 && ctx.measureText(line.slice(0, n)).width > maxW) n--;
-            out.push(line.slice(0, n)); line = line.slice(n);
-          }
-        });
-        if (line) out.push(line);
-      });
-      return out;
-    }
-    function spaced(ctx, text, x, y, sp, align) {
-      const w = Array.from(text).reduce((a, ch) => a + ctx.measureText(ch).width + sp, -sp);
-      let cx = align === 'right' ? x - w : align === 'center' ? x - w / 2 : x;
-      ctx.textAlign = 'left';
-      Array.from(text).forEach(ch => { ctx.fillText(ch, cx, y); cx += ctx.measureText(ch).width + sp; });
-    }
-    function coverDraw(ctx, img, x, y, w, h, r) {
-      ctx.save(); ctx.beginPath();
-      if (ctx.roundRect) ctx.roundRect(x, y, w, h, r); else ctx.rect(x, y, w, h);
-      ctx.clip();
-      const s = Math.max(w / img.width, h / img.height);
-      const dw = img.width * s, dh = img.height * s;
-      ctx.drawImage(img, x + (w - dw) / 2, y + (h - dh) / 2, dw, dh);
-      ctx.restore();
-    }
-    async function ensureFonts() {
-      try { await Promise.all(['500 30px "Cormorant Garamond"', 'italic 500 90px "Cormorant Garamond"', '400 38px "Gowun Batang"', '700 32px "Gowun Batang"'].map(f => document.fonts.load(f))); } catch (e) {}
-    }
-    const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    async function diaryCanvas(e) {
-      await ensureFonts();
-      const W = 1080, P = 96, IW = W - 2 * P, LH = 72, GAP = 16;
-      const imgs = (await Promise.all((e.photos || []).map(k => getPhoto(k).then(s => s ? loadImg(s) : null)))).filter(Boolean);
-      const mctx = document.createElement('canvas').getContext('2d');
-      mctx.font = '400 38px "Gowun Batang"';
-      const lines = wrapText(mctx, e.text || '', IW);
-      let photoH = 0;
-      if (imgs.length === 1) photoH = Math.round(IW * 5 / 4);
-      else if (imgs.length === 2) photoH = Math.round((IW - GAP) / 2 * 5 / 4);
-      else if (imgs.length >= 3) photoH = Math.round(IW * 3 / 4) + GAP + Math.round((IW - GAP) / 2 * 3 / 4);
-      const H = P + 30 + 120 + 52 + 46 + (photoH ? photoH + 60 : 0) + Math.max(1, lines.length) * LH + 40 + 70 + 110 + P - 20;
-      const c = document.createElement('canvas'); c.width = W; c.height = H;
-      const x = c.getContext('2d');
-      x.fillStyle = '#FBF8F4'; x.fillRect(0, 0, W, H);
-      x.strokeStyle = '#E8E0D7'; x.lineWidth = 2; x.strokeRect(40, 40, W - 80, H - 80);
-      let y = P + 30;
-      x.fillStyle = '#7A6F67'; x.font = '500 26px "Cormorant Garamond"';
-      spaced(x, 'OUR OSAKA DIARY', P, y, 7, 'left');
-      const dayNo = { d1: 1, d2: 2, d3: 3, d4: 4 }[e.day];
-      spaced(x, dayNo ? `DAY ${dayNo}` : 'BEFORE THE TRIP', W - P, y, 7, 'right');
-      const dt = entryDate(e);
-      y += 120; x.fillStyle = '#2B2622'; x.font = 'italic 500 92px "Cormorant Garamond"'; x.textAlign = 'left';
-      x.fillText(`${MONTHS[dt.getMonth()]} ${dt.getDate()}`, P, y);
-      y += 52; x.fillStyle = '#7A6F67'; x.font = '400 30px "Gowun Batang"';
-      x.fillText(`${dt.getFullYear()}년 ${dt.getMonth() + 1}월 ${dt.getDate()}일 ${WEEK[dt.getDay()]}요일${e.place ? ' · ' + e.place : ''}`, P, y);
-      y += 34; x.fillStyle = '#2B2622'; x.globalAlpha = 0.25; x.fillRect(P, y, IW, 2); x.globalAlpha = 1;
-      y += 12;
-      if (imgs.length) {
-        y += 36;
-        if (imgs.length === 1) coverDraw(x, imgs[0], P, y, IW, photoH, 14);
-        else if (imgs.length === 2) { const w = (IW - GAP) / 2; coverDraw(x, imgs[0], P, y, w, photoH, 14); coverDraw(x, imgs[1], P + w + GAP, y, w, photoH, 14); }
-        else { const top = Math.round(IW * 3 / 4), w = (IW - GAP) / 2, sh = photoH - top - GAP; coverDraw(x, imgs[0], P, y, IW, top, 14); coverDraw(x, imgs[1], P, y + top + GAP, w, sh, 14); coverDraw(x, imgs[2], P + w + GAP, y + top + GAP, w, sh, 14); }
-        y += photoH + 24;
-      }
-      y += 56; x.fillStyle = '#2B2622'; x.font = '400 38px "Gowun Batang"'; x.textAlign = 'left';
-      lines.forEach(l => { x.fillText(l, P, y); y += LH; });
-      y += 30; x.fillStyle = '#B8767E'; x.font = '700 32px "Gowun Batang"'; x.textAlign = 'right';
-      x.fillText(`— ${NAMES[e.author === 'mom' ? 'mom' : 'dau']}`, W - P, y);
-      y += 80; x.fillStyle = '#2B2622'; x.globalAlpha = 0.3; x.fillRect(W / 2 - 24, y, 48, 2); x.globalAlpha = 1;
-      y += 56; x.fillStyle = '#7A6F67'; x.font = 'italic 500 32px "Cormorant Garamond"'; x.textAlign = 'center';
-      x.fillText('Jeonghee & Soyeon · Osaka 2026', W / 2, y);
-      return c;
-    }
-    async function coverCanvas(entries) {
-      await ensureFonts();
-      const W = 1080, H = 1440, c = document.createElement('canvas'); c.width = W; c.height = H;
-      const x = c.getContext('2d');
-      x.fillStyle = '#FBF8F4'; x.fillRect(0, 0, W, H);
-      x.strokeStyle = '#E8E0D7'; x.lineWidth = 2; x.strokeRect(40, 40, W - 80, H - 80);
-      const first = entries.find(e => (e.photos || []).length);
-      const img = first ? await getPhoto(first.photos[0]).then(s => s ? loadImg(s) : null) : null;
-      x.fillStyle = '#7A6F67'; x.font = '500 28px "Cormorant Garamond"'; spaced(x, 'OSAKA · DECEMBER 2026', W / 2, 190, 9, 'center');
-      x.fillStyle = '#2B2622'; x.font = 'italic 500 120px "Cormorant Garamond"'; x.textAlign = 'center'; x.fillText('Our Osaka Diary', W / 2, 330);
-      x.fillStyle = '#7A6F67'; x.font = '400 36px "Gowun Batang"'; x.fillText('정희와 소연, 둘만의 오사카 기록', W / 2, 400);
-      if (img) coverDraw(x, img, 200, 480, W - 400, 760, 12);
-      else { x.globalAlpha = 0.3; x.fillStyle = '#2B2622'; x.fillRect(W / 2 - 30, 520, 60, 2); x.globalAlpha = 1; }
-      x.fillStyle = '#7A6F67'; x.font = 'italic 500 34px "Cormorant Garamond"'; x.fillText(`2026. 12. 3 — 12. 6  ·  ${entries.length} pages`, W / 2, img ? 1320 : 620);
-      return c;
-    }
-    function canvasJpeg(c, q) { return new Promise(res => c.toBlob(b => res(b), 'image/jpeg', q || 0.9)); }
-    function buildPdf(pages) {   // pages: [{ bytes: Uint8Array(JPEG), w, h }] — one full-bleed image per page
-      const enc = new TextEncoder(); const parts = []; let len = 0; const off = [];
-      const push = d => { const b = typeof d === 'string' ? enc.encode(d) : d; parts.push(b); len += b.length; };
-      const obj = (id, body) => { off[id] = len; push(`${id} 0 obj\n`); body(); push('\nendobj\n'); };
-      push('%PDF-1.4\n%âãÏÓ\n');
-      obj(1, () => push('<< /Type /Catalog /Pages 2 0 R >>'));
-      obj(2, () => push(`<< /Type /Pages /Kids [${pages.map((_, i) => `${3 + 3 * i} 0 R`).join(' ')}] /Count ${pages.length} >>`));
-      pages.forEach((p, i) => {
-        const pw = 420, ph = +(420 * p.h / p.w).toFixed(2);
-        obj(3 + 3 * i, () => push(`<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${pw} ${ph}] /Resources << /XObject << /Im${i} ${5 + 3 * i} 0 R >> >> /Contents ${4 + 3 * i} 0 R >>`));
-        const cs = `q ${pw} 0 0 ${ph} 0 0 cm /Im${i} Do Q`;
-        obj(4 + 3 * i, () => push(`<< /Length ${cs.length} >>\nstream\n${cs}\nendstream`));
-        obj(5 + 3 * i, () => { push(`<< /Type /XObject /Subtype /Image /Width ${p.w} /Height ${p.h} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${p.bytes.length} >>\nstream\n`); push(p.bytes); push('\nendstream'); });
-      });
-      const total = 3 + 3 * pages.length, xref = len;
-      push(`xref\n0 ${total}\n0000000000 65535 f \n`);
-      for (let i = 1; i < total; i++) push(String(off[i]).padStart(10, '0') + ' 00000 n \n');
-      push(`trailer\n<< /Size ${total} /Root 1 0 R >>\nstartxref\n${xref}\n%%EOF`);
-      return new Blob(parts, { type: 'application/pdf' });
-    }
-    async function canvasesToPdf(cs) {
-      const pages = [];
-      for (const c of cs) { const b = await canvasJpeg(c, 0.9); pages.push({ bytes: new Uint8Array(await b.arrayBuffer()), w: c.width, h: c.height }); }
-      return buildPdf(pages);
-    }
-    function fileName(e) { const d = entryDate(e); return `오사카일기_${d.getMonth() + 1}${String(d.getDate()).padStart(2, '0')}_${NAMES[e.author === 'mom' ? 'mom' : 'dau']}`; }
-    let exportFiles = null;
-    async function openExport(id, mode) {
-      const book = id === '__book__';
-      const entries = book ? diaryList().slice().reverse() : [Object.assign({ id }, data.diary[id])];
-      if (!entries.length || (!book && !data.diary[id])) { showToast('아직 일기가 없어요'); return; }
-      exportFiles = null;
-      openSheet({ title: book ? '📖 전체 일기 PDF' : (mode === 'share' ? '공유하기' : 'PDF 출력'), html: '<div class="ex-wait">예쁘게 한 장으로 만드는 중…</div>', onSave: null, onDelete: null });
-      try {
-        const pages = [];
-        if (book) pages.push(await coverCanvas(entries));
-        for (const e of entries) pages.push(await diaryCanvas(e));
-        const pdf = await canvasesToPdf(pages);
-        const base = book ? '오사카일기_전체' : fileName(entries[0]);
-        const jpgBlob = await canvasJpeg(pages[0], 0.92);
-        exportFiles = {
-          pdf: new File([pdf], base + '.pdf', { type: 'application/pdf' }),
-          jpg: new File([jpgBlob], base + '.jpg', { type: 'image/jpeg' }),
-          book
-        };
-        if (!sheet) return;
-        const preview = URL.createObjectURL(jpgBlob);
-        const btns = book
-          ? `<button type="button" class="ex-btn ink" data-action="ex-share-pdf">📤 카톡·메일로 보내기 <small>PDF</small></button>
-             <button type="button" class="ex-btn" data-action="ex-save-pdf">⬇️ PDF 파일 저장</button>`
-          : mode === 'share'
-            ? `<button type="button" class="ex-btn ink" data-action="ex-share-pdf">📤 카톡·메일로 보내기 <small>PDF</small></button>
-               <button type="button" class="ex-btn" data-action="ex-share-jpg">🖼️ 사진으로 보내기</button>`
-            : `<button type="button" class="ex-btn ink" data-action="ex-save-jpg">📷 갤러리에 사진으로 저장</button>
-               <button type="button" class="ex-btn" data-action="ex-save-pdf">📄 PDF 파일로 저장</button>`;
-        document.getElementById('sheetForm').innerHTML = `<img class="ex-preview" src="${preview}" alt="미리보기">
-          <div class="ex-btns">${btns}</div>
-          <p class="sheet-note" style="margin:10px 0 0;text-align:center">${book ? `표지 + 일기 ${entries.length}장` : (isIOS ? "아이폰은 공유 창에서 '이미지 저장'을 누르면 사진 앱에 저장돼요." : '갤럭시는 사진이 다운로드 앨범(갤러리)에 저장돼요.')}</p>`;
-      } catch (err) {
-        if (sheet) document.getElementById('sheetForm').innerHTML = '<div class="ex-wait">만들지 못했어요. 잠시 후 다시 시도해 주세요.</div>';
-      }
-    }
-    function downloadFile(file) {
-      const a = document.createElement('a'); a.href = URL.createObjectURL(file); a.download = file.name;
-      document.body.appendChild(a); a.click();
-      setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 5000);
-    }
-    function shareFile(file, fallbackMsg) {
-      if (navigator.canShare && navigator.share) {
-        try { if (navigator.canShare({ files: [file] })) { navigator.share({ files: [file], title: '오사카 모녀 일기' }).catch(() => {}); return; } } catch (e) {}
-      }
-      downloadFile(file); showToast(fallbackMsg || '이 브라우저는 바로 공유가 안 돼서 파일로 저장했어요');
-    }
-    function saveImage(file) {
-      if (isIOS) { shareFile(file, '사진을 파일로 저장했어요'); showToast("'이미지 저장'을 누르면 사진 앱에 저장돼요"); return; }
-      downloadFile(file); showToast('갤러리(다운로드 앨범)에 저장했어요');
-    }
-
     /* ---------- Japanese text-to-speech ---------- */
     let jaVoice = null;
     function pickVoice() {
@@ -2008,10 +1411,7 @@
       document.getElementById('planView').style.display = currentBudgetView === 'plan' ? '' : 'none';
       document.getElementById('viewLedgerBtn').classList.toggle('active', currentBudgetView === 'ledger');
       document.getElementById('viewPlanBtn').classList.toggle('active', currentBudgetView === 'plan');
-      const fab = document.getElementById('fab');
-      if (currentTab === 'tab-diary') { fab.dataset.action = 'diary-new'; fab.textContent = '＋ 새 기록'; }
-      else { fab.dataset.action = 'add-expense'; fab.textContent = '＋ 지출 기록'; }
-      document.body.classList.toggle('show-fab', currentTab === 'tab-budget' || currentTab === 'tab-diary');
+      document.body.classList.toggle('show-fab', currentTab === 'tab-budget');
       SafeStorage.setItem('osaka_budget_view', currentBudgetView);
     }
     function switchTab(tabId) {
@@ -2020,7 +1420,6 @@
       document.querySelectorAll('.tab-section').forEach(s => s.classList.toggle('active', s.id === tabId));
       document.querySelectorAll('.bottom-nav .nav-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tabId));
       applyBudgetView();
-      if (tabId === 'tab-today') { todayShift = 0; renderToday(); }
       try { window.scrollTo(0, 0); } catch (e) {}
     }
     function copyText(text) {
@@ -2095,29 +1494,6 @@
           else { inp.focus(); showToast('입력칸을 길게 눌러 붙여넣기 해주세요'); }
           break;
         }
-        case 'td-day': previewDay = el.dataset.v; todayShift = 0; renderToday(); break;
-        case 'td-shift': todayShift = el.dataset.v === '0' ? 0 : todayShift + Number(el.dataset.v); renderToday(); break;
-        case 'set-me': SafeStorage.setItem('osaka_me', el.dataset.v); SafeStorage.setItem('osaka_last_who', el.dataset.v); renderDiary(); showToast(`${NAMES[el.dataset.v]}님의 폰으로 설정했어요`); break;
-        case 'dy-day': diaryDay = el.dataset.v; renderDiary(); break;
-        case 'diary-new': openDiaryComposer(null); break;
-        case 'diary-edit': openDiaryComposer(el.dataset.id); break;
-        case 'dc-author': if (dc) { dc.author = el.dataset.v; setChipActive('dc-author', dc.author); } break;
-        case 'dc-day': if (dc) { dc.day = el.dataset.v; setChipActive('dc-day', dc.day); } break;
-        case 'dc-remove': if (dc) { dc.photos.splice(Number(el.dataset.i), 1); renderComposerPhotos(); } break;
-        case 'diary-like': {
-          const who = me(); if (!who) { showToast("위에서 '이 폰은 누구'를 먼저 골라주세요"); break; }
-          const e = data.diary[el.dataset.id]; if (!e) break;
-          e.likes = Object.assign({}, e.likes); if (e.likes[who]) delete e.likes[who]; else e.likes[who] = true;
-          if (!Object.keys(e.likes).length) delete e.likes;
-          save(); renderDiary(); break;
-        }
-        case 'diary-share': openExport(el.dataset.id, 'share'); break;
-        case 'diary-pdf': openExport(el.dataset.id, 'save'); break;
-        case 'diary-book': openExport('__book__', 'share'); break;
-        case 'ex-share-pdf': if (exportFiles) shareFile(exportFiles.pdf); break;
-        case 'ex-share-jpg': if (exportFiles) shareFile(exportFiles.jpg); break;
-        case 'ex-save-pdf': if (exportFiles) { downloadFile(exportFiles.pdf); showToast('PDF 파일을 저장했어요'); } break;
-        case 'ex-save-jpg': if (exportFiles) saveImage(exportFiles.jpg); break;
         case 'refresh-wx': showToast('날씨 새로고침…'); loadWeather(); break;
         case 'apply-rate': showToast('환율 새로고침…'); loadFx(); break;
         case 'tr-go': trGo(el.dataset.to); break;
@@ -2143,7 +1519,6 @@
       }
     });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && sheet) closeSheet(); });
-    document.addEventListener('change', function (e) { if (e.target && e.target.id === 'dcFile' && dc) { addComposerFiles(e.target.files); } });
 
     /* ---------- Drag handle reordering (smooth: item follows finger, others glide aside) ---------- */
     let drag = null, lastPt = null, rafId = null;
@@ -2257,9 +1632,9 @@
     const SYNC_ON = /^https?:\/\//.test(SYNC_BASE);
     let remote = null, syncReady = false, remotePending = false, pushTimer = null, retryTimer = null;
     let streams = {}, initialSeen = {};
-    const STREAMS = ['sections', 'expenses', 'diary', 'settings'];
-    const inflight = { sec: {}, exp: {}, diary: {}, settings: false };
-    const MAPS = [['expenses', 'exp'], ['diary', 'diary']];
+    const STREAMS = ['sections', 'expenses', 'settings'];
+    const inflight = { sec: {}, exp: {}, settings: false };
+    const MAPS = [['expenses', 'exp']];
     function setStatus(kind, text) {
       const p = document.getElementById('syncPill'); p.className = 'sync-pill ' + kind;
       document.getElementById('syncText').textContent = text;
@@ -2422,7 +1797,7 @@
         es.addEventListener('patch', m => onRemote(sub, 'patch', m));
         es.addEventListener('cancel', () => setStatus('off', '공유 권한 오류'));
         es.onerror = () => { if (!navigator.onLine) setStatus('off', '오프라인 · 이 폰에 임시 저장'); else if (!syncReady) setStatus('busy', '다시 연결 중…'); };
-        es.onopen = () => { if (syncReady) { setStatus('ok', '두 폰 공유 중'); pushChanges(); uploadPhotos(); } };
+        es.onopen = () => { if (syncReady) { setStatus('ok', '두 폰 공유 중'); pushChanges(); } };
         streams[sub] = es;
       });
     }
@@ -2431,9 +1806,9 @@
       if (!SYNC_ON) { showToast('공유 저장소가 아직 설정되지 않았어요'); return; }
       showToast('다시 연결하고 있어요…'); syncReady = false; remote = null; connect();
     }
-    window.addEventListener('online', () => { pushChanges(); uploadPhotos(); if (streamsDead()) connect(); });
+    window.addEventListener('online', () => { pushChanges(); if (streamsDead()) connect(); });
     window.addEventListener('offline', () => setStatus('off', '오프라인 · 이 폰에 임시 저장'));
-    document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') { renderToday(); if (SYNC_ON && streamsDead()) connect(); } });
+    document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible' && SYNC_ON && streamsDead()) connect(); });
 
     /* ---------- Init ---------- */
     (function init() {
@@ -2441,11 +1816,8 @@
       renderDday();
       renderAll();
       applyBudgetView();
-      if (tripDayToday()) switchTab('tab-today');
       connect();
-      uploadPhotos();
-      loadWeather().then(renderToday); loadFx();
-      setInterval(() => { if (currentTab === 'tab-today' && document.visibilityState === 'visible') renderToday(); }, 60 * 1000);
+      loadWeather(); loadFx();
       setInterval(() => { if (document.visibilityState === 'visible') { loadWeather(); loadFx(); } }, 30 * 60 * 1000);
     })();
   </script>
