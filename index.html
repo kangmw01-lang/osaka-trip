@@ -122,11 +122,15 @@
     }
     .drag-handle::before { content: ""; width: 11px; height: 19px; background-image: radial-gradient(circle, var(--handle-dot) 1.6px, transparent 1.8px); background-size: 5.5px 6.3px; }
     .drag-handle:active { background: #E6DCDF; }
+    .sortable.sorting > .sort-item { transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1); will-change: transform; }
+    .sortable.sorting > .sort-item.dragging { transition: box-shadow 0.18s ease; }
+    .sortable.settling > .sort-item.dragging { transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s ease; }
     .sort-item.dragging {
-      background: #FFFFFF !important; box-shadow: 0 12px 28px rgba(240, 101, 120, 0.28) !important;
+      background: #FFFFFF !important; box-shadow: 0 16px 34px rgba(240, 101, 120, 0.30) !important;
       outline: 2px solid var(--primary); outline-offset: 1px; border-radius: 12px;
-      transform: scale(1.015); position: relative; z-index: 50;
+      position: relative; z-index: 50;
     }
+    .sortable.settling > .sort-item.dragging { box-shadow: 0 3px 10px rgba(0,0,0,0.04) !important; }
     .sort-item.dragging .drag-handle { background: var(--primary-light); }
 
     /* ---------- Day cards ---------- */
@@ -1515,10 +1519,9 @@
     });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && sheet) closeSheet(); });
 
-    /* ---------- Drag handle reordering ---------- */
+    /* ---------- Drag handle reordering (smooth: item follows finger, others glide aside) ---------- */
     let drag = null, lastPt = null, rafId = null;
     function ptOf(e) { const t = e.touches && e.touches.length ? e.touches[0] : (e.changedTouches && e.changedTouches.length ? e.changedTouches[0] : e); return { x: t.clientX, y: t.clientY }; }
-    function childOrder(list) { return Array.from(list.children).filter(c => c.classList.contains('sort-item')).map(c => c.dataset.id); }
     function onHandleStart(e) {
       if (drag || sheet) return;
       if (e.type === 'mousedown' && e.button !== 0) return;
@@ -1526,53 +1529,92 @@
       const item = h.closest('.sort-item'); const list = item && item.parentElement;
       if (!list || !list.classList.contains('sortable')) return;
       if (e.cancelable) e.preventDefault();
-      drag = { item, list, start: childOrder(list).join('|') };
-      item.classList.add('dragging'); document.body.classList.add('is-sorting');
-      try { if (navigator.vibrate) navigator.vibrate(15); } catch (er) {}
-      lastPt = ptOf(e);
-      rafId = requestAnimationFrame(autoScroll);
+      const items = Array.from(list.children).filter(c => c.classList.contains('sort-item') && c.offsetParent !== null);
+      const sy = window.scrollY;
+      const rects = items.map(el => { const r = el.getBoundingClientRect(); return { top: r.top + sy, bottom: r.bottom + sy, mid: r.top + sy + r.height / 2 }; });
+      const orig = items.indexOf(item);
+      const cs = getComputedStyle(item);
+      const slot = rects[orig].bottom - rects[orig].top + (parseFloat(cs.marginBottom) || 0) + (parseFloat(cs.marginTop) || 0);
+      const p = ptOf(e);
+      drag = { item, list, items, rects, orig, slot, index: orig, startPageY: p.y + sy, dy: 0 };
+      list.classList.add('sorting');
+      item.classList.add('dragging');
+      item.style.transform = 'translate3d(0,0,0) scale(1.02)';
+      document.body.classList.add('is-sorting');
+      try { if (navigator.vibrate) navigator.vibrate(12); } catch (er) {}
+      lastPt = p;
+      rafId = requestAnimationFrame(dragFrame);
     }
     function onHandleMove(e) {
-      if (!drag) return;
+      if (!drag || drag.settling) return;
       if (e.cancelable) e.preventDefault();
-      lastPt = ptOf(e); reorderAt(lastPt);
+      lastPt = ptOf(e);
     }
-    function reorderAt(p) {
-      if (!drag) return;
-      const el = document.elementFromPoint(p.x, p.y);
-      const target = el && el.closest && el.closest('.sort-item');
-      if (!target || target === drag.item || target.parentElement !== drag.list) return;
-      const r = target.getBoundingClientRect();
-      const after = drag.list.classList.contains('sort-h') ? (p.x > r.left + r.width / 2) : (p.y > r.top + r.height / 2);
-      if (after) { if (target.nextElementSibling !== drag.item) drag.list.insertBefore(drag.item, target.nextElementSibling); }
-      else { if (target.previousElementSibling !== drag.item) drag.list.insertBefore(drag.item, target); }
-    }
-    function autoScroll() {
-      if (!drag) return;
-      if (lastPt) {
-        const topEdge = 110, bottomEdge = window.innerHeight - 130; let dy = 0;
-        if (lastPt.y < topEdge) dy = -Math.ceil((topEdge - lastPt.y) / 5); else if (lastPt.y > bottomEdge) dy = Math.ceil((lastPt.y - bottomEdge) / 5);
-        if (dy) { window.scrollBy(0, dy); reorderAt(lastPt); }
+    function layoutDrag() {
+      const d = drag; if (!d || !lastPt) return;
+      d.dy = (lastPt.y + window.scrollY) - d.startPageY;
+      d.item.style.transform = `translate3d(0,${d.dy}px,0) scale(1.02)`;
+      const center = d.rects[d.orig].mid + d.dy;
+      let idx = 0;
+      d.rects.forEach((r, j) => { if (j !== d.orig && r.mid < center) idx++; });
+      if (idx !== d.index) {
+        d.index = idx;
+        try { if (navigator.vibrate) navigator.vibrate(6); } catch (er) {}
+        d.items.forEach((el, j) => {
+          if (j === d.orig) return;
+          let shift = 0;
+          if (j > d.orig && j <= idx) shift = -d.slot;
+          else if (j < d.orig && j >= idx) shift = d.slot;
+          el.style.transform = shift ? `translate3d(0,${shift}px,0)` : '';
+        });
       }
-      rafId = requestAnimationFrame(autoScroll);
+    }
+    function dragFrame() {
+      if (!drag || drag.settling) return;
+      if (lastPt) {
+        const topEdge = 110, bottomEdge = window.innerHeight - 130; let dyS = 0;
+        if (lastPt.y < topEdge) dyS = -Math.ceil((topEdge - lastPt.y) / 6); else if (lastPt.y > bottomEdge) dyS = Math.ceil((lastPt.y - bottomEdge) / 6);
+        if (dyS) window.scrollBy(0, dyS);
+        layoutDrag();
+      }
+      rafId = requestAnimationFrame(dragFrame);
     }
     function onHandleEnd() {
-      if (!drag) return;
+      const d = drag;
+      if (!d || d.settling) return;
       cancelAnimationFrame(rafId);
-      const { item, list, start } = drag; drag = null;
-      item.classList.remove('dragging'); document.body.classList.remove('is-sorting');
-      suppressClick = true; setTimeout(() => { suppressClick = false; }, 350);
-      const ids = childOrder(list);
-      if (ids.join('|') !== start) {
-        const arr = resolveList(list.dataset.list);
-        if (arr) {
-          const set = new Set(ids), byId = new Map(arr.map(x => [String(x.id), x])), slots = [];
-          arr.forEach((x, i) => { if (set.has(String(x.id))) slots.push(i); });
-          ids.forEach((id, k) => { if (slots[k] != null && byId.has(id)) arr[slots[k]] = byId.get(id); });
-          save(); renderAll(); showToast('순서를 바꿨어요');
+      d.settling = true;
+      const k = d.index;
+      const r = d.rects;
+      const targetTop = k > d.orig ? (r[k].bottom - (r[d.orig].bottom - r[d.orig].top)) : r[k].top;
+      const finalDy = targetTop - r[d.orig].top;
+      d.list.classList.add('settling');
+      d.item.style.transform = `translate3d(0,${finalDy}px,0)`;
+      suppressClick = true;
+      let done = false;
+      const finish = () => {
+        if (done) return; done = true;
+        const ids = d.items.map(el => el.dataset.id);
+        const moved = ids.splice(d.orig, 1)[0]; ids.splice(k, 0, moved);
+        d.items.forEach(el => { el.style.transform = ''; });
+        d.item.classList.remove('dragging');
+        d.list.classList.remove('sorting', 'settling');
+        document.body.classList.remove('is-sorting');
+        drag = null;
+        setTimeout(() => { suppressClick = false; }, 300);
+        if (k !== d.orig) {
+          const arr = resolveList(d.list.dataset.list);
+          if (arr) {
+            const set = new Set(ids), byId = new Map(arr.map(x => [String(x.id), x])), slots = [];
+            arr.forEach((x, i) => { if (set.has(String(x.id))) slots.push(i); });
+            ids.forEach((id, n) => { if (slots[n] != null && byId.has(id)) arr[slots[n]] = byId.get(id); });
+            save(); renderAll();
+          }
         }
-      }
-      flushRemote();
+        flushRemote();
+      };
+      d.item.addEventListener('transitionend', function te(ev) { if (ev.propertyName === 'transform') { d.item.removeEventListener('transitionend', te); finish(); } });
+      setTimeout(finish, 260);
     }
     document.addEventListener('touchstart', onHandleStart, { passive: false });
     document.addEventListener('touchmove', onHandleMove, { passive: false });
