@@ -59,6 +59,20 @@
     .font-seg button { border: none; background: transparent; color: var(--primary-dark); font-weight: 700; padding: 4px 9px; border-radius: 999px; font-size: 13px; line-height: 1.3; white-space: nowrap; }
     .font-seg button .big-ga { font-size: 1.2em; }
     .font-seg button.active { background: var(--primary); color: #FFFFFF; }
+    a.tool-btn { text-decoration: none; display: inline-block; }
+    .item-tools { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+    .map-btn { width: 32px; height: 26px; display: inline-flex; align-items: center; justify-content: center; border: none; background: transparent; color: #CDC3C6; border-radius: 8px; position: relative; text-decoration: none; padding: 0; }
+    .map-btn .plus { position: absolute; right: 4px; bottom: 0; font-size: 11px; font-weight: 700; color: var(--text-muted); line-height: 1; }
+    .map-btn.linked { color: #E8453C; }
+    .map-btn:active { background: var(--bg-soft-pink); }
+    .inline-link { color: var(--secondary); font-weight: 700; word-break: break-all; }
+    .quick-item.tap { cursor: pointer; }
+    .quick-item .wx-line { font-size: 0.76em; color: var(--text-sub); margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .quick-item .wx-line b { color: var(--text-main); }
+    .settle-result { font-size: 1.12em; font-weight: 700; color: var(--primary-dark); background: var(--bg-soft-pink); border-radius: 12px; padding: 10px 12px; margin: 8px 0; text-align: center; }
+    .settle-result small { display: block; font-size: 0.72em; color: var(--text-sub); font-weight: 600; }
+    .settle-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; font-size: 0.8em; }
+    .settle-grid div { background: var(--bg-cream); border: 1px solid var(--border-soft); border-radius: 10px; padding: 7px 9px; }
     .sync-pill { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 700; color: var(--text-muted); background: transparent; border: none; padding: 2px 0 0; }
     .sync-dot { width: 7px; height: 7px; border-radius: 50%; background: #C9C0C3; }
     .sync-pill.ok .sync-dot { background: #2FA36B; }
@@ -304,7 +318,7 @@
     .cat-grid button .ci { font-size: 1.45rem; line-height: 1.2; }
     .cat-grid button.active { border-color: var(--primary); background: var(--bg-soft-pink); color: var(--primary-dark); }
     .chip-line { display: flex; align-items: center; gap: 6px; margin-bottom: 8px; flex-wrap: wrap; }
-    .chip-line > span { font-size: 0.76em; font-weight: 700; color: var(--text-sub); width: 34px; flex-shrink: 0; }
+    .chip-line > span { font-size: 0.76em; font-weight: 700; color: var(--text-sub); width: 44px; flex-shrink: 0; }
     .chip-line button { border: 1.5px solid var(--border-soft); background: #FFFFFF; font-weight: 700; font-size: 0.78em; padding: 5px 10px; border-radius: 999px; color: var(--text-sub); }
     .chip-line button.active { border-color: var(--secondary); background: var(--secondary-light); color: var(--secondary); }
     .keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 8px; }
@@ -331,7 +345,7 @@
         <button type="button" class="sync-pill" id="syncPill" data-action="sync-now"><span class="sync-dot"></span><span id="syncText">연결 중…</span></button>
       </div>
       <div class="top-tools">
-        <button type="button" class="tool-btn" data-action="open-translate">🌐 통역</button>
+        <a class="tool-btn" id="trBtn" href="https://translate.google.com/?sl=ko&amp;tl=ja&amp;op=translate" target="_blank" rel="noopener noreferrer">🌐 통역</a>
         <div class="font-seg" role="group" aria-label="글자 크기">
           <button type="button" id="fontNormal" class="active" data-action="font" data-size="normal">가 기본</button>
           <button type="button" id="fontLarge" data-action="font" data-size="large"><span class="big-ga">가</span> 크게</button>
@@ -352,9 +366,9 @@
 
     <section class="quick-grid">
       <div class="quick-item"><div class="quick-label">✈️ 항공 스케줄</div><div class="quick-val">출국 12/03 09:05→11:00</div><div class="quick-sub">귀국 12/06 15:40→18:05</div></div>
-      <div class="quick-item"><div class="quick-label">🏨 숙소 (3박 연박)</div><div class="quick-val">칸데오 호텔 오사카 난바</div><div class="quick-sub">체크인 15:00 · 17층 노천탕</div></div>
+      <div class="quick-item tap" data-action="apply-rate" id="fxCard"><div class="quick-label">💴 원·엔 환율 (실시간)</div><div class="quick-val" id="fxVal">불러오는 중…</div><div class="quick-sub" id="fxSub">&nbsp;</div></div>
       <div class="quick-item"><div class="quick-label">🚌 공항 리무진</div><div class="quick-val">간사이(T1) ↔ 도톤플라자</div><div class="quick-sub">호텔 도보 3~4분 (현장발권)</div></div>
-      <div class="quick-item"><div class="quick-label">🧣 12월 초 날씨</div><div class="quick-val">오사카 6~13℃ · 교토 4~11℃</div><div class="quick-sub">경량패딩 · 머플러 · 핫팩</div></div>
+      <div class="quick-item tap" data-action="refresh-wx" id="wxCard"><div class="quick-label">🌤️ 오사카 날씨</div><div class="quick-val" id="wxNow">불러오는 중…</div><div class="wx-line" id="wxToday">&nbsp;</div><div class="wx-line" id="wxTomorrow">&nbsp;</div></div>
     </section>
 
     <!-- TAB 1 -->
@@ -397,6 +411,7 @@
           </div>
         </div>
         <div class="stat-card" id="catStats"></div>
+        <div class="stat-card" id="settleCard"></div>
         <div id="expenseList"></div>
       </div>
 
@@ -524,7 +539,8 @@
     function uid() { _seq++; return 'i' + Date.now().toString(36) + _seq.toString(36) + Math.random().toString(36).slice(2, 5); }
     function withIds(arr) { return arr.map(x => Object.assign({ id: uid() }, x)); }
 
-    function buildDefaults() {
+    function buildDefaults() { const d = rawDefaults(); migrateLinks(d.days); return d; }
+    function rawDefaults() {
       return {
         days: [
           {
@@ -711,6 +727,29 @@
     }
 
 
+    function placeWords(label) {
+      return String(label || '').replace(/\(.*?\)/g, ' ').replace(/[^0-9A-Za-z가-힣\s]/g, ' ')
+        .replace(/지도|상세보기|안내|공식관광|보기/g, ' ').trim().split(/\s+/).filter(w => w.length >= 2).sort((a, b) => b.length - a.length);
+    }
+    function migrateLinks(days) {
+      (days || []).forEach(d => {
+        if (!Array.isArray(d.links) || !d.links.length) { if (d.links !== undefined) d.links = []; return; }
+        if (!d.tip) d.tip = { title: '💡 팁', items: [] };
+        if (!Array.isArray(d.tip.items)) d.tip.items = [];
+        d.links.forEach(l => {
+          const url = String(l.url || '').trim();
+          const label = String(l.label || '').replace(/^[^0-9A-Za-z가-힣]+/, '').trim();
+          if (!/^https?:/i.test(url)) {
+            let target = null;
+            for (const w of placeWords(l.label)) { target = (d.timeline || []).find(t => !t.map && String(t.desc || '').includes(w)); if (target) break; }
+            if (target) { target.map = url; return; }
+          }
+          const mid = 'mig-' + l.id;
+          if (!d.tip.items.some(x => x.id === mid)) d.tip.items.push(/^https?:/i.test(url) ? { id: mid, label, text: url } : { id: mid, label, text: '구글지도에서 보기', map: url });
+        });
+        d.links = [];
+      });
+    }
     function normalize(p) {
       const d = buildDefaults();
       if (!p || typeof p !== 'object') return d;
@@ -718,6 +757,7 @@
       if (!p.expenses || typeof p.expenses !== 'object' || Array.isArray(p.expenses)) p.expenses = {};
       if (!p.settings || typeof p.settings !== 'object') p.settings = {};
       if (!p.settings.rate) p.settings.rate = 920;
+      migrateLinks(p.days);
       return p;
     }
     function loadData() {
@@ -741,12 +781,19 @@
 
     /* ---------- Helpers ---------- */
     function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
-    function fmt(s) { return esc(s).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>'); }
+    function fmt(s) { return esc(s).replace(/(https?:\/\/[^\s<]+)/g, (m) => { let h = m; try { h = new URL(m.replace(/&amp;/g, '&')).hostname.replace(/^www\./, ''); } catch (e) {} return `<a class="inline-link" href="${m}" target="_blank" rel="noopener noreferrer">🔗 ${h} 열기</a>`; }).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>'); }
     function stable(o) { return o == null ? 'null' : JSON.stringify(o, Object.keys(o).sort()); }
     function mapUrl(q) { return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(q); }
     function linkUrl(u) { u = String(u || '').trim(); return /^https?:\/\//i.test(u) ? u : mapUrl(u); }
     const HANDLE = '<span class="drag-handle" title="잡고 끌어서 순서 변경" aria-label="순서 이동 손잡이"></span>';
     function editBtn(listKey, id) { return `<button type="button" class="edit-btn" data-action="edit" data-list="${listKey}" data-id="${id}" aria-label="수정">✎</button>`; }
+    const PIN = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 2.4c-3.9 0-7 3-7 6.9 0 5.3 7 12.3 7 12.3s7-7 7-12.3c0-3.9-3.1-6.9-7-6.9z" fill="currentColor"/><circle cx="12" cy="9.3" r="2.6" fill="#fff"/></svg>';
+    function mapBtn(listKey, it) {
+      return it.map
+        ? `<a class="map-btn linked" href="${esc(linkUrl(it.map))}" target="_blank" rel="noopener noreferrer" aria-label="구글지도 열기" title="구글지도 열기">${PIN}</a>`
+        : `<button type="button" class="map-btn" data-action="map-link" data-list="${listKey}" data-id="${it.id}" aria-label="지도 연결" title="지도 연결">${PIN}<span class="plus">+</span></button>`;
+    }
+    function tools(listKey, it) { return `<div class="item-tools">${editBtn(listKey, it.id)}${mapBtn(listKey, it)}</div>`; }
     function addBtn(listKey, label, small) { return `<button type="button" class="add-inline${small ? ' small' : ''}" data-action="add" data-list="${listKey}">＋ ${label}</button>`; }
     function rate() { return Number(data.settings.rate) || 920; }
     function yen(n) { return '¥' + Math.round(n).toLocaleString(); }
@@ -775,7 +822,8 @@
       gift: { icon: '🎁', label: '선물' },
       etc: { icon: '💡', label: '기타' }
     };
-    const PAYERS = { together: '🌸 같이', mom: '👩 엄마', dau: '👧 소연' };
+    const PAYERS = { mom: '👩 엄마', dau: '👧 소연', together: '👛 공동지갑' };
+    const SHARES = { both: '🌸 같이 쓴 것', mom: '👩 엄마 것', dau: '👧 소연 것' };
     const PAYS = { cash: '💴 현금', card: '💳 카드' };
     const DAYS = { pre: { label: '여행 전', short: '여행 전' }, d1: { label: '12/3 (목) 1일차', short: '12/3' }, d2: { label: '12/4 (금) 2일차', short: '12/4' }, d3: { label: '12/5 (토) 3일차', short: '12/5' }, d4: { label: '12/6 (일) 4일차', short: '12/6' } };
     function todayKey() {
@@ -806,8 +854,8 @@
     }
     const TYPE_NAME = { timeline: '일정', info: '메모 항목', link: '링크 버튼', spot: '맛집·쇼핑·체험', check: '준비물', address: '주소', phrase: '일본어 회화', contact: '연락처·메모' };
     const FIELDS = {
-      timeline: [{ k: 'time', label: '시간', ph: '예: 18:30 - 20:00' }, { k: 'desc', label: '내용', type: 'textarea', req: true, ph: '예: 도톤보리 리버크루즈 탑승' }],
-      info: [{ k: 'label', label: '소제목 (선택)', ph: '예: 저녁' }, { k: 'text', label: '내용', type: 'textarea', req: true }],
+      timeline: [{ k: 'time', label: '시간', ph: '예: 18:30 - 20:00' }, { k: 'desc', label: '내용', type: 'textarea', req: true, ph: '예: 도톤보리 리버크루즈 탑승' }, { k: 'map', label: '📍 지도 (장소 검색어 또는 구글지도 링크, 선택)' }],
+      info: [{ k: 'label', label: '소제목 (선택)', ph: '예: 저녁' }, { k: 'text', label: '내용', type: 'textarea', req: true }, { k: 'map', label: '📍 지도 (장소 검색어 또는 구글지도 링크, 선택)' }],
       link: [{ k: 'label', label: '버튼 이름', req: true, ph: '예: 📍 리버크루즈 지도' }, { k: 'url', label: '링크 주소 또는 구글지도 검색어', req: true, ph: 'https://… 또는 장소 이름(영문 추천)' }],
       spot: [
         { k: 'cat', label: '분류', type: 'select', options: Object.keys(CAT).map(v => ({ v, t: CAT[v].label })) },
@@ -825,14 +873,14 @@
     let currentDay = 'all';
     function renderSchedule() {
       document.getElementById('scheduleContainer').innerHTML = data.days.map(d => {
-        const tl = `day.${d.id}.timeline`, lk = `day.${d.id}.links`;
+        const tl = `day.${d.id}.timeline`;
         const boxes = ['food', 'shop', 'tip'].map(k => {
           const box = d[k]; if (!box) return '';
           const key = `day.${d.id}.${k}`;
           return `<div class="info-box ${k}">
               <div class="info-box-title">${esc(box.title)}</div>
               <ul class="info-list sortable" data-list="${key}">
-                ${(box.items || []).map(it => `<li class="sort-item" data-id="${it.id}">${HANDLE}<div class="item-main">${it.label ? `<strong>${esc(it.label)}:</strong> ` : ''}${fmt(it.text)}</div>${editBtn(key, it.id)}</li>`).join('')}
+                ${(box.items || []).map(it => `<li class="sort-item" data-id="${it.id}">${HANDLE}<div class="item-main">${it.label ? `<strong>${esc(it.label)}:</strong> ` : ''}${fmt(it.text)}</div>${tools(key, it)}</li>`).join('')}
               </ul>
               ${addBtn(key, '추가', true)}
             </div>`;
@@ -843,14 +891,10 @@
               <div class="day-head-right"><div class="day-emoji">${esc(d.emoji)}</div><button type="button" class="edit-btn" data-action="edit-day" data-day="${d.id}" aria-label="일차 제목 수정">✎</button></div>
             </div>
             <ul class="timeline sortable" data-list="${tl}">
-              ${(d.timeline || []).map(t => `<li class="timeline-item sort-item" data-id="${t.id}">${HANDLE}<div class="item-main">${t.time ? `<span class="time-badge">${esc(t.time)}</span>` : ''}<span class="time-desc">${fmt(t.desc)}</span></div>${editBtn(tl, t.id)}</li>`).join('')}
+              ${(d.timeline || []).map(t => `<li class="timeline-item sort-item" data-id="${t.id}">${HANDLE}<div class="item-main">${t.time ? `<span class="time-badge">${esc(t.time)}</span>` : ''}<span class="time-desc">${fmt(t.desc)}</span></div>${tools(tl, t)}</li>`).join('')}
             </ul>
             ${addBtn(tl, '일정 추가')}
             ${boxes}
-            <div class="link-btn-row sortable sort-h" data-list="${lk}">
-              ${(d.links || []).map(l => `<span class="link-chip sort-item" data-id="${l.id}">${HANDLE}<a class="mini-link-btn${l.primary ? ' primary-link' : ''}" href="${esc(linkUrl(l.url))}" target="_blank" rel="noopener noreferrer">${esc(l.label)}</a>${editBtn(lk, l.id)}</span>`).join('')}
-            </div>
-            ${addBtn(lk, '지도·링크 추가', true)}
           </article>`;
       }).join('');
       applyDayFilter();
@@ -932,7 +976,7 @@
 
       // category stats
       const byCat = {}; Object.keys(EXP_CAT).forEach(k => byCat[k] = 0);
-      const byWho = { together: 0, mom: 0, dau: 0 }, byPay = { cash: 0, card: 0 };
+      const byWho = { mom: 0, dau: 0, together: 0 }, byPay = { cash: 0, card: 0 };
       exps.forEach(e => { const j = expJpy(e); byCat[EXP_CAT[e.cat] ? e.cat : 'etc'] += j; byWho[PAYERS[e.who] ? e.who : 'together'] += j; byPay[PAYS[e.pay] ? e.pay : 'cash'] += j; });
       const stat = document.getElementById('catStats');
       if (!exps.length) { stat.style.display = 'none'; }
@@ -942,10 +986,12 @@
         stat.innerHTML = `<div class="stat-title">어디에 썼을까?</div>
           ${cats.map(k => `<div class="cat-row"><span>${EXP_CAT[k].icon}</span><span>${EXP_CAT[k].label} <small style="color:var(--text-muted)">${Math.round(byCat[k] / total * 100)}%</small></span><b>${yen(byCat[k])}</b><div class="cat-bar"><div style="width:${byCat[k] / total * 100}%"></div></div></div>`).join('')}
           <div class="mini-chips" style="margin-top:10px">
-            ${Object.keys(byWho).filter(k => byWho[k]).map(k => `<span class="mini-chip">${PAYERS[k]} ${yen(byWho[k])}</span>`).join('')}
+            ${Object.keys(byWho).filter(k => byWho[k]).map(k => `<span class="mini-chip">${PAYERS[k]}${k === 'together' ? '' : ' 냄'} ${yen(byWho[k])}</span>`).join('')}
             ${Object.keys(byPay).filter(k => byPay[k]).map(k => `<span class="mini-chip">${PAYS[k]} ${yen(byPay[k])}</span>`).join('')}
           </div>`;
       }
+
+      renderSettle(exps);
 
       // grouped list
       const list = document.getElementById('expenseList');
@@ -967,12 +1013,38 @@
               const sub = e.cur === 'KRW' ? '≈ ' + yen(amt / r * 100) : '≈ ' + won(amt / 100 * r);
               return `<div class="exp-row" data-action="edit-expense" data-id="${e.id}">
                   <div class="exp-icon">${c.icon}</div>
-                  <div class="exp-main"><div class="exp-title">${esc(e.memo || c.label)}</div><div class="exp-meta">${c.label} · ${PAYS[e.pay] || ''} · ${PAYERS[e.who] || ''}</div></div>
+                  <div class="exp-main"><div class="exp-title">${esc(e.memo || c.label)}</div><div class="exp-meta">${c.label} · ${PAYS[e.pay] || ''} · ${(PAYERS[e.who] || PAYERS.together)}${e.who === 'together' ? '' : ' 냄'}${e.share && e.share !== 'both' ? ' · ' + SHARES[e.share] : ''}</div></div>
                   <div class="exp-amt"><b>${main}</b><small>${sub}</small></div>
                 </div>`;
             }).join('')}
           </div>`;
       }).join('');
+    }
+
+    function renderSettle(exps) {
+      const card = document.getElementById('settleCard');
+      if (!exps.length) { card.style.display = 'none'; return; }
+      card.style.display = '';
+      let paidM = 0, paidD = 0, wallet = 0, owM = 0, owD = 0;
+      exps.forEach(e => {
+        const j = expJpy(e), who = e.who || 'together', sh = e.share || 'both';
+        if (who === 'mom') paidM += j; else if (who === 'dau') paidD += j; else { wallet += j; paidM += j / 2; paidD += j / 2; }
+        if (sh === 'mom') owM += j; else if (sh === 'dau') owD += j; else { owM += j / 2; owD += j / 2; }
+      });
+      const net = paidM - owM; // > 0 : 엄마가 더 냄 → 소연이 엄마에게
+      const amt = Math.round(Math.abs(net));
+      const r = rate();
+      const result = amt < 1 ? '정산할 돈이 없어요 👍<small>두 분이 똑같이 냈어요</small>'
+        : (net > 0 ? `👧 소연 → 👩 엄마 ${yen(amt)}` : `👩 엄마 → 👧 소연 ${yen(amt)}`) + `<small>원화로 보내면 약 ${won(amt / 100 * r)}</small>`;
+      card.innerHTML = `<div class="stat-title">🤝 정산 (여행 끝나고 이만큼만 주고받으면 끝)</div>
+        <div class="settle-result">${result}</div>
+        <div class="settle-grid">
+          <div>👩 엄마가 낸 돈<br><b>${yen(paidM)}</b></div>
+          <div>👩 엄마 몫<br><b>${yen(owM)}</b></div>
+          <div>👧 소연이 낸 돈<br><b>${yen(paidD)}</b></div>
+          <div>👧 소연 몫<br><b>${yen(owD)}</b></div>
+        </div>
+        <p class="sheet-note" style="margin:8px 0 0">'같이 쓴 것'은 반반, 👛 공동지갑에서 낸 돈은 두 분이 반씩 낸 것으로 계산해요.</p>`;
     }
 
     /* ---------- Render: checklist ---------- */
@@ -1123,7 +1195,8 @@
     function openExpense(id, preset) {
       const cur = id ? data.expenses[id] : null;
       exp = cur ? Object.assign({}, cur, { amount: String(cur.amount || 0) })
-        : Object.assign({ amount: '0', cur: 'JPY', cat: 'food', pay: 'card', who: 'together', day: todayKey(), memo: '' }, preset || {});
+        : Object.assign({ amount: '0', cur: 'JPY', cat: 'food', pay: 'card', who: SafeStorage.getItem('osaka_last_who') || 'together', share: 'both', day: todayKey(), memo: '' }, preset || {});
+      if (!exp.share) exp.share = 'both';
       exp.amount = String(exp.amount || '0');
       openSheet({
         title: cur ? '지출 수정' : '💳 지출 기록',
@@ -1133,7 +1206,8 @@
           const amt = parseInt(exp.amount, 10) || 0;
           if (!amt) { showToast('금액을 입력해 주세요'); return; }
           const memoEl = document.getElementById('expMemo');
-          const rec = { amount: amt, cur: exp.cur, cat: exp.cat, pay: exp.pay, who: exp.who, day: exp.day, memo: memoEl ? memoEl.value.trim() : '', ts: cur ? (cur.ts || Date.now()) : Date.now() };
+          SafeStorage.setItem('osaka_last_who', exp.who);
+          const rec = { amount: amt, cur: exp.cur, cat: exp.cat, pay: exp.pay, who: exp.who, share: exp.share || 'both', day: exp.day, memo: memoEl ? memoEl.value.trim() : '', ts: cur ? (cur.ts || Date.now()) : Date.now() };
           data.expenses[id || uid()] = rec;
           currentBudgetView = 'ledger';
           commit(cur ? '수정했어요' : `${rec.cur === 'KRW' ? won(amt) : yen(amt)} 기록했어요`);
@@ -1156,7 +1230,8 @@
         <div class="quick-amts" id="quickAmts"></div>
         <div class="cat-grid">${Object.keys(EXP_CAT).map(k => `<button type="button" class="${k === exp.cat ? 'active' : ''}" data-action="exp-cat" data-v="${k}"><span class="ci">${EXP_CAT[k].icon}</span>${EXP_CAT[k].label}</button>`).join('')}</div>
         <div class="chip-line"><span>결제</span>${chip('exp-pay', PAYS, exp.pay)}</div>
-        <div class="chip-line"><span>누가</span>${chip('exp-who', PAYERS, exp.who)}</div>
+        <div class="chip-line"><span>낸 사람</span>${chip('exp-who', PAYERS, exp.who)}</div>
+        <div class="chip-line"><span>누구 것</span>${chip('exp-share', SHARES, exp.share)}</div>
         <div class="chip-line"><span>날짜</span>${chip('exp-day', DAYS, exp.day)}</div>
         <input id="expMemo" class="sheet-input" type="text" maxlength="40" placeholder="메모 (선택) 예: 다코야키, 지하철" value="${esc(exp.memo || '')}" />
         <div class="keypad">
@@ -1209,6 +1284,87 @@
         ? 'https://papago.naver.com/?sk=ko&tk=ja&st=' + encodeURIComponent(t)
         : 'https://translate.google.com/?sl=ko&tl=ja&op=translate&text=' + encodeURIComponent(t);
       window.open(url, '_blank', 'noopener');
+    }
+
+    /* ---------- Map pin linker ---------- */
+    let mapCtx = null;
+    function suggestPlace(it, listKey) {
+      let s = String(it.desc || it.text || '').replace(/\*\*/g, '').replace(/https?:\/\/\S+/g, ' ').replace(/\(.*?\)/g, ' ');
+      if (s.includes('→')) s = s.split('→').pop();
+      s = s.split(/[&·,]/)[0].replace(/하차|탑승|도착|출발|이동|산책|구경|쇼핑|식사|휴식|체크인|체크아웃|인증샷|저녁|점심|아침|늦은|마지막|여유로운/g, ' ').replace(/\s+/g, ' ').trim();
+      if (!s) s = String(it.label || '').trim();
+      const kyoto = /^day\.day2\./.test(listKey || '') && !/니혼바시|호텔|숙소|오사카|츠루동탄|편의점/.test(s);
+      return s ? s + (/교토|공항|Kyoto|Kansai/i.test(s) ? '' : (kyoto ? ' 교토' : ' 오사카')) : '';
+    }
+    function openMapLinker(listKey, id) {
+      const list = resolveList(listKey); if (!list) return;
+      const it = list.find(x => String(x.id) === String(id)); if (!it) return;
+      mapCtx = { it };
+      openSheet({
+        title: '📍 지도 연결',
+        html: `<p class="sheet-note" style="margin:0 0 10px;font-size:0.85em;color:var(--text-sub)">${fmt(it.desc || ((it.label ? it.label + ': ' : '') + (it.text || '')))}</p>
+          <label class="sheet-field"><span>구글지도 검색어 또는 지도 링크</span><input id="mapInput" type="text" value="${esc(it.map || suggestPlace(it, listKey))}" placeholder="예: 아지노야 난바 오사카"></label>
+          <div class="tr-btns" style="margin-top:0">
+            <button type="button" class="tr-btn main" data-action="map-preview">🔍 구글지도에서 찾기</button>
+            <button type="button" class="tr-btn" data-action="map-paste">📋 복사한 링크 붙여넣기</button>
+          </div>
+          <div class="tr-tip">💡 <b>정확한 위치로 저장하는 방법</b><br>① <b>구글지도에서 찾기</b>로 장소 확인 → ② 구글지도에서 <b>공유 → 링크 복사</b> → ③ 이 화면으로 돌아와 <b>붙여넣기</b> → <b>저장</b><br>검색어만 저장해도 핀을 누르면 바로 지도가 열려요.</div>`,
+        saveLabel: '저장',
+        onSave() {
+          const v = (document.getElementById('mapInput').value || '').trim();
+          if (!v) { showToast('검색어나 링크를 넣어주세요'); return; }
+          it.map = v; mapCtx = null; commit('📍 지도를 연결했어요');
+        },
+        onDelete: it.map ? function () { delete it.map; mapCtx = null; commit('지도 연결을 지웠어요'); } : null
+      });
+    }
+
+    /* ---------- Live Osaka weather (Open-Meteo, no key) ---------- */
+    const WX = c => c === 0 ? ['☀️', '맑음'] : c === 1 ? ['🌤️', '대체로 맑음'] : c === 2 ? ['⛅', '구름 조금'] : c === 3 ? ['☁️', '흐림']
+      : (c === 45 || c === 48) ? ['🌫️', '안개'] : (c >= 51 && c <= 57) ? ['🌦️', '이슬비'] : (c >= 61 && c <= 67) ? ['🌧️', '비']
+      : (c >= 71 && c <= 77) ? ['🌨️', '눈'] : (c >= 80 && c <= 82) ? ['🌧️', '소나기'] : (c === 85 || c === 86) ? ['🌨️', '눈'] : (c >= 95) ? ['⛈️', '뇌우'] : ['🌡️', ''];
+    async function loadWeather() {
+      try {
+        const u = 'https://api.open-meteo.com/v1/forecast?latitude=34.6687&longitude=135.5013&current=temperature_2m,weather_code&hourly=temperature_2m,precipitation_probability&daily=weather_code,precipitation_probability_max&timezone=Asia%2FTokyo&forecast_days=2';
+        const j = await fetch(u).then(r => { if (!r.ok) throw 0; return r.json(); });
+        const at = (date, hh) => { const i = j.hourly.time.indexOf(`${date}T${hh}:00`); return i >= 0 ? Math.round(j.hourly.temperature_2m[i]) : '–'; };
+        const [d0, d1] = j.daily.time;
+        const [ce, cl] = WX(j.current.weather_code);
+        const [e0] = WX(j.daily.weather_code[0]);
+        const [e1, l1] = WX(j.daily.weather_code[1]);
+        const rain = p => p >= 30 ? ` · ☔${p}%` : '';
+        document.getElementById('wxNow').textContent = `${ce} 지금 ${Math.round(j.current.temperature_2m)}° ${cl}`;
+        document.getElementById('wxToday').innerHTML = `오늘 ${e0} 오전 <b>${at(d0, '09')}°</b> · 오후 <b>${at(d0, '15')}°</b>${rain(j.daily.precipitation_probability_max[0])}`;
+        document.getElementById('wxTomorrow').innerHTML = `내일 ${e1} 오전 <b>${at(d1, '09')}°</b> · 오후 <b>${at(d1, '15')}°</b>${rain(j.daily.precipitation_probability_max[1])}`;
+        document.getElementById('wxCard').title = `내일 ${l1} · 오전 9시/오후 3시 기온 · 탭하면 새로고침`;
+      } catch (e) {
+        document.getElementById('wxNow').textContent = '날씨를 못 불러왔어요';
+        document.getElementById('wxToday').textContent = '탭하면 다시 시도';
+        document.getElementById('wxTomorrow').innerHTML = '&nbsp;';
+      }
+    }
+
+    /* ---------- Live KRW/JPY rate ---------- */
+    let liveRate = null;
+    async function loadFx() {
+      const sources = [
+        async () => { const j = await fetch('https://open.er-api.com/v6/latest/JPY').then(r => r.json()); return { v: j.rates.KRW, t: j.time_last_update_unix * 1000 }; },
+        async () => { const j = await fetch('https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/jpy.json').then(r => r.json()); return { v: j.jpy.krw, t: Date.parse(j.date) }; }
+      ];
+      for (const src of sources) {
+        try {
+          const { v, t } = await src();
+          if (!v) continue;
+          liveRate = Math.round(v * 1000) / 10; // per 100 yen
+          const d = new Date(t);
+          document.getElementById('fxVal').textContent = `100엔 = ${liveRate.toLocaleString()}원`;
+          const diff = Math.abs(liveRate - rate()) >= 1;
+          document.getElementById('fxSub').textContent = `${d.getMonth() + 1}/${d.getDate()} 기준` + (diff ? ' · 탭하면 가계부에 적용' : ' · 가계부 적용됨 ✓');
+          return;
+        } catch (e) {}
+      }
+      document.getElementById('fxVal').textContent = '환율을 못 불러왔어요';
+      document.getElementById('fxSub').textContent = '탭하면 다시 시도';
     }
 
     /* ---------- Japanese text-to-speech ---------- */
@@ -1311,6 +1467,7 @@
         case 'exp-cat': if (exp) { exp.cat = el.dataset.v; setChipActive('exp-cat', exp.cat); } break;
         case 'exp-pay': if (exp) { exp.pay = el.dataset.v; setChipActive('exp-pay', exp.pay); } break;
         case 'exp-who': if (exp) { exp.who = el.dataset.v; setChipActive('exp-who', exp.who); } break;
+        case 'exp-share': if (exp) { exp.share = el.dataset.v; setChipActive('exp-share', exp.share); } break;
         case 'exp-day': if (exp) { exp.day = el.dataset.v; setChipActive('exp-day', exp.day); } break;
         case 'set-budget':
           openSheet({
@@ -1320,7 +1477,20 @@
             onSave(v) { data.settings.budget = Number(v.budget) || 0; commit('예산을 저장했어요'); }, onDelete: null
           });
           break;
-        case 'open-translate': openTranslate(); break;
+        case 'map-link': openMapLinker(el.dataset.list, el.dataset.id); break;
+        case 'map-preview': { const v = (document.getElementById('mapInput') || {}).value || ''; if (v.trim()) window.open(linkUrl(v.trim()), '_blank', 'noopener'); break; }
+        case 'map-paste': {
+          const inp = document.getElementById('mapInput');
+          const fill = t => { const m = String(t || '').match(/https?:\/\/\S+/); inp.value = m ? m[0] : String(t || '').trim(); showToast('붙여넣었어요 · 저장을 눌러주세요'); };
+          if (navigator.clipboard && navigator.clipboard.readText) navigator.clipboard.readText().then(fill).catch(() => { inp.focus(); inp.select(); showToast('입력칸을 길게 눌러 붙여넣기 해주세요'); });
+          else { inp.focus(); showToast('입력칸을 길게 눌러 붙여넣기 해주세요'); }
+          break;
+        }
+        case 'refresh-wx': showToast('날씨 새로고침…'); loadWeather(); break;
+        case 'apply-rate':
+          if (!liveRate) { loadFx(); break; }
+          data.settings.rate = Math.round(liveRate); save(); syncRateInputs(); renderSpots(); renderLedger(); loadFx();
+          showToast(`가계부 환율을 100엔 = ${Math.round(liveRate)}원으로 맞췄어요`); break;
         case 'tr-go': trGo(el.dataset.to); break;
         case 'sync-now': manualSync(); break;
         case 'sheet-save': sheetSave(); break;
@@ -1587,6 +1757,8 @@
       renderAll();
       applyBudgetView();
       connect();
+      loadWeather(); loadFx();
+      setInterval(() => { if (document.visibilityState === 'visible') { loadWeather(); loadFx(); } }, 30 * 60 * 1000);
     })();
   </script>
 </body>
